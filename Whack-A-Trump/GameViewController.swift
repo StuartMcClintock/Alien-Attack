@@ -16,7 +16,6 @@ class GameViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         //del = UIApplication.shared.delegate as? AppDelegate
         
         if let view = self.view as! SKView? {

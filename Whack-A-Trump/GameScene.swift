@@ -28,7 +28,7 @@ class GameScene: SKScene {
         }
     }
     
-    var waitTime = 0.8
+    var waitTime = 0.6
     
     var totalVisible = 0
     //let visibleLock = NSLock()
@@ -37,6 +37,10 @@ class GameScene: SKScene {
     
     
     override func didMove(to view: SKView){
+        view.showsFPS = false
+        view.showsNodeCount = false
+        
+        
         let app = UIApplication.shared
         del = app.delegate as? AppDelegate
         
@@ -51,13 +55,13 @@ class GameScene: SKScene {
         scoreLabel = SKLabelNode(fontNamed: "rockwell")
         scoreLabel.text = "Score: 0"
         //scoreLabel.position = CGPoint(x:85, y:30)
-        scoreLabel.position = CGPoint(x:35, y:30)
+        scoreLabel.position = CGPoint(x:45, y:40)
         scoreLabel.horizontalAlignmentMode = .left
         scoreLabel.fontSize = 48
         addChild(scoreLabel)
         
         highScoreLabel = SKLabelNode(fontNamed: "rockwell")
-        highScoreLabel.position = CGPoint(x:frame.maxX-225, y:35)
+        highScoreLabel.position = CGPoint(x:frame.maxX-240, y:50)
         highScoreLabel.horizontalAlignmentMode = .left
         highScoreLabel.fontSize = 30
         highScoreLabel.fontColor = .black
@@ -120,7 +124,7 @@ class GameScene: SKScene {
         if (gameOver){
             return
         }
-        waitTime *= 0.98
+        waitTime *= 0.987
         
         var dispNum = Int.random(in: 0..<30)
         while (faces[dispNum].alpha == 1){
