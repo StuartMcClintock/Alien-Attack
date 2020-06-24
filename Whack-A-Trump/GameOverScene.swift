@@ -24,6 +24,13 @@ class GameOverScene: SKScene{
         overLabel.position = CGPoint(x: frame.midX, y: frame.midY)
         addChild(overLabel)
         
+        let scoreLabel = SKLabelNode(fontNamed: "rockwell")
+        scoreLabel.fontSize = 84.0
+        scoreLabel.fontColor = .black
+        scoreLabel.position = CGPoint(x: frame.midX, y: frame.midY+225)
+        scoreLabel.text = String(del.recentScore)
+        addChild(scoreLabel)
+        
         if (del.recentScore > del.highScore){
             del.highScore = del.recentScore
             self.backgroundColor = SKColor.yellow
@@ -31,6 +38,13 @@ class GameOverScene: SKScene{
         }
         else{
             overLabel.text = "Game Over"
+            
+            let highLabel = SKLabelNode(fontNamed: "rockwell")
+            highLabel.fontSize = 62.0
+            highLabel.fontColor = .black
+            highLabel.position = CGPoint(x: frame.midX, y: frame.midY-200)
+            highLabel.text = "High Score: \(del.highScore)"
+            addChild(highLabel)
         }
     }
     
