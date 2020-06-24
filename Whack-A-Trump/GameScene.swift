@@ -133,7 +133,6 @@ class GameScene: SKScene {
         if (totalVisible >= 5){
             gameOver = true
             del.recentScore = scoreVal
-            del.highScore = highScoreVal
             
             sleep(UInt32(0.3))
             let overScene = GameOverScene(fileNamed: "GameOverScene")
