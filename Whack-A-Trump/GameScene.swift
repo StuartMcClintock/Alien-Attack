@@ -24,6 +24,7 @@ class GameScene: SKScene {
     var waitTime = 1.0
     
     var totalVisible = 0
+    //let visibleLock = NSLock()
     
     override func didMove(to view: SKView){
         let background = SKSpriteNode(imageNamed: "whitehouse")
@@ -86,18 +87,27 @@ class GameScene: SKScene {
         if (faces[col+row*6].alpha == 1){
             scoreVal += 1
             faces[col+row*6].alpha = 0
+            //visibleLock.lock()
             totalVisible -= 1
+            //visibleLock.unlock()
         }
     }
     
     func dispFaces(){
         waitTime *= 0.98
         
-        let dispNum = Int.random(in: 0..<30)
+        var dispNum = Int.random(in: 0..<30)
+        while (faces[dispNum].alpha == 1){
+            dispNum = Int.random(in: 0..<30)
+        }
+        
         faces[dispNum].alpha = 1
+        //visibleLock.lock()
         totalVisible += 1
+        //visibleLock.unlock()
         
         if (totalVisible >= 5){
+            sleep(UInt32(0.3))
             let overScene = GameOverScene(fileNamed: "GameOverScene")
             overScene?.scaleMode = .aspectFill
             self.view?.presentScene(overScene!, transition: .flipVertical(withDuration: 0.5))
