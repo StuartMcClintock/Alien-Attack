@@ -13,7 +13,7 @@ class GameScene: SKScene {
     //var del: AppDelegate!
     
     var scoreLabel: SKLabelNode!
-    var slots = [WhackSlot]()
+    var faces = [SKSpriteNode]()
     
     var scoreVal = 0{
         didSet{
@@ -37,12 +37,22 @@ class GameScene: SKScene {
         scoreLabel.fontSize = 48
         addChild(scoreLabel)
         
-        createSlot(at: CGPoint(x:frame.midX, y:frame.midY))
+        let gapX = (frame.maxX)/5
+        let gapY = (frame.midY)/6
+        
+        for row in 0..<5 {
+            for col in 0..<6 {
+                addFace(at: CGPoint(x:70+Int(gapX*CGFloat(row)), y:Int(frame.midY)-Int(CGFloat(col)*gapY)+30))
+            }
+        }
     }
     
-    func createSlot(at position: CGPoint){
-        let slot = WhackSlot()
-        slot.configure(at: position)
-        slots.append(slot)
+    func addFace(at position: CGPoint){
+        let newFace = SKSpriteNode(imageNamed: "trump")
+        newFace.position = position
+        newFace.zPosition = 1
+        newFace.alpha = 1
+        addChild(newFace)
+        faces.append(newFace)
     }
 }
