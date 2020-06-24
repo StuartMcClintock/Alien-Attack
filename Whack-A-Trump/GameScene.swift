@@ -21,6 +21,8 @@ class GameScene: SKScene {
         }
     }
     
+    var waitTime = 1.0
+    
     override func didMove(to view: SKView){
         let background = SKSpriteNode(imageNamed: "whitehouse")
         background.position = CGPoint(x:frame.midX, y:frame.midY)
@@ -45,13 +47,15 @@ class GameScene: SKScene {
                 addFace(at: CGPoint(x:70+Int(gapX*CGFloat(row)), y:Int(frame.midY)-Int(CGFloat(col)*gapY)+30), name:String(col)+","+String(row))
             }
         }
+        
+        dispFaces()
     }
     
     func addFace(at position: CGPoint, name:String){
         let newFace = SKSpriteNode(imageNamed: "trump")
         newFace.position = position
         newFace.zPosition = 1
-        newFace.alpha = 1
+        newFace.alpha = 0
         newFace.name = name
         addChild(newFace)
         faces.append(newFace)
@@ -84,5 +88,16 @@ class GameScene: SKScene {
             faces[col+row*6].name = String(col)+","+String(row)
             print(faces[col+row*6].description)*/
         }
+    }
+    
+    func dispFaces(){
+        waitTime *= 0.98
+        
+        let dispNum = Int.random(in: 0..<30)
+        faces[dispNum].alpha = 1
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + waitTime, execute: { [weak self] in
+            self?.dispFaces()
+        })
     }
 }
