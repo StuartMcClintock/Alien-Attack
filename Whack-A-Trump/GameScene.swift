@@ -62,14 +62,27 @@ class GameScene: SKScene {
         let positionInScene = touch.location(in: self)
         let touchedNode = self.nodes(at: positionInScene)
         
-        print("******")
+        
         let description = touchedNode.description
         let name = description.components(separatedBy: " ")[1]
         let coords = name.components(separatedBy: "'")[1]
         let splitCoords = coords.components(separatedBy: ",")
-        let xCoord = splitCoords[0]
-        let yCoord = splitCoords[1]
-        print(xCoord, yCoord)
-        print("******")
+        
+        let col = splitCoords[0]
+        if (col == "(null)"){
+            return
+        }
+        let row = splitCoords[1]
+        processTap(col: Int(col)!, row: Int(row)!)
+    }
+    
+    func processTap(col: Int, row: Int){
+        if (faces[col+row*6].alpha == 1){
+            scoreVal += 1
+            faces[col+row*6].alpha = 0
+            /*print(faces[col+row*6].description)
+            faces[col+row*6].name = String(col)+","+String(row)
+            print(faces[col+row*6].description)*/
+        }
     }
 }
