@@ -10,9 +10,11 @@ import SpriteKit
 import GameplayKit
 
 class GameScene: SKScene {
-    //var del: AppDelegate!
+    var del: AppDelegate!
     
     var scoreLabel: SKLabelNode!
+    var highScoreLabel: SKLabelNode!
+    
     var faces = [SKSpriteNode]()
     
     var scoreVal = 0{
@@ -20,13 +22,25 @@ class GameScene: SKScene {
             scoreLabel.text = "Score: \(scoreVal)"
         }
     }
+    var highScoreVal = 0{
+        didSet{
+            highScoreLabel.text = "High Score: \(highScoreVal)"
+        }
+    }
     
-    var waitTime = 1.0
+    var waitTime = 0.8
     
     var totalVisible = 0
     //let visibleLock = NSLock()
     
+    var gameOver = false
+    
+    
     override func didMove(to view: SKView){
+        let app = UIApplication.shared
+        del = app.delegate as? AppDelegate
+        
+        
         let background = SKSpriteNode(imageNamed: "whitehouse")
         background.position = CGPoint(x:frame.midX, y:frame.midY)
         background.blendMode = .replace
@@ -41,6 +55,14 @@ class GameScene: SKScene {
         scoreLabel.horizontalAlignmentMode = .left
         scoreLabel.fontSize = 48
         addChild(scoreLabel)
+        
+        highScoreLabel = SKLabelNode(fontNamed: "rockwell")
+        highScoreLabel.position = CGPoint(x:frame.maxX-225, y:35)
+        highScoreLabel.horizontalAlignmentMode = .left
+        highScoreLabel.fontSize = 30
+        highScoreLabel.fontColor = .black
+        addChild(highScoreLabel)
+        highScoreVal = del.highScore
         
         let gapX = (frame.maxX)/5
         let gapY = (frame.midY)/6
@@ -86,14 +108,18 @@ class GameScene: SKScene {
     func processTap(col: Int, row: Int){
         if (faces[col+row*6].alpha == 1){
             scoreVal += 1
+            if (scoreVal > highScoreVal){
+                highScoreVal = scoreVal
+            }
             faces[col+row*6].alpha = 0
-            //visibleLock.lock()
             totalVisible -= 1
-            //visibleLock.unlock()
         }
     }
     
     func dispFaces(){
+        if (gameOver){
+            return
+        }
         waitTime *= 0.98
         
         var dispNum = Int.random(in: 0..<30)
@@ -102,14 +128,16 @@ class GameScene: SKScene {
         }
         
         faces[dispNum].alpha = 1
-        //visibleLock.lock()
         totalVisible += 1
-        //visibleLock.unlock()
         
         if (totalVisible >= 5){
+            gameOver = true
+            del.recentScore = scoreVal
+            del.highScore = highScoreVal
+            
             sleep(UInt32(0.3))
             let overScene = GameOverScene(fileNamed: "GameOverScene")
-            overScene?.scaleMode = .aspectFill
+            overScene?.scaleMode = .fill
             self.view?.presentScene(overScene!, transition: .flipVertical(withDuration: 0.5))
         }
         
