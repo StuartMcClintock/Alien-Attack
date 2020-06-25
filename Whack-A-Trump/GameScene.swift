@@ -37,9 +37,6 @@ class GameScene: SKScene {
     
     
     override func didMove(to view: SKView){
-        view.showsFPS = false
-        view.showsNodeCount = false
-        
         
         let app = UIApplication.shared
         del = app.delegate as? AppDelegate
