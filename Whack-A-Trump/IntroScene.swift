@@ -26,7 +26,7 @@ class IntroScene: SKScene{
         descLabel.fontColor = .black
         descLabel.position = CGPoint(x: frame.midX, y: frame.midY-100)
         descLabel.numberOfLines = 2
-        descLabel.text = "Tap the Trump faces that appear to ensure that\nfive don't get on the screen at the same time."
+        descLabel.text = "Tap the Trump faces that appear to ensure that\nfive don't exist on the screen at the same time."
         addChild(descLabel)
         
         let contLabel = SKLabelNode(fontNamed: "Damascus")

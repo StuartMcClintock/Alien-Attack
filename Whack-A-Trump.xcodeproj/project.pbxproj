@@ -45,7 +45,7 @@
 		3C51468924A32DC90074E9AE /* GameOverScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameOverScene.sks; sourceTree = "<group>"; };
 		3C51468B24A51FDD0074E9AE /* IntroScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroScene.swift; sourceTree = "<group>"; };
 		3C51468D24A51FFA0074E9AE /* IntroScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = IntroScene.sks; sourceTree = "<group>"; };
-		3CEC79072461E83E00C4A1C7 /* Whack-A-Trump.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Whack-A-Trump.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3CEC79072461E83E00C4A1C7 /* Wack-a-Trump.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Wack-a-Trump.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3CEC790A2461E83E00C4A1C7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3CEC790C2461E83E00C4A1C7 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
 		3CEC790E2461E83E00C4A1C7 /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
@@ -101,7 +101,7 @@
 		3CEC79082461E83E00C4A1C7 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3CEC79072461E83E00C4A1C7 /* Whack-A-Trump.app */,
+				3CEC79072461E83E00C4A1C7 /* Wack-a-Trump.app */,
 				3CEC79212461E83F00C4A1C7 /* Whack-A-TrumpTests.xctest */,
 				3CEC792C2461E83F00C4A1C7 /* Whack-A-TrumpUITests.xctest */,
 			);
@@ -163,7 +163,7 @@
 			);
 			name = "Whack-A-Trump";
 			productName = "Whack-A-Trump";
-			productReference = 3CEC79072461E83E00C4A1C7 /* Whack-A-Trump.app */;
+			productReference = 3CEC79072461E83E00C4A1C7 /* Wack-a-Trump.app */;
 			productType = "com.apple.product-type.application";
 		};
 		3CEC79202461E83F00C4A1C7 /* Whack-A-TrumpTests */ = {
@@ -466,7 +466,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "Stuart-McClintock.Whack-A-Trump";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Wack-a-Trump";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -484,7 +484,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "Stuart-McClintock.Whack-A-Trump";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Wack-a-Trump";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
