@@ -52,7 +52,7 @@ class IntroScene: SKScene{
     
     func startNextScene(){
         let ogScene = GameScene(fileNamed: "SelectModeScene")
-        ogScene?.scaleMode = .fill
+        ogScene?.scaleMode = .aspectFill
         self.view?.presentScene(ogScene!, transition: .flipVertical(withDuration: 0.5))
     }
 }
