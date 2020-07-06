@@ -20,9 +20,16 @@ class SelectModeScene: SKScene{
         headerLabel.text = "Select Mode:"
         addChild(headerLabel)
         
-        let standardPointPosition = CGPoint(x: frame.midX, y: frame.midY+100)
+        let buttonSize = CGSize(width: 500, height: 120)
         
-        let standardButton = SKSpriteNode(color: SKColor.init(displayP3Red: 71/255, green: 145/255, blue: 214/255, alpha: 1), size: CGSize(width: 500, height: 120))
+        let standardPointPosition = CGPoint(x: frame.midX, y: frame.midY+100)
+        let standardButtonColor = SKColor.init(displayP3Red: 71/255, green: 145/255, blue: 214/255, alpha: 1)
+        
+        let blitzPointPosition = CGPoint(x: frame.midX, y: frame.midY-100)
+        let blitzButtonColor = SKColor.red
+        
+        
+        let standardButton = SKSpriteNode(color: standardButtonColor, size: buttonSize)
         standardButton.position = standardPointPosition
         addChild(standardButton)
         let standardText = SKLabelNode(text: "Standard")
@@ -31,6 +38,16 @@ class SelectModeScene: SKScene{
         standardText.fontColor = SKColor.white
         standardText.fontSize = 74
         addChild(standardText)
+        
+        let blitzButton = SKSpriteNode(color: blitzButtonColor, size: buttonSize)
+        blitzButton.position = blitzPointPosition
+        addChild(blitzButton)
+        let blitzText = SKLabelNode(text: "BLITZ ! !")
+        blitzText.position = CGPoint(x:blitzPointPosition.x, y:blitzPointPosition.y-25)
+        blitzText.fontName = "DIN Alternate Bold"
+        blitzText.fontColor = SKColor.white
+        blitzText.fontSize = 74
+        addChild(blitzText)
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
