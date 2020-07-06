@@ -15,6 +15,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var recentScore: Int = 0
     var highScore: Int = 0
+    
+    var isBlitz: Bool = false
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         highScore = UserDefaults.standard.integer(forKey: "highScore")
