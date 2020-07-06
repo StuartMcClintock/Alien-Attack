@@ -16,20 +16,28 @@ class SelectModeScene: SKScene{
         let app = UIApplication.shared
         del = app.delegate as? AppDelegate
         
-        self.backgroundColor = SKColor.init(displayP3Red: 128, green: 235, blue: 255, alpha: 1)
-        let headerLabel = SKLabelNode(fontNamed: "Damascus")
+        
+        let background = SKSpriteNode(imageNamed: "whitehouse")
+        background.position = CGPoint(x:frame.midX, y:frame.midY)
+        background.blendMode = .replace
+        background.alpha = 0.2
+        background.zPosition = -1
+        addChild(background)
+        
+        
+        let headerLabel = SKLabelNode(fontNamed: "DIN Alternate Bold")
         headerLabel.fontSize = 94.0
-        headerLabel.fontColor = .black
-        headerLabel.position = CGPoint(x: frame.midX, y: frame.maxY - 220)
+        headerLabel.fontColor = .white
+        headerLabel.position = CGPoint(x: frame.midX, y: frame.maxY - 330)
         headerLabel.text = "Select Mode:"
         addChild(headerLabel)
         
         let buttonSize = CGSize(width: 500, height: 120)
         
-        let standardPointPosition = CGPoint(x: frame.midX, y: frame.midY+100)
+        let standardPointPosition = CGPoint(x: frame.midX, y: frame.midY-30)
         let standardButtonColor = SKColor.init(displayP3Red: 71/255, green: 145/255, blue: 214/255, alpha: 1)
         
-        let blitzPointPosition = CGPoint(x: frame.midX, y: frame.midY-100)
+        let blitzPointPosition = CGPoint(x: frame.midX, y: frame.midY-250)
         let blitzButtonColor = SKColor.red
         
         
@@ -50,7 +58,7 @@ class SelectModeScene: SKScene{
         blitzButton.name = "blitz"
         addChild(blitzButton)
         let blitzText = SKLabelNode(text: "BLITZ ! !")
-        blitzText.position = CGPoint(x:blitzPointPosition.x, y:blitzPointPosition.y-25)
+        blitzText.position = CGPoint(x:blitzPointPosition.x, y:blitzPointPosition.y-27)
         blitzText.fontName = "DIN Alternate Bold"
         blitzText.fontColor = SKColor.white
         blitzText.fontSize = 74

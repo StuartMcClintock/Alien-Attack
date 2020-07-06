@@ -21,26 +21,26 @@ class IntroScene: SKScene{
         background.zPosition = -1
         addChild(background)
         
-        let headingLabel = SKLabelNode(fontNamed: "Damascus-Bold")
-        headingLabel.fontSize = 65.0
+        let headingLabel = SKLabelNode(fontNamed: "DIN Alternate Bold")
+        headingLabel.fontSize = 68.0
         headingLabel.fontColor = .white
         headingLabel.position = CGPoint(x: frame.midX, y: frame.midY+135)
         headingLabel.numberOfLines = 2
-        headingLabel.text = "The White House\nis Under Attack!"
+        headingLabel.text = "There is a battle for\n  the White House!"
         addChild(headingLabel)
         
-        let descLabel = SKLabelNode(fontNamed: "Damascus")
-        descLabel.fontSize = 28.0
+        let descLabel = SKLabelNode(fontNamed: "DIN Alternate Bold")
+        descLabel.fontSize = 30.0
         descLabel.fontColor = .white
-        descLabel.position = CGPoint(x: frame.midX, y: frame.midY-90)
+        descLabel.position = CGPoint(x: frame.midX, y: frame.midY-170)
         descLabel.numberOfLines = 3
-        descLabel.text = "Tap on the Trump faces that appear to\nremove them and ensure that five faces do\nnot remain on the screen at the same time."
+        descLabel.text = "   Tap on the Trump faces that pop up to\nremove them. Make sure that five faces don't\n   remain on the screen at the same time!"
         addChild(descLabel)
         
-        let contLabel = SKLabelNode(fontNamed: "Damascus")
-        contLabel.fontSize = 32.0
+        let contLabel = SKLabelNode(fontNamed: "DIN Alternate Bold")
+        contLabel.fontSize = 38.0
         contLabel.fontColor = .lightGray
-        contLabel.position = CGPoint(x: frame.midX, y: frame.midY-250)
+        contLabel.position = CGPoint(x: frame.midX, y: frame.midY-370)
         contLabel.numberOfLines = 2
         contLabel.text = "(tap to begin)"
         addChild(contLabel)
@@ -53,6 +53,6 @@ class IntroScene: SKScene{
     func startNextScene(){
         let ogScene = GameScene(fileNamed: "SelectModeScene")
         ogScene?.scaleMode = .aspectFill
-        self.view?.presentScene(ogScene!, transition: .flipVertical(withDuration: 0.5))
+        self.view?.presentScene(ogScene!)
     }
 }

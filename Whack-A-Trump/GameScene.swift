@@ -25,7 +25,7 @@ class GameScene: SKScene {
     var highScoreVal = 0{
         didSet{
             if (del.isBlitz){
-                highScoreLabel.text = "High Score (blitz): \(highScoreVal)"
+                highScoreLabel.text = "Blitz High Score: \(highScoreVal)"
             }
             else{
                 highScoreLabel.text = "High Score: \(highScoreVal)"
@@ -55,15 +55,15 @@ class GameScene: SKScene {
         addChild(background)
         
         
-        scoreLabel = SKLabelNode(fontNamed: "rockwell")
+        scoreLabel = SKLabelNode(fontNamed: "DIN Alternate Bold")
         scoreLabel.text = "Score: 0"
         //scoreLabel.position = CGPoint(x:85, y:30)
         scoreLabel.position = CGPoint(x:45, y:40)
         scoreLabel.horizontalAlignmentMode = .left
-        scoreLabel.fontSize = 48
+        scoreLabel.fontSize = 50
         addChild(scoreLabel)
         
-        highScoreLabel = SKLabelNode(fontNamed: "rockwell")
+        highScoreLabel = SKLabelNode(fontNamed: "DIN Alternate Bold")
         var xShift = 255.0
         if (del.highScore > 999){
             xShift = 285.0
@@ -73,13 +73,8 @@ class GameScene: SKScene {
         }
         highScoreLabel.position = CGPoint(x:frame.maxX-CGFloat(xShift), y:50)
         highScoreLabel.horizontalAlignmentMode = .left
-        highScoreLabel.fontSize = 30
-        if (del.isBlitz){
-            highScoreLabel.fontColor = .init(displayP3Red: 142/255, green: 0, blue: 0, alpha: 1)
-        }
-        else{
-            highScoreLabel.fontColor = .black
-        }
+        highScoreLabel.fontSize = 36
+        highScoreLabel.fontColor = .black
         addChild(highScoreLabel)
         highScoreVal = del.highScore
         
@@ -129,6 +124,7 @@ class GameScene: SKScene {
             scoreVal += 1
             if (scoreVal > highScoreVal){
                 highScoreVal = scoreVal
+                highScoreLabel.fontColor = .init(displayP3Red: 160/255, green: 0, blue: 0, alpha: 1)
             }
             faces[col+row*6].alpha = 0
             totalVisible -= 1
