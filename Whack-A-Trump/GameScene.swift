@@ -58,7 +58,11 @@ class GameScene: SKScene {
         addChild(scoreLabel)
         
         highScoreLabel = SKLabelNode(fontNamed: "rockwell")
-        highScoreLabel.position = CGPoint(x:frame.maxX-240, y:50)
+        var xShift = 255.0
+        if (del.highScore > 999){
+            xShift = 285.0
+        }
+        highScoreLabel.position = CGPoint(x:frame.maxX-CGFloat(xShift), y:50)
         highScoreLabel.horizontalAlignmentMode = .left
         highScoreLabel.fontSize = 30
         highScoreLabel.fontColor = .black

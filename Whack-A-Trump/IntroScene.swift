@@ -22,19 +22,19 @@ class IntroScene: SKScene{
         addChild(background)
         
         let headingLabel = SKLabelNode(fontNamed: "Damascus-Bold")
-        headingLabel.fontSize = 69.0
+        headingLabel.fontSize = 65.0
         headingLabel.fontColor = .white
-        headingLabel.position = CGPoint(x: frame.midX, y: frame.midY+130)
+        headingLabel.position = CGPoint(x: frame.midX, y: frame.midY+135)
         headingLabel.numberOfLines = 2
         headingLabel.text = "The White House\nis Under Attack!"
         addChild(headingLabel)
         
         let descLabel = SKLabelNode(fontNamed: "Damascus")
-        descLabel.fontSize = 32.0
+        descLabel.fontSize = 28.0
         descLabel.fontColor = .white
-        descLabel.position = CGPoint(x: frame.midX, y: frame.midY-80)
-        descLabel.numberOfLines = 2
-        descLabel.text = "Tap the Trump faces that appear to ensure that\nfive don't exist on the screen at the same time."
+        descLabel.position = CGPoint(x: frame.midX, y: frame.midY-90)
+        descLabel.numberOfLines = 3
+        descLabel.text = "Tap on the Trump faces that appear to\nremove them and ensure that five faces do\nnot remain on the screen at the same time."
         addChild(descLabel)
         
         let contLabel = SKLabelNode(fontNamed: "Damascus")
