@@ -24,7 +24,12 @@ class GameScene: SKScene {
     }
     var highScoreVal = 0{
         didSet{
-            highScoreLabel.text = "High Score: \(highScoreVal)"
+            if (del.isBlitz){
+                highScoreLabel.text = "High Score (blitz): \(highScoreVal)"
+            }
+            else{
+                highScoreLabel.text = "High Score: \(highScoreVal)"
+            }
         }
     }
     
@@ -63,10 +68,18 @@ class GameScene: SKScene {
         if (del.highScore > 999){
             xShift = 285.0
         }
+        if (del.isBlitz){
+            xShift += 80
+        }
         highScoreLabel.position = CGPoint(x:frame.maxX-CGFloat(xShift), y:50)
         highScoreLabel.horizontalAlignmentMode = .left
         highScoreLabel.fontSize = 30
-        highScoreLabel.fontColor = .black
+        if (del.isBlitz){
+            highScoreLabel.fontColor = .init(displayP3Red: 142/255, green: 0, blue: 0, alpha: 1)
+        }
+        else{
+            highScoreLabel.fontColor = .black
+        }
         addChild(highScoreLabel)
         highScoreVal = del.highScore
         
