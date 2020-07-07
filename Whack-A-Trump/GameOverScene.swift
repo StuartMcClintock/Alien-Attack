@@ -55,8 +55,8 @@ class GameOverScene: SKScene{
     }
     
     func returnToMain(){
-        let ogScene = GameScene(fileNamed: "GameScene")
-        ogScene?.scaleMode = .fill
+        let ogScene = GameScene(fileNamed: "SelectModeScene")
+        ogScene?.scaleMode = .aspectFill
         self.view?.presentScene(ogScene!, transition: .flipVertical(withDuration: 0.5))
     }
 }

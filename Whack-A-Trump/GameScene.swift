@@ -71,7 +71,7 @@ class GameScene: SKScene {
         if (del.isBlitz){
             xShift += 80
         }
-        highScoreLabel.position = CGPoint(x:frame.maxX-CGFloat(xShift), y:50)
+        highScoreLabel.position = CGPoint(x:frame.maxX-CGFloat(xShift), y:48)
         highScoreLabel.horizontalAlignmentMode = .left
         highScoreLabel.fontSize = 36
         highScoreLabel.fontColor = .black
