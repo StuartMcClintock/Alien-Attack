@@ -33,7 +33,16 @@ class GameScene: SKScene {
         }
     }
     
-    var waitTime = 0.6
+    var waitTime = 0.0
+    var waitTimeMultiplier = 0.0
+    
+    // Constants for Standard Mode
+    let SWT = 0.75
+    let SWTM = 0.98
+    
+    // Constants for Blitz Mode
+    let BWT = 0.5
+    let BWTM = 0.95
     
     var totalVisible = 0
     //let visibleLock = NSLock()
@@ -45,6 +54,15 @@ class GameScene: SKScene {
         
         let app = UIApplication.shared
         del = app.delegate as? AppDelegate
+        
+        if (del.isBlitz){
+            waitTime = BWT
+            waitTimeMultiplier = BWTM
+        }
+        else{
+            waitTime = SWT
+            waitTimeMultiplier = SWTM
+        }
         
         let background = SKSpriteNode(imageNamed: "whitehouse")
         background.position = CGPoint(x:frame.midX, y:frame.midY)
@@ -133,7 +151,7 @@ class GameScene: SKScene {
         if (gameOver){
             return
         }
-        waitTime *= 0.987
+        waitTime *= waitTimeMultiplier
         
         var dispNum = Int.random(in: 0..<30)
         while (faces[dispNum].alpha == 1){
