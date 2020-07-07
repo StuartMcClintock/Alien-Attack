@@ -71,10 +71,12 @@ class SelectModeScene: SKScene{
             let touchedNode = atPoint(touch.location(in: self))
             if touchedNode.name == "blitz"{
                 del.isBlitz = true
+                del.highScore = UserDefaults.standard.integer(forKey: "highScore-blitz")
                 startGame()
             }
             if touchedNode.name == "standard"{
                 del.isBlitz = false
+                del.highScore = UserDefaults.standard.integer(forKey: "highScore-standard")
                 startGame()
             }
         }

@@ -46,8 +46,6 @@ class GameScene: SKScene {
         let app = UIApplication.shared
         del = app.delegate as? AppDelegate
         
-        print(del.isBlitz)
-        
         let background = SKSpriteNode(imageNamed: "whitehouse")
         background.position = CGPoint(x:frame.midX, y:frame.midY)
         background.blendMode = .replace

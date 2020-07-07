@@ -36,7 +36,12 @@ class GameOverScene: SKScene{
             self.backgroundColor = SKColor.yellow
             overLabel.text = "New High Score!"
             
-            UserDefaults.standard.set(del.highScore, forKey:"highScore")
+            if (del.isBlitz){
+                UserDefaults.standard.set(del.highScore, forKey:"highScore-blitz")
+            }
+            else{
+                UserDefaults.standard.set(del.highScore, forKey:"highScore-standard")
+            }
         }
         else{
             overLabel.text = "Game Over"
