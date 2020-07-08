@@ -33,16 +33,18 @@ class GameScene: SKScene {
         }
     }
     
+    let MAX_FACES = 5
+    
     var waitTime = 0.0
     var waitTimeMultiplier = 0.0
     
     // Constants for Standard Mode
-    let SWT = 0.75
-    let SWTM = 0.98
+    let SWT = 0.8
+    let SWTM = 0.99
     
     // Constants for Blitz Mode
-    let BWT = 0.5
-    let BWTM = 0.95
+    let BWT = 0.4
+    let BWTM = 0.965
     
     var totalVisible = 0
     //let visibleLock = NSLock()
@@ -161,18 +163,29 @@ class GameScene: SKScene {
         faces[dispNum].alpha = 1
         totalVisible += 1
         
-        if (totalVisible >= 5){
+        if (totalVisible >= MAX_FACES){
             gameOver = true
             del.recentScore = scoreVal
             
-            sleep(UInt32(0.3))
+            //endScene()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: { [weak self] in
+                self?.endScene()
+            })
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + waitTime, execute: { [weak self] in
+            self?.dispFaces()
+        })
+    }
+    
+    func endScene(){
+        if (totalVisible >= MAX_FACES){
             let overScene = GameOverScene(fileNamed: "GameOverScene")
             overScene?.scaleMode = .fill
             self.view?.presentScene(overScene!, transition: .flipVertical(withDuration: 0.5))
         }
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + waitTime, execute: { [weak self] in
-            self?.dispFaces()
-        })
+        else{
+            gameOver = false
+            dispFaces()
+        }
     }
 }
