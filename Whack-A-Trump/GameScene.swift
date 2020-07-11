@@ -39,8 +39,8 @@ class GameScene: SKScene {
     var waitTimeMultiplier = 0.0
     
     // Constants for Standard Mode
-    let SWT = 0.8
-    let SWTM = 0.99
+    let SWT = 0.75
+    let SWTM = 0.992
     
     // Constants for Blitz Mode
     let BWT = 0.4

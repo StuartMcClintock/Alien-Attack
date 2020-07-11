@@ -13,6 +13,8 @@
 		3C51468E24A51FFA0074E9AE /* IntroScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3C51468D24A51FFA0074E9AE /* IntroScene.sks */; };
 		3C51469024B2B6960074E9AE /* SelectModeScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3C51468F24B2B6960074E9AE /* SelectModeScene.sks */; };
 		3C51469224B2B6B10074E9AE /* SelectModeScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C51469124B2B6B10074E9AE /* SelectModeScene.swift */; };
+		3C99B17F24B589E30089CAF4 /* AwardScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3C99B17E24B589E30089CAF4 /* AwardScene.sks */; };
+		3C99B18124B589FC0089CAF4 /* AwardScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C99B18024B589FC0089CAF4 /* AwardScene.swift */; };
 		3CEC790B2461E83E00C4A1C7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CEC790A2461E83E00C4A1C7 /* AppDelegate.swift */; };
 		3CEC790D2461E83E00C4A1C7 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3CEC790C2461E83E00C4A1C7 /* GameScene.sks */; };
 		3CEC790F2461E83E00C4A1C7 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3CEC790E2461E83E00C4A1C7 /* Actions.sks */; };
@@ -49,6 +51,8 @@
 		3C51468D24A51FFA0074E9AE /* IntroScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = IntroScene.sks; sourceTree = "<group>"; };
 		3C51468F24B2B6960074E9AE /* SelectModeScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SelectModeScene.sks; sourceTree = "<group>"; };
 		3C51469124B2B6B10074E9AE /* SelectModeScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectModeScene.swift; sourceTree = "<group>"; };
+		3C99B17E24B589E30089CAF4 /* AwardScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = AwardScene.sks; sourceTree = "<group>"; };
+		3C99B18024B589FC0089CAF4 /* AwardScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwardScene.swift; sourceTree = "<group>"; };
 		3CEC79072461E83E00C4A1C7 /* Wack-a-Trump.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Wack-a-Trump.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3CEC790A2461E83E00C4A1C7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3CEC790C2461E83E00C4A1C7 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -128,6 +132,15 @@
 			name = SelectModeScene;
 			sourceTree = "<group>";
 		};
+		3C99B18224B58A060089CAF4 /* AwardScene */ = {
+			isa = PBXGroup;
+			children = (
+				3C99B17E24B589E30089CAF4 /* AwardScene.sks */,
+				3C99B18024B589FC0089CAF4 /* AwardScene.swift */,
+			);
+			name = AwardScene;
+			sourceTree = "<group>";
+		};
 		3CEC78FE2461E83E00C4A1C7 = {
 			isa = PBXGroup;
 			children = (
@@ -155,6 +168,7 @@
 				3C51469724B3DCF80074E9AE /* SelectModeScene */,
 				3C51469324B3DC4E0074E9AE /* GameScene */,
 				3C51469424B3DCAA0074E9AE /* GameOverScene */,
+				3C99B18224B58A060089CAF4 /* AwardScene */,
 				3CEC79122461E83E00C4A1C7 /* GameViewController.swift */,
 				3CEC79142461E83E00C4A1C7 /* Main.storyboard */,
 				3CEC790E2461E83E00C4A1C7 /* Actions.sks */,
@@ -295,6 +309,7 @@
 				3CEC791B2461E83F00C4A1C7 /* LaunchScreen.storyboard in Resources */,
 				3C51469024B2B6960074E9AE /* SelectModeScene.sks in Resources */,
 				3C51468A24A32DC90074E9AE /* GameOverScene.sks in Resources */,
+				3C99B17F24B589E30089CAF4 /* AwardScene.sks in Resources */,
 				3CEC790F2461E83E00C4A1C7 /* Actions.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -325,6 +340,7 @@
 				3CEC79132461E83E00C4A1C7 /* GameViewController.swift in Sources */,
 				3C51468824A32D900074E9AE /* GameOverScene.swift in Sources */,
 				3CEC790B2461E83E00C4A1C7 /* AppDelegate.swift in Sources */,
+				3C99B18124B589FC0089CAF4 /* AwardScene.swift in Sources */,
 				3C51469224B2B6B10074E9AE /* SelectModeScene.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -499,12 +515,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = LZ8PHR27VM;
 				INFOPLIST_FILE = "Whack-A-Trump/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "Stuart-McClintock.Whack-A-Trump";
 				PRODUCT_NAME = "Wack-a-Trump";
 				SWIFT_VERSION = 5.0;
@@ -517,12 +535,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = LZ8PHR27VM;
 				INFOPLIST_FILE = "Whack-A-Trump/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "Stuart-McClintock.Whack-A-Trump";
 				PRODUCT_NAME = "Wack-a-Trump";
 				SWIFT_VERSION = 5.0;

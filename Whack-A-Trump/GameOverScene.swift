@@ -50,7 +50,12 @@ class GameOverScene: SKScene{
             highLabel.fontSize = 62.0
             highLabel.fontColor = .black
             highLabel.position = CGPoint(x: frame.midX, y: frame.midY-200)
-            highLabel.text = "High Score: \(del.highScore)"
+            if (del.isBlitz){
+                highLabel.text = "Blitz High Score: \(del.highScore)"
+            }
+            else{
+                highLabel.text = "High Score: \(del.highScore)"
+            }
             addChild(highLabel)
         }
     }
