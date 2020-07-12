@@ -22,6 +22,8 @@ class GameScene: SKScene {
     
     var faces = [SKSpriteNode]()
     
+    var poofs = [SKEmitterNode?]()
+    
     var scoreVal = 0{
         didSet{
             scoreLabel.text = "Score: \(scoreVal)"
@@ -107,6 +109,7 @@ class GameScene: SKScene {
         for row in 0..<5 {
             for col in 0..<6 {
                 addFace(at: CGPoint(x:70+Int(gapX*CGFloat(row)), y:Int(frame.midY)-Int(CGFloat(col)*gapY)+30), name:String(col)+","+String(row))
+                poofs.append(nil)
             }
         }
         
@@ -154,6 +157,7 @@ class GameScene: SKScene {
             faces[col+row*6].alpha = 0
             if let poof = SKEmitterNode(fileNamed: "Disappear"){
                 poof.position = faces[col+row*6].position
+                poofs[col+row*6] = poof
                 addChild(poof)
             }
             
@@ -185,7 +189,13 @@ class GameScene: SKScene {
             dispNum = Int.random(in: 0..<30)
         }
         
+        // Hide potential leftover animations from last time face was tapped
         faces[dispNum].alpha = 1
+        if (poofs[dispNum] != nil){
+            poofs[dispNum]?.isHidden = true
+            poofs[dispNum] = nil
+        }
+        
         totalVisible += 1
         
         if (totalVisible >= MAX_FACES){
