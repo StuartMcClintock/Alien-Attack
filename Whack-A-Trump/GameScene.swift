@@ -192,7 +192,7 @@ class GameScene: SKScene {
         // Hide potential leftover animations from last time face was tapped
         faces[dispNum].alpha = 1
         if (poofs[dispNum] != nil){
-            poofs[dispNum]?.isHidden = true
+            poofs[dispNum]?.removeFromParent()
             poofs[dispNum] = nil
         }
         
