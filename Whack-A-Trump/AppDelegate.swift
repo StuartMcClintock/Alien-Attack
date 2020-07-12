@@ -18,6 +18,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var isBlitz: Bool = false
 
+    
+    // Define Award Constants
+    let BLITZ_BRONZE_SCORE = 10
+    let BLITZ_SILVER_SCORE = 25
+    let BLITZ_GOLD_SCORE = 50
+    
+    let STAN_BRONZE_SCORE = 50
+    let STAN_SILVER_SCORE = 100
+    let STAN_GOLD_SCORE = 250
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         // Override point for customization after application launch.

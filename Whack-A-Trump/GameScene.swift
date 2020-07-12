@@ -144,7 +144,6 @@ class GameScene: SKScene {
     
     func processTap(col: Int, row: Int){
         if (faces[col+row*6].alpha == 1){
-            sensoryFeedback()
             scoreVal += 1
             if (scoreVal > highScoreVal){
                 highScoreVal = scoreVal
@@ -152,6 +151,7 @@ class GameScene: SKScene {
             }
             faces[col+row*6].alpha = 0
             totalVisible -= 1
+            sensoryFeedback()
         }
     }
     
