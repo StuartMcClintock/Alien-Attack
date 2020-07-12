@@ -9,8 +9,13 @@
 import SpriteKit
 import GameplayKit
 
+import AVFoundation
+//import AudioToolbox
+
 class GameScene: SKScene {
     var del: AppDelegate!
+    
+    var audioPlayer: AVAudioPlayer?
     
     var scoreLabel: SKLabelNode!
     var highScoreLabel: SKLabelNode!
@@ -139,6 +144,7 @@ class GameScene: SKScene {
     
     func processTap(col: Int, row: Int){
         if (faces[col+row*6].alpha == 1){
+            sensoryFeedback()
             scoreVal += 1
             if (scoreVal > highScoreVal){
                 highScoreVal = scoreVal
@@ -147,6 +153,19 @@ class GameScene: SKScene {
             faces[col+row*6].alpha = 0
             totalVisible -= 1
         }
+    }
+    
+    func sensoryFeedback(){
+        //AudioServicesPlayAlertSoundWithCompletion(SystemSoundID(kSystemSoundID_Vibrate)) { }
+        let impactFeedbackgenerator = UIImpactFeedbackGenerator(style: .medium)
+        impactFeedbackgenerator.prepare()
+        impactFeedbackgenerator.impactOccurred()
+        do{
+            let soundPath = Bundle.main.path(forResource: "pop", ofType: "wav")
+            audioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: soundPath!))
+            audioPlayer?.play()
+        }
+        catch {}
     }
     
     func dispFaces(){
