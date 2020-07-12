@@ -149,8 +149,14 @@ class GameScene: SKScene {
                 highScoreVal = scoreVal
                 highScoreLabel.fontColor = .init(displayP3Red: 160/255, green: 0, blue: 0, alpha: 1)
             }
-            faces[col+row*6].alpha = 0
             totalVisible -= 1
+            
+            faces[col+row*6].alpha = 0
+            if let poof = SKEmitterNode(fileNamed: "Disappear"){
+                poof.position = faces[col+row*6].position
+                addChild(poof)
+            }
+            
             sensoryFeedback()
         }
     }

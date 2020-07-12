@@ -16,6 +16,7 @@
 		3C99B17F24B589E30089CAF4 /* AwardScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3C99B17E24B589E30089CAF4 /* AwardScene.sks */; };
 		3C99B18124B589FC0089CAF4 /* AwardScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C99B18024B589FC0089CAF4 /* AwardScene.swift */; };
 		3CB09C4424BAD21A008B9E8B /* pop.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3CB09C4324BAD21A008B9E8B /* pop.wav */; };
+		3CB09C4624BB9EA4008B9E8B /* Disappear.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3CB09C4524BB9EA4008B9E8B /* Disappear.sks */; };
 		3CEC790B2461E83E00C4A1C7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CEC790A2461E83E00C4A1C7 /* AppDelegate.swift */; };
 		3CEC790D2461E83E00C4A1C7 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3CEC790C2461E83E00C4A1C7 /* GameScene.sks */; };
 		3CEC790F2461E83E00C4A1C7 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3CEC790E2461E83E00C4A1C7 /* Actions.sks */; };
@@ -55,6 +56,7 @@
 		3C99B17E24B589E30089CAF4 /* AwardScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = AwardScene.sks; sourceTree = "<group>"; };
 		3C99B18024B589FC0089CAF4 /* AwardScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwardScene.swift; sourceTree = "<group>"; };
 		3CB09C4324BAD21A008B9E8B /* pop.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = pop.wav; sourceTree = "<group>"; };
+		3CB09C4524BB9EA4008B9E8B /* Disappear.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Disappear.sks; sourceTree = "<group>"; };
 		3CEC79072461E83E00C4A1C7 /* Wack-a-Trump.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Wack-a-Trump.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3CEC790A2461E83E00C4A1C7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3CEC790C2461E83E00C4A1C7 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -102,6 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				3CEC79102461E83E00C4A1C7 /* GameScene.swift */,
+				3CB09C4524BB9EA4008B9E8B /* Disappear.sks */,
 				3CEC790C2461E83E00C4A1C7 /* GameScene.sks */,
 			);
 			name = GameScene;
@@ -318,6 +321,7 @@
 				3CB09C4424BAD21A008B9E8B /* pop.wav in Resources */,
 				3CEC790D2461E83E00C4A1C7 /* GameScene.sks in Resources */,
 				3CEC79182461E83F00C4A1C7 /* Assets.xcassets in Resources */,
+				3CB09C4624BB9EA4008B9E8B /* Disappear.sks in Resources */,
 				3CEC791B2461E83F00C4A1C7 /* LaunchScreen.storyboard in Resources */,
 				3C51469024B2B6960074E9AE /* SelectModeScene.sks in Resources */,
 				3C51468A24A32DC90074E9AE /* GameOverScene.sks in Resources */,
