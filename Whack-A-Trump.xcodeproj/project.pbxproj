@@ -13,8 +13,8 @@
 		3C51468E24A51FFA0074E9AE /* IntroScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3C51468D24A51FFA0074E9AE /* IntroScene.sks */; };
 		3C51469024B2B6960074E9AE /* SelectModeScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3C51468F24B2B6960074E9AE /* SelectModeScene.sks */; };
 		3C51469224B2B6B10074E9AE /* SelectModeScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C51469124B2B6B10074E9AE /* SelectModeScene.swift */; };
-		3C99B17F24B589E30089CAF4 /* AwardScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3C99B17E24B589E30089CAF4 /* AwardScene.sks */; };
-		3C99B18124B589FC0089CAF4 /* AwardScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C99B18024B589FC0089CAF4 /* AwardScene.swift */; };
+		3C99B17F24B589E30089CAF4 /* RecieveAwardScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3C99B17E24B589E30089CAF4 /* RecieveAwardScene.sks */; };
+		3C99B18124B589FC0089CAF4 /* RecieveAwardScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C99B18024B589FC0089CAF4 /* RecieveAwardScene.swift */; };
 		3CB09C4424BAD21A008B9E8B /* pop.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3CB09C4324BAD21A008B9E8B /* pop.wav */; };
 		3CB09C4624BB9EA4008B9E8B /* Disappear.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3CB09C4524BB9EA4008B9E8B /* Disappear.sks */; };
 		3CB09C4824BBCF1A008B9E8B /* AwardDisplayScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB09C4724BBCF1A008B9E8B /* AwardDisplayScene.swift */; };
@@ -55,8 +55,8 @@
 		3C51468D24A51FFA0074E9AE /* IntroScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = IntroScene.sks; sourceTree = "<group>"; };
 		3C51468F24B2B6960074E9AE /* SelectModeScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SelectModeScene.sks; sourceTree = "<group>"; };
 		3C51469124B2B6B10074E9AE /* SelectModeScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectModeScene.swift; sourceTree = "<group>"; };
-		3C99B17E24B589E30089CAF4 /* AwardScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = AwardScene.sks; sourceTree = "<group>"; };
-		3C99B18024B589FC0089CAF4 /* AwardScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwardScene.swift; sourceTree = "<group>"; };
+		3C99B17E24B589E30089CAF4 /* RecieveAwardScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = RecieveAwardScene.sks; sourceTree = "<group>"; };
+		3C99B18024B589FC0089CAF4 /* RecieveAwardScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecieveAwardScene.swift; sourceTree = "<group>"; };
 		3CB09C4324BAD21A008B9E8B /* pop.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = pop.wav; sourceTree = "<group>"; };
 		3CB09C4524BB9EA4008B9E8B /* Disappear.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Disappear.sks; sourceTree = "<group>"; };
 		3CB09C4724BBCF1A008B9E8B /* AwardDisplayScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwardDisplayScene.swift; sourceTree = "<group>"; };
@@ -141,13 +141,13 @@
 			name = SelectModeScene;
 			sourceTree = "<group>";
 		};
-		3C99B18224B58A060089CAF4 /* AwardScene */ = {
+		3C99B18224B58A060089CAF4 /* RecieveAwardScene */ = {
 			isa = PBXGroup;
 			children = (
-				3C99B17E24B589E30089CAF4 /* AwardScene.sks */,
-				3C99B18024B589FC0089CAF4 /* AwardScene.swift */,
+				3C99B17E24B589E30089CAF4 /* RecieveAwardScene.sks */,
+				3C99B18024B589FC0089CAF4 /* RecieveAwardScene.swift */,
 			);
-			name = AwardScene;
+			name = RecieveAwardScene;
 			sourceTree = "<group>";
 		};
 		3CB09C4224BAD1FB008B9E8B /* Sounds */ = {
@@ -196,7 +196,7 @@
 				3C51469324B3DC4E0074E9AE /* GameScene */,
 				3C51469424B3DCAA0074E9AE /* GameOverScene */,
 				3CB09C4B24BBCF50008B9E8B /* AwardDisplayScene */,
-				3C99B18224B58A060089CAF4 /* AwardScene */,
+				3C99B18224B58A060089CAF4 /* RecieveAwardScene */,
 				3CEC79122461E83E00C4A1C7 /* GameViewController.swift */,
 				3CEC79142461E83E00C4A1C7 /* Main.storyboard */,
 				3CEC790E2461E83E00C4A1C7 /* Actions.sks */,
@@ -339,7 +339,7 @@
 				3CEC791B2461E83F00C4A1C7 /* LaunchScreen.storyboard in Resources */,
 				3C51469024B2B6960074E9AE /* SelectModeScene.sks in Resources */,
 				3C51468A24A32DC90074E9AE /* GameOverScene.sks in Resources */,
-				3C99B17F24B589E30089CAF4 /* AwardScene.sks in Resources */,
+				3C99B17F24B589E30089CAF4 /* RecieveAwardScene.sks in Resources */,
 				3CEC790F2461E83E00C4A1C7 /* Actions.sks in Resources */,
 				3CB09C4A24BBCF38008B9E8B /* AwardDisplayScene.sks in Resources */,
 			);
@@ -372,7 +372,7 @@
 				3C51468824A32D900074E9AE /* GameOverScene.swift in Sources */,
 				3CEC790B2461E83E00C4A1C7 /* AppDelegate.swift in Sources */,
 				3CB09C4824BBCF1A008B9E8B /* AwardDisplayScene.swift in Sources */,
-				3C99B18124B589FC0089CAF4 /* AwardScene.swift in Sources */,
+				3C99B18124B589FC0089CAF4 /* RecieveAwardScene.swift in Sources */,
 				3C51469224B2B6B10074E9AE /* SelectModeScene.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

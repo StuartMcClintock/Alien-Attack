@@ -29,7 +29,7 @@ class SelectModeScene: SKScene{
         headerLabel.fontSize = 94.0
         headerLabel.fontColor = .white
         headerLabel.position = CGPoint(x: frame.midX, y: frame.maxY - 330)
-        headerLabel.text = "Select Mode:"
+        headerLabel.text = "Select Option:"
         addChild(headerLabel)
         
         let buttonSize = CGSize(width: 500, height: 120)
@@ -37,8 +37,11 @@ class SelectModeScene: SKScene{
         let standardPointPosition = CGPoint(x: frame.midX, y: frame.midY-30)
         let standardButtonColor = SKColor.init(displayP3Red: 71/255, green: 145/255, blue: 214/255, alpha: 1)
         
-        let blitzPointPosition = CGPoint(x: frame.midX, y: frame.midY-250)
+        let blitzPointPosition = CGPoint(x: frame.midX, y: frame.midY-215)
         let blitzButtonColor = SKColor.red
+        
+        let awardPointPosition = CGPoint(x: frame.midX, y: frame.midY-400)
+        let awardButtonColor = SKColor.init(displayP3Red: 184/255, green: 156/255, blue: 20/255, alpha: 1)
         
         
         let standardButton = SKSpriteNode(color: standardButtonColor, size: buttonSize)
@@ -64,6 +67,18 @@ class SelectModeScene: SKScene{
         blitzText.fontSize = 74
         blitzText.name = "blitz"
         addChild(blitzText)
+        
+        let awardButton = SKSpriteNode(color: awardButtonColor, size: buttonSize)
+        awardButton.position = awardPointPosition
+        awardButton.name = "awards"
+        addChild(awardButton)
+        let awardText = SKLabelNode(text: "View Awards")
+        awardText.position = CGPoint(x:awardPointPosition.x, y:awardPointPosition.y-25)
+        awardText.fontName = "DIN Alternate Bold"
+        awardText.fontColor = SKColor.white
+        awardText.fontSize = 68
+        awardText.name = "awards"
+        addChild(awardText)
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -79,12 +94,21 @@ class SelectModeScene: SKScene{
                 del.highScore = UserDefaults.standard.integer(forKey: "highScore-standard")
                 startGame()
             }
+            if touchedNode.name == "awards"{
+                dispAwards()
+            }
         }
     }
     
     func startGame(){
-        let ogScene = GameScene(fileNamed: "GameScene")
-        ogScene?.scaleMode = .fill
-        self.view?.presentScene(ogScene!, transition: .flipVertical(withDuration: 0.5))
+        let scene = GameScene(fileNamed: "GameScene")
+        scene?.scaleMode = .fill
+        self.view?.presentScene(scene!, transition: .flipVertical(withDuration: 0.5))
+    }
+    
+    func dispAwards(){
+        let scene = GameScene(fileNamed: "AwardDisplayScene")
+        scene?.scaleMode = .aspectFill
+        self.view?.presentScene(scene!, transition: .flipVertical(withDuration: 0.5))
     }
 }
