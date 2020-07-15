@@ -108,7 +108,7 @@ class SelectModeScene: SKScene{
     
     func dispAwards(){
         let scene = GameScene(fileNamed: "AwardDisplayScene")
-        scene?.scaleMode = .aspectFill
+        scene?.scaleMode = .fill
         self.view?.presentScene(scene!, transition: .flipVertical(withDuration: 0.5))
     }
 }
