@@ -23,6 +23,7 @@ class AwardDisplayScene: SKScene{
         initImages()
         initScoreLabels()
         addAwards()
+        reflectAchievement()
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -40,12 +41,12 @@ class AwardDisplayScene: SKScene{
         let HEIGHT = 400
         
         awardImages = []
-        awardImages.append(SKSpriteNode(imageNamed: "blitzBronze"))
-        awardImages.append(SKSpriteNode(imageNamed: "blitzSilver"))
-        awardImages.append(SKSpriteNode(imageNamed: "blitzGold"))
         awardImages.append(SKSpriteNode(imageNamed: "standardBronze"))
         awardImages.append(SKSpriteNode(imageNamed: "standardSilver"))
         awardImages.append(SKSpriteNode(imageNamed: "standardGold"))
+        awardImages.append(SKSpriteNode(imageNamed: "blitzBronze"))
+        awardImages.append(SKSpriteNode(imageNamed: "blitzSilver"))
+        awardImages.append(SKSpriteNode(imageNamed: "blitzGold"))
         
         for img in awardImages{
             img.size = CGSize(width: WIDTH, height: HEIGHT)
@@ -95,9 +96,26 @@ class AwardDisplayScene: SKScene{
         scoreLabels[4].position = CGPoint(x: 375, y: frame.maxY-1250)
         awardImages[5].position = CGPoint(x: 620, y: frame.maxY-1000)
         scoreLabels[5].position = CGPoint(x: 620, y: frame.maxY-1250)
-        for i in 0...5{
+        for i in 0..<awardImages.count{
             addChild(awardImages[i])
             addChild(scoreLabels[i])
+        }
+    }
+    
+    func reflectAchievement(){
+        let awardsReceived = [
+        UserDefaults.standard.bool(forKey: "standardBronze"),
+        UserDefaults.standard.bool(forKey: "standardSilver"),
+        UserDefaults.standard.bool(forKey: "standardGold"),
+        UserDefaults.standard.bool(forKey: "blitzBronze"),
+        UserDefaults.standard.bool(forKey: "blitzSilver"),
+        UserDefaults.standard.bool(forKey: "blitzGold")]
+        
+        for i in 0..<awardsReceived.count{
+            if !awardsReceived[i]{
+                awardImages[i].alpha = 0.3
+                scoreLabels[i].alpha = 0.5
+            }
         }
     }
 }
