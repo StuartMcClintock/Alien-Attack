@@ -12,28 +12,17 @@ import SpriteKit
 class AwardDisplayScene: SKScene{
     var del: AppDelegate!
     
-    var blitzBronze: SKSpriteNode!
-    var blitzSilver: SKSpriteNode!
-    var blitzGold: SKSpriteNode!
-    var standardBronze: SKSpriteNode!
-    var standardSilver: SKSpriteNode!
-    var standardGold: SKSpriteNode!
-    
+    var awardImages: [SKSpriteNode]!
     var scoreLabels: [SKLabelNode]!
     
     override func didMove(to view: SKView) {
         let app = UIApplication.shared
         del = app.delegate as? AppDelegate
         
-        /*let blitzBronzeText = "\(del.BLITZ_BRONZE_SCORE)-\(del.BLITZ_SILVER_SCORE-1) pts"
-        let blitzSilverText = "\(del.BLITZ_SILVER_SCORE)-\(del.BLITZ_GOLD_SCORE-1) pts"
-        let blitzGoldText = "\(del.BLITZ_GOLD_SCORE)+ pts"*/
-        
         self.backgroundColor = SKColor.white
         initImages()
         initScoreLabels()
-        addStandardAwards()
-        addBlitzAwards()
+        addAwards()
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -49,18 +38,18 @@ class AwardDisplayScene: SKScene{
     func initImages(){
         let WIDTH = 220
         let HEIGHT = 400
-        blitzBronze = SKSpriteNode(imageNamed: "blitzBronze")
-        blitzBronze.size = CGSize(width: WIDTH, height: HEIGHT)
-        blitzSilver = SKSpriteNode(imageNamed: "blitzSilver")
-        blitzSilver.size = CGSize(width: WIDTH, height: HEIGHT)
-        blitzGold = SKSpriteNode(imageNamed: "blitzGold")
-        blitzGold.size = CGSize(width: WIDTH, height: HEIGHT)
-        standardBronze = SKSpriteNode(imageNamed: "standardBronze")
-        standardBronze.size = CGSize(width: WIDTH, height: HEIGHT)
-        standardSilver = SKSpriteNode(imageNamed: "standardSilver")
-        standardSilver.size = CGSize(width: WIDTH, height: HEIGHT)
-        standardGold = SKSpriteNode(imageNamed: "standardGold")
-        standardGold.size = CGSize(width: WIDTH, height: HEIGHT)
+        
+        awardImages = []
+        awardImages.append(SKSpriteNode(imageNamed: "blitzBronze"))
+        awardImages.append(SKSpriteNode(imageNamed: "blitzSilver"))
+        awardImages.append(SKSpriteNode(imageNamed: "blitzGold"))
+        awardImages.append(SKSpriteNode(imageNamed: "standardBronze"))
+        awardImages.append(SKSpriteNode(imageNamed: "standardSilver"))
+        awardImages.append(SKSpriteNode(imageNamed: "standardGold"))
+        
+        for img in awardImages{
+            img.size = CGSize(width: WIDTH, height: HEIGHT)
+        }
     }
     
     func initScoreLabels(){
@@ -79,45 +68,36 @@ class AwardDisplayScene: SKScene{
         }
     }
     
-    func addStandardAwards(){
+    func addAwards(){
         let standardLabel = SKLabelNode(fontNamed: "DIN Alternate Bold")
         standardLabel.fontSize = 72
         standardLabel.text = "Standard Mode:"
         standardLabel.fontColor = SKColor.black
         standardLabel.position = CGPoint(x:frame.midX, y: frame.maxY-145)
         addChild(standardLabel)
-        standardBronze.position = CGPoint(x: 130, y: frame.maxY-390)
-        scoreLabels[0].position = CGPoint(x: 130, y: frame.maxY-640)
-        standardSilver.position = CGPoint(x: 375, y: frame.maxY-390)
-        scoreLabels[1].position = CGPoint(x: 375, y: frame.maxY-640)
-        standardGold.position = CGPoint(x: 620, y: frame.maxY-390)
-        scoreLabels[2].position = CGPoint(x: 620, y: frame.maxY-640)
-        addChild(standardBronze)
-        addChild(standardSilver)
-        addChild(standardGold)
-        addChild(scoreLabels[0])
-        addChild(scoreLabels[1])
-        addChild(scoreLabels[2])
-    }
-    
-    func addBlitzAwards(){
+        
         let blitzLabel = SKLabelNode(fontNamed: "DIN Alternate Bold")
         blitzLabel.fontSize = 72
         blitzLabel.text = "Blitz Mode:"
         blitzLabel.fontColor = SKColor.black
         blitzLabel.position = CGPoint(x:frame.midX, y: frame.maxY-755)
         addChild(blitzLabel)
-        blitzBronze.position = CGPoint(x: 130, y: frame.maxY-1000)
+        
+        awardImages[0].position = CGPoint(x: 130, y: frame.maxY-390)
+        scoreLabels[0].position = CGPoint(x: 130, y: frame.maxY-640)
+        awardImages[1].position = CGPoint(x: 375, y: frame.maxY-390)
+        scoreLabels[1].position = CGPoint(x: 375, y: frame.maxY-640)
+        awardImages[2].position = CGPoint(x: 620, y: frame.maxY-390)
+        scoreLabels[2].position = CGPoint(x: 620, y: frame.maxY-640)
+        awardImages[3].position = CGPoint(x: 130, y: frame.maxY-1000)
         scoreLabels[3].position = CGPoint(x: 130, y: frame.maxY-1250)
-        blitzSilver.position = CGPoint(x: 375, y: frame.maxY-1000)
+        awardImages[4].position = CGPoint(x: 375, y: frame.maxY-1000)
         scoreLabels[4].position = CGPoint(x: 375, y: frame.maxY-1250)
-        blitzGold.position = CGPoint(x: 620, y: frame.maxY-1000)
+        awardImages[5].position = CGPoint(x: 620, y: frame.maxY-1000)
         scoreLabels[5].position = CGPoint(x: 620, y: frame.maxY-1250)
-        addChild(blitzBronze)
-        addChild(blitzSilver)
-        addChild(blitzGold)
-        addChild(scoreLabels[3])
-        addChild(scoreLabels[4])
-        addChild(scoreLabels[5])
+        for i in 0...5{
+            addChild(awardImages[i])
+            addChild(scoreLabels[i])
+        }
     }
 }
