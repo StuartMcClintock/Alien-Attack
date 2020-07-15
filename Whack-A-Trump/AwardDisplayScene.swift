@@ -19,7 +19,7 @@ class AwardDisplayScene: SKScene{
     var standardSilver: SKSpriteNode!
     var standardGold: SKSpriteNode!
     
-    // Maybe add a list to track award labels
+    var scoreLabels: [SKLabelNode]!
     
     override func didMove(to view: SKView) {
         let app = UIApplication.shared
@@ -31,6 +31,7 @@ class AwardDisplayScene: SKScene{
         
         self.backgroundColor = SKColor.white
         initImages()
+        initScoreLabels()
         addStandardAwards()
         addBlitzAwards()
     }
@@ -62,71 +63,61 @@ class AwardDisplayScene: SKScene{
         standardGold.size = CGSize(width: WIDTH, height: HEIGHT)
     }
     
-    func addStandardAwards(){
-        let bronzeLabel = SKLabelNode(text: "\(del.STAN_BRONZE_SCORE)-\(del.STAN_SILVER_SCORE-1) pts")
-        let silverLabel = SKLabelNode(text: "\(del.STAN_SILVER_SCORE)-\(del.STAN_GOLD_SCORE-1) pts")
-        let goldLabel = SKLabelNode(text: "\(del.STAN_GOLD_SCORE)+ pts")
-        bronzeLabel.fontName = "DIN Alternate Bold"
-        silverLabel.fontName = "DIN Alternate Bold"
-        goldLabel.fontName = "DIN Alternate Bold"
-        bronzeLabel.fontColor = SKColor.black
-        silverLabel.fontColor = SKColor.black
-        goldLabel.fontColor = SKColor.black
-        bronzeLabel.fontSize = 36
-        silverLabel.fontSize = 36
-        goldLabel.fontSize = 36
+    func initScoreLabels(){
+        scoreLabels = []
+        scoreLabels.append(SKLabelNode(text: "\(del.STAN_BRONZE_SCORE)-\(del.STAN_SILVER_SCORE-1) pts"))
+        scoreLabels.append(SKLabelNode(text: "\(del.STAN_SILVER_SCORE)-\(del.STAN_GOLD_SCORE-1) pts"))
+        scoreLabels.append(SKLabelNode(text: "\(del.STAN_GOLD_SCORE)+ pts"))
+        scoreLabels.append(SKLabelNode(text: "\(del.BLITZ_BRONZE_SCORE)-\(del.BLITZ_SILVER_SCORE-1) pts"))
+        scoreLabels.append(SKLabelNode(text: "\(del.BLITZ_SILVER_SCORE)-\(del.BLITZ_GOLD_SCORE-1) pts"))
+        scoreLabels.append(SKLabelNode(text: "\(del.BLITZ_GOLD_SCORE)+ pts"))
         
+        for label in scoreLabels{
+            label.fontName = "DIN Alternate Bold"
+            label.fontColor = SKColor.black
+            label.fontSize = 36
+        }
+    }
+    
+    func addStandardAwards(){
         let standardLabel = SKLabelNode(fontNamed: "DIN Alternate Bold")
         standardLabel.fontSize = 72
         standardLabel.text = "Standard Mode:"
         standardLabel.fontColor = SKColor.black
-        standardLabel.position = CGPoint(x:frame.midX, y: frame.maxY-135)
+        standardLabel.position = CGPoint(x:frame.midX, y: frame.maxY-145)
         addChild(standardLabel)
-        standardBronze.position = CGPoint(x: 130, y: frame.maxY-380)
-        bronzeLabel.position = CGPoint(x: 130, y: frame.maxY-630)
-        standardSilver.position = CGPoint(x: 375, y: frame.maxY-380)
-        silverLabel.position = CGPoint(x: 375, y: frame.maxY-630)
-        standardGold.position = CGPoint(x: 620, y: frame.maxY-380)
-        goldLabel.position = CGPoint(x: 620, y: frame.maxY-630)
+        standardBronze.position = CGPoint(x: 130, y: frame.maxY-390)
+        scoreLabels[0].position = CGPoint(x: 130, y: frame.maxY-640)
+        standardSilver.position = CGPoint(x: 375, y: frame.maxY-390)
+        scoreLabels[1].position = CGPoint(x: 375, y: frame.maxY-640)
+        standardGold.position = CGPoint(x: 620, y: frame.maxY-390)
+        scoreLabels[2].position = CGPoint(x: 620, y: frame.maxY-640)
         addChild(standardBronze)
         addChild(standardSilver)
         addChild(standardGold)
-        addChild(bronzeLabel)
-        addChild(silverLabel)
-        addChild(goldLabel)
+        addChild(scoreLabels[0])
+        addChild(scoreLabels[1])
+        addChild(scoreLabels[2])
     }
     
     func addBlitzAwards(){
-        let bronzeLabel = SKLabelNode(text: "\(del.BLITZ_BRONZE_SCORE)-\(del.BLITZ_SILVER_SCORE-1) pts")
-        let silverLabel = SKLabelNode(text: "\(del.BLITZ_SILVER_SCORE)-\(del.BLITZ_GOLD_SCORE-1) pts")
-        let goldLabel = SKLabelNode(text: "\(del.BLITZ_GOLD_SCORE)+ pts")
-        bronzeLabel.fontName = "DIN Alternate Bold"
-        silverLabel.fontName = "DIN Alternate Bold"
-        goldLabel.fontName = "DIN Alternate Bold"
-        bronzeLabel.fontColor = SKColor.black
-        silverLabel.fontColor = SKColor.black
-        goldLabel.fontColor = SKColor.black
-        bronzeLabel.fontSize = 36
-        silverLabel.fontSize = 36
-        goldLabel.fontSize = 36
-        
         let blitzLabel = SKLabelNode(fontNamed: "DIN Alternate Bold")
         blitzLabel.fontSize = 72
         blitzLabel.text = "Blitz Mode:"
         blitzLabel.fontColor = SKColor.black
-        blitzLabel.position = CGPoint(x:frame.midX, y: frame.maxY-735)
+        blitzLabel.position = CGPoint(x:frame.midX, y: frame.maxY-755)
         addChild(blitzLabel)
-        blitzBronze.position = CGPoint(x: 130, y: frame.maxY-980)
-        bronzeLabel.position = CGPoint(x: 130, y: frame.maxY-1230)
-        blitzSilver.position = CGPoint(x: 375, y: frame.maxY-980)
-        silverLabel.position = CGPoint(x: 375, y: frame.maxY-1230)
-        blitzGold.position = CGPoint(x: 620, y: frame.maxY-980)
-        goldLabel.position = CGPoint(x: 620, y: frame.maxY-1230)
+        blitzBronze.position = CGPoint(x: 130, y: frame.maxY-1000)
+        scoreLabels[3].position = CGPoint(x: 130, y: frame.maxY-1250)
+        blitzSilver.position = CGPoint(x: 375, y: frame.maxY-1000)
+        scoreLabels[4].position = CGPoint(x: 375, y: frame.maxY-1250)
+        blitzGold.position = CGPoint(x: 620, y: frame.maxY-1000)
+        scoreLabels[5].position = CGPoint(x: 620, y: frame.maxY-1250)
         addChild(blitzBronze)
         addChild(blitzSilver)
         addChild(blitzGold)
-        addChild(bronzeLabel)
-        addChild(silverLabel)
-        addChild(goldLabel)
+        addChild(scoreLabels[3])
+        addChild(scoreLabels[4])
+        addChild(scoreLabels[5])
     }
 }
