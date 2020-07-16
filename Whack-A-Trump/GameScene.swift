@@ -214,13 +214,28 @@ class GameScene: SKScene {
     
     func endScene(){
         if (totalVisible >= MAX_FACES){
-            let overScene = GameOverScene(fileNamed: "GameOverScene")
-            overScene?.scaleMode = .fill
-            self.view?.presentScene(overScene!, transition: .flipVertical(withDuration: 0.5))
+            if (del.isBlitz && scoreVal >= del.BLITZ_BRONZE_SCORE){
+                goToAwardScene()
+            }
+            else if (!del.isBlitz && scoreVal >= del.STAN_BRONZE_SCORE){
+                goToAwardScene()
+            }
+            else{
+                let overScene = GameScene(fileNamed: "GameOverScene")
+                overScene?.scaleMode = .fill
+                self.view?.presentScene(overScene!, transition: .flipVertical(withDuration: 0.5))
+            }
         }
         else{
             gameOver = false
             dispFaces()
         }
+    }
+    
+    func goToAwardScene(){
+        let awardScene = GameScene(fileNamed: "ReceiveAwardScene")
+        awardScene?.scaleMode = .aspectFill
+        self.view?.presentScene(awardScene!, transition: .flipVertical(withDuration: 0.5))
+        
     }
 }
