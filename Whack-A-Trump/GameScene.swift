@@ -214,7 +214,8 @@ class GameScene: SKScene {
     
     func endScene(){
         if (totalVisible >= MAX_FACES){
-            if (del.isBlitz){
+            if (del.isBlitz && scoreVal >= del.BLITZ_BRONZE_SCORE){
+                print("supposed to be ending scene")
                 if (scoreVal >= del.BLITZ_GOLD_SCORE){
                     if (!UserDefaults.standard.bool(forKey: "blitzGold")||scoreVal <= del.highScore){
                         goToAwardScene()
