@@ -214,22 +214,72 @@ class GameScene: SKScene {
     
     func endScene(){
         if (totalVisible >= MAX_FACES){
-            if (del.isBlitz && scoreVal >= del.BLITZ_BRONZE_SCORE){
-                goToAwardScene()
+            if (del.isBlitz){
+                if (scoreVal >= del.BLITZ_GOLD_SCORE){
+                    if (!UserDefaults.standard.bool(forKey: "blitzGold")||scoreVal <= del.highScore){
+                        goToAwardScene()
+                    }
+                    else{
+                        goToOverScene()
+                    }
+                }
+                else if (scoreVal >= del.BLITZ_SILVER_SCORE){
+                   if (!UserDefaults.standard.bool(forKey: "blitzSilver")||scoreVal <= del.highScore){
+                       goToAwardScene()
+                   }
+                   else{
+                       goToOverScene()
+                   }
+                }
+                else if (scoreVal >= del.BLITZ_BRONZE_SCORE){
+                    if (!UserDefaults.standard.bool(forKey: "blitzBronze")||scoreVal <= del.highScore){
+                        goToAwardScene()
+                    }
+                    else{
+                        goToOverScene()
+                    }
+                }
             }
             else if (!del.isBlitz && scoreVal >= del.STAN_BRONZE_SCORE){
-                goToAwardScene()
+                if (scoreVal >= del.STAN_GOLD_SCORE){
+                    if (!UserDefaults.standard.bool(forKey: "standardGold") || scoreVal <= del.highScore){
+                        goToAwardScene()
+                    }
+                    else{
+                        goToOverScene()
+                    }
+                }
+                else if (scoreVal >= del.STAN_SILVER_SCORE){
+                   if (!UserDefaults.standard.bool(forKey: "standardSilver") || scoreVal <= del.highScore){
+                       goToAwardScene()
+                   }
+                    else{
+                        goToOverScene()
+                    }
+                }
+                else if (scoreVal >= del.STAN_BRONZE_SCORE){
+                    if (!UserDefaults.standard.bool(forKey: "standardBronze") || scoreVal <= del.highScore){
+                        goToAwardScene()
+                    }
+                    else{
+                        goToOverScene()
+                    }
+                }
             }
             else{
-                let overScene = GameScene(fileNamed: "GameOverScene")
-                overScene?.scaleMode = .fill
-                self.view?.presentScene(overScene!, transition: .flipVertical(withDuration: 0.5))
+                goToOverScene()
             }
         }
         else{
             gameOver = false
             dispFaces()
         }
+    }
+    
+    func goToOverScene(){
+        let overScene = GameScene(fileNamed: "GameOverScene")
+        overScene?.scaleMode = .fill
+        self.view?.presentScene(overScene!, transition: .flipVertical(withDuration: 0.5))
     }
     
     func goToAwardScene(){
