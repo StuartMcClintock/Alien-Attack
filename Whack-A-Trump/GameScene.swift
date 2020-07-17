@@ -170,7 +170,11 @@ class GameScene: SKScene {
         let impactFeedbackgenerator = UIImpactFeedbackGenerator(style: .medium)
         impactFeedbackgenerator.prepare()
         impactFeedbackgenerator.impactOccurred()
+        
         do{
+            try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.ambient)
+            try AVAudioSession.sharedInstance().setActive(true)
+            
             let soundPath = Bundle.main.path(forResource: "pop", ofType: "wav")
             audioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: soundPath!))
             audioPlayer?.play()

@@ -21,8 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     // Define Award Constants
     let BLITZ_BRONZE_SCORE = 5
-    let BLITZ_SILVER_SCORE = 25
-    let BLITZ_GOLD_SCORE = 50
+    let BLITZ_SILVER_SCORE = 10
+    let BLITZ_GOLD_SCORE = 15
     
     let STAN_BRONZE_SCORE = 10
     let STAN_SILVER_SCORE = 20
