@@ -20,13 +20,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     
     // Define Award Constants
-    let BLITZ_BRONZE_SCORE = 5
-    let BLITZ_SILVER_SCORE = 10
-    let BLITZ_GOLD_SCORE = 15
+    let BLITZ_BRONZE_SCORE = 30
+    let BLITZ_SILVER_SCORE = 75
+    let BLITZ_GOLD_SCORE = 150
     
-    let STAN_BRONZE_SCORE = 10
-    let STAN_SILVER_SCORE = 20
-    let STAN_GOLD_SCORE = 30
+    let STAN_BRONZE_SCORE = 100
+    let STAN_SILVER_SCORE = 250
+    let STAN_GOLD_SCORE = 500
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         

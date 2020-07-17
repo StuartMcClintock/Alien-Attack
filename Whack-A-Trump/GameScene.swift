@@ -207,7 +207,7 @@ class GameScene: SKScene {
             del.recentScore = scoreVal
             
             //endScene()
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: { [weak self] in
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.27, execute: { [weak self] in
                 self?.endScene()
             })
         }
