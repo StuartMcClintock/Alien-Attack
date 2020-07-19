@@ -1,0 +1,715 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3C51468824A32D900074E9AE /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C51468724A32D900074E9AE /* GameOverScene.swift */; };
+		3C51468A24A32DC90074E9AE /* GameOverScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3C51468924A32DC90074E9AE /* GameOverScene.sks */; };
+		3C51468C24A51FDD0074E9AE /* IntroScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C51468B24A51FDD0074E9AE /* IntroScene.swift */; };
+		3C51468E24A51FFA0074E9AE /* IntroScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3C51468D24A51FFA0074E9AE /* IntroScene.sks */; };
+		3C51469024B2B6960074E9AE /* SelectModeScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3C51468F24B2B6960074E9AE /* SelectModeScene.sks */; };
+		3C51469224B2B6B10074E9AE /* SelectModeScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C51469124B2B6B10074E9AE /* SelectModeScene.swift */; };
+		3C5EB2A124C41A4500AF8398 /* shipLanding.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3C5EB29F24C41A4500AF8398 /* shipLanding.wav */; };
+		3C5EB2A224C41A4500AF8398 /* alienDestroyed.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3C5EB2A024C41A4500AF8398 /* alienDestroyed.wav */; };
+		3C99B17F24B589E30089CAF4 /* ReceiveAwardScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3C99B17E24B589E30089CAF4 /* ReceiveAwardScene.sks */; };
+		3C99B18124B589FC0089CAF4 /* ReceiveAwardScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C99B18024B589FC0089CAF4 /* ReceiveAwardScene.swift */; };
+		3CB09C4624BB9EA4008B9E8B /* Disappear.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3CB09C4524BB9EA4008B9E8B /* Disappear.sks */; };
+		3CB09C4824BBCF1A008B9E8B /* AwardDisplayScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB09C4724BBCF1A008B9E8B /* AwardDisplayScene.swift */; };
+		3CB09C4A24BBCF38008B9E8B /* AwardDisplayScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3CB09C4924BBCF38008B9E8B /* AwardDisplayScene.sks */; };
+		3CEC790B2461E83E00C4A1C7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CEC790A2461E83E00C4A1C7 /* AppDelegate.swift */; };
+		3CEC790D2461E83E00C4A1C7 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3CEC790C2461E83E00C4A1C7 /* GameScene.sks */; };
+		3CEC790F2461E83E00C4A1C7 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3CEC790E2461E83E00C4A1C7 /* Actions.sks */; };
+		3CEC79112461E83E00C4A1C7 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CEC79102461E83E00C4A1C7 /* GameScene.swift */; };
+		3CEC79132461E83E00C4A1C7 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CEC79122461E83E00C4A1C7 /* GameViewController.swift */; };
+		3CEC79162461E83E00C4A1C7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3CEC79142461E83E00C4A1C7 /* Main.storyboard */; };
+		3CEC79182461E83F00C4A1C7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3CEC79172461E83F00C4A1C7 /* Assets.xcassets */; };
+		3CEC791B2461E83F00C4A1C7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3CEC79192461E83F00C4A1C7 /* LaunchScreen.storyboard */; };
+		3CEC79262461E83F00C4A1C7 /* Whack_A_TrumpTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CEC79252461E83F00C4A1C7 /* Whack_A_TrumpTests.swift */; };
+		3CEC79312461E83F00C4A1C7 /* Whack_A_TrumpUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CEC79302461E83F00C4A1C7 /* Whack_A_TrumpUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		3CEC79222461E83F00C4A1C7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3CEC78FF2461E83E00C4A1C7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3CEC79062461E83E00C4A1C7;
+			remoteInfo = "Whack-A-Trump";
+		};
+		3CEC792D2461E83F00C4A1C7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3CEC78FF2461E83E00C4A1C7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3CEC79062461E83E00C4A1C7;
+			remoteInfo = "Whack-A-Trump";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		3C51468724A32D900074E9AE /* GameOverScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverScene.swift; sourceTree = "<group>"; };
+		3C51468924A32DC90074E9AE /* GameOverScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameOverScene.sks; sourceTree = "<group>"; };
+		3C51468B24A51FDD0074E9AE /* IntroScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroScene.swift; sourceTree = "<group>"; };
+		3C51468D24A51FFA0074E9AE /* IntroScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = IntroScene.sks; sourceTree = "<group>"; };
+		3C51468F24B2B6960074E9AE /* SelectModeScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SelectModeScene.sks; sourceTree = "<group>"; };
+		3C51469124B2B6B10074E9AE /* SelectModeScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectModeScene.swift; sourceTree = "<group>"; };
+		3C5EB29F24C41A4500AF8398 /* shipLanding.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = shipLanding.wav; sourceTree = "<group>"; };
+		3C5EB2A024C41A4500AF8398 /* alienDestroyed.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = alienDestroyed.wav; sourceTree = "<group>"; };
+		3C99B17E24B589E30089CAF4 /* ReceiveAwardScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = ReceiveAwardScene.sks; sourceTree = "<group>"; };
+		3C99B18024B589FC0089CAF4 /* ReceiveAwardScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiveAwardScene.swift; sourceTree = "<group>"; };
+		3CB09C4524BB9EA4008B9E8B /* Disappear.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Disappear.sks; sourceTree = "<group>"; };
+		3CB09C4724BBCF1A008B9E8B /* AwardDisplayScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwardDisplayScene.swift; sourceTree = "<group>"; };
+		3CB09C4924BBCF38008B9E8B /* AwardDisplayScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = AwardDisplayScene.sks; sourceTree = "<group>"; };
+		3CEC79072461E83E00C4A1C7 /* Aliens.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Aliens.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3CEC790A2461E83E00C4A1C7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		3CEC790C2461E83E00C4A1C7 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
+		3CEC790E2461E83E00C4A1C7 /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
+		3CEC79102461E83E00C4A1C7 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
+		3CEC79122461E83E00C4A1C7 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		3CEC79152461E83E00C4A1C7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		3CEC79172461E83F00C4A1C7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		3CEC791A2461E83F00C4A1C7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		3CEC791C2461E83F00C4A1C7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3CEC79212461E83F00C4A1C7 /* Alien-AttackTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Alien-AttackTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3CEC79252461E83F00C4A1C7 /* Whack_A_TrumpTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Whack_A_TrumpTests.swift; sourceTree = "<group>"; };
+		3CEC79272461E83F00C4A1C7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3CEC792C2461E83F00C4A1C7 /* Alien-AttackUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Alien-AttackUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3CEC79302461E83F00C4A1C7 /* Whack_A_TrumpUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Whack_A_TrumpUITests.swift; sourceTree = "<group>"; };
+		3CEC79322461E83F00C4A1C7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3CEC79042461E83E00C4A1C7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3CEC791E2461E83F00C4A1C7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3CEC79292461E83F00C4A1C7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3C51469324B3DC4E0074E9AE /* GameScene */ = {
+			isa = PBXGroup;
+			children = (
+				3CEC79102461E83E00C4A1C7 /* GameScene.swift */,
+				3CB09C4524BB9EA4008B9E8B /* Disappear.sks */,
+				3CEC790C2461E83E00C4A1C7 /* GameScene.sks */,
+			);
+			name = GameScene;
+			sourceTree = "<group>";
+		};
+		3C51469424B3DCAA0074E9AE /* GameOverScene */ = {
+			isa = PBXGroup;
+			children = (
+				3C51468724A32D900074E9AE /* GameOverScene.swift */,
+				3C51468924A32DC90074E9AE /* GameOverScene.sks */,
+			);
+			name = GameOverScene;
+			sourceTree = "<group>";
+		};
+		3C51469624B3DCDF0074E9AE /* IntroScene */ = {
+			isa = PBXGroup;
+			children = (
+				3C51468D24A51FFA0074E9AE /* IntroScene.sks */,
+				3C51468B24A51FDD0074E9AE /* IntroScene.swift */,
+			);
+			name = IntroScene;
+			sourceTree = "<group>";
+		};
+		3C51469724B3DCF80074E9AE /* SelectModeScene */ = {
+			isa = PBXGroup;
+			children = (
+				3C51468F24B2B6960074E9AE /* SelectModeScene.sks */,
+				3C51469124B2B6B10074E9AE /* SelectModeScene.swift */,
+			);
+			name = SelectModeScene;
+			sourceTree = "<group>";
+		};
+		3C99B18224B58A060089CAF4 /* ReceiveAwardScene */ = {
+			isa = PBXGroup;
+			children = (
+				3C99B17E24B589E30089CAF4 /* ReceiveAwardScene.sks */,
+				3C99B18024B589FC0089CAF4 /* ReceiveAwardScene.swift */,
+			);
+			name = ReceiveAwardScene;
+			sourceTree = "<group>";
+		};
+		3CB09C4224BAD1FB008B9E8B /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				3C5EB2A024C41A4500AF8398 /* alienDestroyed.wav */,
+				3C5EB29F24C41A4500AF8398 /* shipLanding.wav */,
+			);
+			name = Sounds;
+			sourceTree = "<group>";
+		};
+		3CB09C4B24BBCF50008B9E8B /* AwardDisplayScene */ = {
+			isa = PBXGroup;
+			children = (
+				3CB09C4724BBCF1A008B9E8B /* AwardDisplayScene.swift */,
+				3CB09C4924BBCF38008B9E8B /* AwardDisplayScene.sks */,
+			);
+			name = AwardDisplayScene;
+			sourceTree = "<group>";
+		};
+		3CEC78FE2461E83E00C4A1C7 = {
+			isa = PBXGroup;
+			children = (
+				3CEC79092461E83E00C4A1C7 /* Alien-Attack */,
+				3CEC79242461E83F00C4A1C7 /* Alien-AttackTests */,
+				3CEC792F2461E83F00C4A1C7 /* Alien-AttackUITests */,
+				3CEC79082461E83E00C4A1C7 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		3CEC79082461E83E00C4A1C7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3CEC79072461E83E00C4A1C7 /* Aliens.app */,
+				3CEC79212461E83F00C4A1C7 /* Alien-AttackTests.xctest */,
+				3CEC792C2461E83F00C4A1C7 /* Alien-AttackUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3CEC79092461E83E00C4A1C7 /* Alien-Attack */ = {
+			isa = PBXGroup;
+			children = (
+				3CB09C4224BAD1FB008B9E8B /* Sounds */,
+				3C51469624B3DCDF0074E9AE /* IntroScene */,
+				3C51469724B3DCF80074E9AE /* SelectModeScene */,
+				3C51469324B3DC4E0074E9AE /* GameScene */,
+				3C51469424B3DCAA0074E9AE /* GameOverScene */,
+				3CB09C4B24BBCF50008B9E8B /* AwardDisplayScene */,
+				3C99B18224B58A060089CAF4 /* ReceiveAwardScene */,
+				3CEC79122461E83E00C4A1C7 /* GameViewController.swift */,
+				3CEC79142461E83E00C4A1C7 /* Main.storyboard */,
+				3CEC790E2461E83E00C4A1C7 /* Actions.sks */,
+				3CEC790A2461E83E00C4A1C7 /* AppDelegate.swift */,
+				3CEC79172461E83F00C4A1C7 /* Assets.xcassets */,
+				3CEC79192461E83F00C4A1C7 /* LaunchScreen.storyboard */,
+				3CEC791C2461E83F00C4A1C7 /* Info.plist */,
+			);
+			path = "Alien-Attack";
+			sourceTree = "<group>";
+		};
+		3CEC79242461E83F00C4A1C7 /* Alien-AttackTests */ = {
+			isa = PBXGroup;
+			children = (
+				3CEC79252461E83F00C4A1C7 /* Whack_A_TrumpTests.swift */,
+				3CEC79272461E83F00C4A1C7 /* Info.plist */,
+			);
+			path = "Alien-AttackTests";
+			sourceTree = "<group>";
+		};
+		3CEC792F2461E83F00C4A1C7 /* Alien-AttackUITests */ = {
+			isa = PBXGroup;
+			children = (
+				3CEC79302461E83F00C4A1C7 /* Whack_A_TrumpUITests.swift */,
+				3CEC79322461E83F00C4A1C7 /* Info.plist */,
+			);
+			path = "Alien-AttackUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3CEC79062461E83E00C4A1C7 /* Alien-Attack */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3CEC79352461E83F00C4A1C7 /* Build configuration list for PBXNativeTarget "Alien-Attack" */;
+			buildPhases = (
+				3CEC79032461E83E00C4A1C7 /* Sources */,
+				3CEC79042461E83E00C4A1C7 /* Frameworks */,
+				3CEC79052461E83E00C4A1C7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Alien-Attack";
+			productName = "Whack-A-Trump";
+			productReference = 3CEC79072461E83E00C4A1C7 /* Aliens.app */;
+			productType = "com.apple.product-type.application";
+		};
+		3CEC79202461E83F00C4A1C7 /* Alien-AttackTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3CEC79382461E83F00C4A1C7 /* Build configuration list for PBXNativeTarget "Alien-AttackTests" */;
+			buildPhases = (
+				3CEC791D2461E83F00C4A1C7 /* Sources */,
+				3CEC791E2461E83F00C4A1C7 /* Frameworks */,
+				3CEC791F2461E83F00C4A1C7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3CEC79232461E83F00C4A1C7 /* PBXTargetDependency */,
+			);
+			name = "Alien-AttackTests";
+			productName = "Whack-A-TrumpTests";
+			productReference = 3CEC79212461E83F00C4A1C7 /* Alien-AttackTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		3CEC792B2461E83F00C4A1C7 /* Alien-AttackUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3CEC793B2461E83F00C4A1C7 /* Build configuration list for PBXNativeTarget "Alien-AttackUITests" */;
+			buildPhases = (
+				3CEC79282461E83F00C4A1C7 /* Sources */,
+				3CEC79292461E83F00C4A1C7 /* Frameworks */,
+				3CEC792A2461E83F00C4A1C7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3CEC792E2461E83F00C4A1C7 /* PBXTargetDependency */,
+			);
+			name = "Alien-AttackUITests";
+			productName = "Whack-A-TrumpUITests";
+			productReference = 3CEC792C2461E83F00C4A1C7 /* Alien-AttackUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3CEC78FF2461E83E00C4A1C7 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1140;
+				LastUpgradeCheck = 1140;
+				ORGANIZATIONNAME = "Stuart McClintock";
+				TargetAttributes = {
+					3CEC79062461E83E00C4A1C7 = {
+						CreatedOnToolsVersion = 11.4.1;
+					};
+					3CEC79202461E83F00C4A1C7 = {
+						CreatedOnToolsVersion = 11.4.1;
+						TestTargetID = 3CEC79062461E83E00C4A1C7;
+					};
+					3CEC792B2461E83F00C4A1C7 = {
+						CreatedOnToolsVersion = 11.4.1;
+						TestTargetID = 3CEC79062461E83E00C4A1C7;
+					};
+				};
+			};
+			buildConfigurationList = 3CEC79022461E83E00C4A1C7 /* Build configuration list for PBXProject "Alien-Attack" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 3CEC78FE2461E83E00C4A1C7;
+			productRefGroup = 3CEC79082461E83E00C4A1C7 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3CEC79062461E83E00C4A1C7 /* Alien-Attack */,
+				3CEC79202461E83F00C4A1C7 /* Alien-AttackTests */,
+				3CEC792B2461E83F00C4A1C7 /* Alien-AttackUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3CEC79052461E83E00C4A1C7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3CEC79162461E83E00C4A1C7 /* Main.storyboard in Resources */,
+				3C5EB2A124C41A4500AF8398 /* shipLanding.wav in Resources */,
+				3C51468E24A51FFA0074E9AE /* IntroScene.sks in Resources */,
+				3C5EB2A224C41A4500AF8398 /* alienDestroyed.wav in Resources */,
+				3CEC790D2461E83E00C4A1C7 /* GameScene.sks in Resources */,
+				3CEC79182461E83F00C4A1C7 /* Assets.xcassets in Resources */,
+				3CB09C4624BB9EA4008B9E8B /* Disappear.sks in Resources */,
+				3CEC791B2461E83F00C4A1C7 /* LaunchScreen.storyboard in Resources */,
+				3C51469024B2B6960074E9AE /* SelectModeScene.sks in Resources */,
+				3C51468A24A32DC90074E9AE /* GameOverScene.sks in Resources */,
+				3C99B17F24B589E30089CAF4 /* ReceiveAwardScene.sks in Resources */,
+				3CEC790F2461E83E00C4A1C7 /* Actions.sks in Resources */,
+				3CB09C4A24BBCF38008B9E8B /* AwardDisplayScene.sks in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3CEC791F2461E83F00C4A1C7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3CEC792A2461E83F00C4A1C7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3CEC79032461E83E00C4A1C7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3C51468C24A51FDD0074E9AE /* IntroScene.swift in Sources */,
+				3CEC79112461E83E00C4A1C7 /* GameScene.swift in Sources */,
+				3CEC79132461E83E00C4A1C7 /* GameViewController.swift in Sources */,
+				3C51468824A32D900074E9AE /* GameOverScene.swift in Sources */,
+				3CEC790B2461E83E00C4A1C7 /* AppDelegate.swift in Sources */,
+				3CB09C4824BBCF1A008B9E8B /* AwardDisplayScene.swift in Sources */,
+				3C99B18124B589FC0089CAF4 /* ReceiveAwardScene.swift in Sources */,
+				3C51469224B2B6B10074E9AE /* SelectModeScene.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3CEC791D2461E83F00C4A1C7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3CEC79262461E83F00C4A1C7 /* Whack_A_TrumpTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3CEC79282461E83F00C4A1C7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3CEC79312461E83F00C4A1C7 /* Whack_A_TrumpUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3CEC79232461E83F00C4A1C7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3CEC79062461E83E00C4A1C7 /* Alien-Attack */;
+			targetProxy = 3CEC79222461E83F00C4A1C7 /* PBXContainerItemProxy */;
+		};
+		3CEC792E2461E83F00C4A1C7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3CEC79062461E83E00C4A1C7 /* Alien-Attack */;
+			targetProxy = 3CEC792D2461E83F00C4A1C7 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		3CEC79142461E83E00C4A1C7 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3CEC79152461E83E00C4A1C7 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		3CEC79192461E83F00C4A1C7 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3CEC791A2461E83F00C4A1C7 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		3CEC79332461E83F00C4A1C7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		3CEC79342461E83F00C4A1C7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		3CEC79362461E83F00C4A1C7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = LZ8PHR27VM;
+				INFOPLIST_FILE = "Whack-A-Trump/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "Stuart-McClintock.Alien-Attack";
+				PRODUCT_NAME = Aliens;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		3CEC79372461E83F00C4A1C7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = LZ8PHR27VM;
+				INFOPLIST_FILE = "Whack-A-Trump/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "Stuart-McClintock.Alien-Attack";
+				PRODUCT_NAME = Aliens;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		3CEC79392461E83F00C4A1C7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = LZ8PHR27VM;
+				INFOPLIST_FILE = "Whack-A-TrumpTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "Stuart-McClintock.Whack-A-TrumpTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Alien-Attack.app/Alien-Attack";
+			};
+			name = Debug;
+		};
+		3CEC793A2461E83F00C4A1C7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = LZ8PHR27VM;
+				INFOPLIST_FILE = "Whack-A-TrumpTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "Stuart-McClintock.Whack-A-TrumpTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Alien-Attack.app/Alien-Attack";
+			};
+			name = Release;
+		};
+		3CEC793C2461E83F00C4A1C7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = LZ8PHR27VM;
+				INFOPLIST_FILE = "Whack-A-TrumpUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "Stuart-McClintock.Whack-A-TrumpUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Whack-A-Trump";
+			};
+			name = Debug;
+		};
+		3CEC793D2461E83F00C4A1C7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = LZ8PHR27VM;
+				INFOPLIST_FILE = "Whack-A-TrumpUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "Stuart-McClintock.Whack-A-TrumpUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Whack-A-Trump";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3CEC79022461E83E00C4A1C7 /* Build configuration list for PBXProject "Alien-Attack" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3CEC79332461E83F00C4A1C7 /* Debug */,
+				3CEC79342461E83F00C4A1C7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3CEC79352461E83F00C4A1C7 /* Build configuration list for PBXNativeTarget "Alien-Attack" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3CEC79362461E83F00C4A1C7 /* Debug */,
+				3CEC79372461E83F00C4A1C7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3CEC79382461E83F00C4A1C7 /* Build configuration list for PBXNativeTarget "Alien-AttackTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3CEC79392461E83F00C4A1C7 /* Debug */,
+				3CEC793A2461E83F00C4A1C7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3CEC793B2461E83F00C4A1C7 /* Build configuration list for PBXNativeTarget "Alien-AttackUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3CEC793C2461E83F00C4A1C7 /* Debug */,
+				3CEC793D2461E83F00C4A1C7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 3CEC78FF2461E83E00C4A1C7 /* Project object */;
+}
