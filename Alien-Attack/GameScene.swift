@@ -122,6 +122,7 @@ class GameScene: SKScene {
         newFace.zPosition = 1
         newFace.alpha = 0
         newFace.name = name
+        newFace.size = CGSize(width: 102, height: 93)
         addChild(newFace)
         faces.append(newFace)
     }
@@ -175,7 +176,7 @@ class GameScene: SKScene {
             try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.ambient)
             try AVAudioSession.sharedInstance().setActive(true)
             
-            let soundPath = Bundle.main.path(forResource: "shipLanding", ofType: "wav")
+            let soundPath = Bundle.main.path(forResource: "alienDestroyed", ofType: "wav")
             audioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: soundPath!))
             audioPlayer?.play()
         }

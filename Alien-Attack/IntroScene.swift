@@ -22,11 +22,11 @@ class IntroScene: SKScene{
         addChild(background)
         
         let headingLabel = SKLabelNode(fontNamed: "DIN Alternate Bold")
-        headingLabel.fontSize = 68.0
+        headingLabel.fontSize = 52
         headingLabel.fontColor = .white
         headingLabel.position = CGPoint(x: frame.midX, y: frame.midY+135)
         headingLabel.numberOfLines = 2
-        headingLabel.text = "There is a battle for\n  the White House!"
+        headingLabel.text = "   THE WHITE HOUSE IS\nUNDER ALIEN INVASION!"
         addChild(headingLabel)
         
         let descLabel = SKLabelNode(fontNamed: "DIN Alternate Bold")
