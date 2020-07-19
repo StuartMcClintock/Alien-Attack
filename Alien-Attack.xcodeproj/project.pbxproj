@@ -553,7 +553,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = LZ8PHR27VM;
-				INFOPLIST_FILE = "Whack-A-Trump/Info.plist";
+				INFOPLIST_FILE = "Alien-Attack/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -573,7 +573,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = LZ8PHR27VM;
-				INFOPLIST_FILE = "Whack-A-Trump/Info.plist";
+				INFOPLIST_FILE = "Alien-Attack/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
