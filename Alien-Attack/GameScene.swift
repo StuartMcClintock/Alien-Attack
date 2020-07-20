@@ -222,7 +222,7 @@ class GameScene: SKScene {
     func endScene(){
         if (totalVisible >= MAX_FACES){
             endingAnimation()
-            DispatchQueue.main.asyncAfter(deadline: .now() + 4.00, execute: { [weak self] in
+            DispatchQueue.main.asyncAfter(deadline: .now() + 4.20, execute: { [weak self] in
                 self?.chooseNextScene()
             })
         }
@@ -233,11 +233,28 @@ class GameScene: SKScene {
     }
     
     func endingAnimation(){
+        endingNoise()
+        
         let smilingAlien = SKSpriteNode(imageNamed: "smilingAlien")
         smilingAlien.position = CGPoint(x: frame.midX, y: frame.midY-50)
         smilingAlien.alpha = 0.5
         smilingAlien.zPosition = 2
         addChild(smilingAlien)
+    }
+    
+    func endingNoise(){
+        if (!del.isMute){
+            do{
+                try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.ambient)
+                try AVAudioSession.sharedInstance().setActive(true)
+                
+                let soundPath = Bundle.main.path(forResource: "lossNoises", ofType: "wav")
+                audioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: soundPath!))
+                audioPlayer?.play()
+                audioPlayer?.setVolume(0, fadeDuration: 3)
+            }
+            catch {}
+        }
     }
     
     func chooseNextScene(){
