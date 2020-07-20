@@ -209,10 +209,10 @@ class GameScene: SKScene {
             gameOver = true
             del.recentScore = scoreVal
             
-            //endScene()
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.27, execute: { [weak self] in
                 self?.endScene()
             })
+            return
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + waitTime, execute: { [weak self] in
             self?.dispFaces()
@@ -221,8 +221,15 @@ class GameScene: SKScene {
     
     func endScene(){
         if (totalVisible >= MAX_FACES){
+            let testLabel = SKLabelNode(fontNamed: "DIN Alternate Bold")
+            testLabel.text = "Score: 0"
+            testLabel.position = CGPoint(x:frame.midX, y:frame.midY)
+            testLabel.fontSize = 50
+            testLabel.zPosition = 2
+            addChild(testLabel)
+            endingAnimation()
+            
             if (del.isBlitz && scoreVal >= del.BLITZ_BRONZE_SCORE){
-                print("supposed to be ending scene")
                 if (scoreVal >= del.BLITZ_GOLD_SCORE){
                     if (!UserDefaults.standard.bool(forKey: "blitzGold")||scoreVal <= del.highScore){
                         goToAwardScene()
@@ -282,6 +289,13 @@ class GameScene: SKScene {
             gameOver = false
             dispFaces()
         }
+    }
+    
+    func endingAnimation(){
+        let smilingAlien = SKSpriteNode(imageNamed: "smilingAlien")
+        smilingAlien.position = CGPoint(x: frame.midX, y: frame.midY)
+        addChild(smilingAlien)
+        print("big chungus")
     }
     
     func goToOverScene(){
