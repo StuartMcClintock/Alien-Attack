@@ -221,69 +221,10 @@ class GameScene: SKScene {
     
     func endScene(){
         if (totalVisible >= MAX_FACES){
-            let testLabel = SKLabelNode(fontNamed: "DIN Alternate Bold")
-            testLabel.text = "Score: 0"
-            testLabel.position = CGPoint(x:frame.midX, y:frame.midY)
-            testLabel.fontSize = 50
-            testLabel.zPosition = 2
-            addChild(testLabel)
             endingAnimation()
-            
-            if (del.isBlitz && scoreVal >= del.BLITZ_BRONZE_SCORE){
-                if (scoreVal >= del.BLITZ_GOLD_SCORE){
-                    if (!UserDefaults.standard.bool(forKey: "blitzGold")||scoreVal <= del.highScore){
-                        goToAwardScene()
-                    }
-                    else{
-                        goToOverScene()
-                    }
-                }
-                else if (scoreVal >= del.BLITZ_SILVER_SCORE){
-                   if (!UserDefaults.standard.bool(forKey: "blitzSilver")||scoreVal <= del.highScore){
-                       goToAwardScene()
-                   }
-                   else{
-                       goToOverScene()
-                   }
-                }
-                else if (scoreVal >= del.BLITZ_BRONZE_SCORE){
-                    if (!UserDefaults.standard.bool(forKey: "blitzBronze")||scoreVal <= del.highScore){
-                        goToAwardScene()
-                    }
-                    else{
-                        goToOverScene()
-                    }
-                }
-            }
-            else if (!del.isBlitz && scoreVal >= del.STAN_BRONZE_SCORE){
-                if (scoreVal >= del.STAN_GOLD_SCORE){
-                    if (!UserDefaults.standard.bool(forKey: "standardGold") || scoreVal <= del.highScore){
-                        goToAwardScene()
-                    }
-                    else{
-                        goToOverScene()
-                    }
-                }
-                else if (scoreVal >= del.STAN_SILVER_SCORE){
-                   if (!UserDefaults.standard.bool(forKey: "standardSilver") || scoreVal <= del.highScore){
-                       goToAwardScene()
-                   }
-                    else{
-                        goToOverScene()
-                    }
-                }
-                else if (scoreVal >= del.STAN_BRONZE_SCORE){
-                    if (!UserDefaults.standard.bool(forKey: "standardBronze") || scoreVal <= del.highScore){
-                        goToAwardScene()
-                    }
-                    else{
-                        goToOverScene()
-                    }
-                }
-            }
-            else{
-                goToOverScene()
-            }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 4.00, execute: { [weak self] in
+                self?.chooseNextScene()
+            })
         }
         else{
             gameOver = false
@@ -293,9 +234,68 @@ class GameScene: SKScene {
     
     func endingAnimation(){
         let smilingAlien = SKSpriteNode(imageNamed: "smilingAlien")
-        smilingAlien.position = CGPoint(x: frame.midX, y: frame.midY)
+        smilingAlien.position = CGPoint(x: frame.midX, y: frame.midY-50)
+        smilingAlien.alpha = 0.5
+        smilingAlien.zPosition = 2
         addChild(smilingAlien)
-        print("big chungus")
+    }
+    
+    func chooseNextScene(){
+        if (del.isBlitz && scoreVal >= del.BLITZ_BRONZE_SCORE){
+            if (scoreVal >= del.BLITZ_GOLD_SCORE){
+                if (!UserDefaults.standard.bool(forKey: "blitzGold")||scoreVal <= del.highScore){
+                    goToAwardScene()
+                }
+                else{
+                    goToOverScene()
+                }
+            }
+            else if (scoreVal >= del.BLITZ_SILVER_SCORE){
+               if (!UserDefaults.standard.bool(forKey: "blitzSilver")||scoreVal <= del.highScore){
+                   goToAwardScene()
+               }
+               else{
+                   goToOverScene()
+               }
+            }
+            else if (scoreVal >= del.BLITZ_BRONZE_SCORE){
+                if (!UserDefaults.standard.bool(forKey: "blitzBronze")||scoreVal <= del.highScore){
+                    goToAwardScene()
+                }
+                else{
+                    goToOverScene()
+                }
+            }
+        }
+        else if (!del.isBlitz && scoreVal >= del.STAN_BRONZE_SCORE){
+            if (scoreVal >= del.STAN_GOLD_SCORE){
+                if (!UserDefaults.standard.bool(forKey: "standardGold") || scoreVal <= del.highScore){
+                    goToAwardScene()
+                }
+                else{
+                    goToOverScene()
+                }
+            }
+            else if (scoreVal >= del.STAN_SILVER_SCORE){
+               if (!UserDefaults.standard.bool(forKey: "standardSilver") || scoreVal <= del.highScore){
+                   goToAwardScene()
+               }
+                else{
+                    goToOverScene()
+                }
+            }
+            else if (scoreVal >= del.STAN_BRONZE_SCORE){
+                if (!UserDefaults.standard.bool(forKey: "standardBronze") || scoreVal <= del.highScore){
+                    goToAwardScene()
+                }
+                else{
+                    goToOverScene()
+                }
+            }
+        }
+        else{
+            goToOverScene()
+        }
     }
     
     func goToOverScene(){
