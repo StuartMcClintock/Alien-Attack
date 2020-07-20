@@ -9,18 +9,42 @@
 import Foundation
 import SpriteKit
 
+import AVFoundation
+
 class IntroScene: SKScene{
+    
+    var audioPlayer: AVAudioPlayer!
     
     override func didMove(to view: SKView){
         self.backgroundColor = SKColor.white
-        
+        displayBackground()
+        displayText()
+        makeLandingNoise()
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        startNextScene()
+    }
+    
+    func makeLandingNoise(){
+        do{
+            let soundPath = Bundle.main.path(forResource: "shipLanding", ofType: "wav")
+            audioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: soundPath!))
+            audioPlayer?.play()
+        }
+        catch {}
+    }
+    
+    func displayBackground(){
         let background = SKSpriteNode(imageNamed: "whitehouse")
         background.position = CGPoint(x:frame.midX, y:frame.midY)
         background.blendMode = .replace
         background.alpha = 0.3
         background.zPosition = -1
         addChild(background)
-        
+    }
+    
+    func displayText(){
         let headingLabel = SKLabelNode(fontNamed: "DIN Alternate Bold")
         headingLabel.fontSize = 52
         headingLabel.fontColor = .white
@@ -46,13 +70,9 @@ class IntroScene: SKScene{
         addChild(contLabel)
     }
     
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        startNextScene()
-    }
-    
     func startNextScene(){
-        let ogScene = GameScene(fileNamed: "SelectModeScene")
-        ogScene?.scaleMode = .aspectFill
-        self.view?.presentScene(ogScene!)
+        let modeScene = GameScene(fileNamed: "SelectModeScene")
+        modeScene?.scaleMode = .aspectFill
+        self.view?.presentScene(modeScene!)
     }
 }

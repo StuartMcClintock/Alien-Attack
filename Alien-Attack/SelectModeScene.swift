@@ -42,18 +42,22 @@ class SelectModeScene: SKScene{
             if touchedNode.name == "blitz"{
                 del.isBlitz = true
                 del.highScore = UserDefaults.standard.integer(forKey: "highScore-blitz")
+                del.buttonSound()
                 startGame()
             }
             if touchedNode.name == "standard"{
                 del.isBlitz = false
                 del.highScore = UserDefaults.standard.integer(forKey: "highScore-standard")
+                del.buttonSound()
                 startGame()
             }
             if touchedNode.name == "awards"{
+                del.buttonSound()
                 dispAwards()
             }
             if touchedNode.name == "sound"{
                 soundPressed()
+                del.buttonSound()
             }
         }
     }
@@ -113,7 +117,7 @@ class SelectModeScene: SKScene{
             soundButton = SKSpriteNode(imageNamed: "mute")
         }
         soundButton.size = CGSize(width: 100, height: 100)
-        soundButton.position = CGPoint(x: frame.maxX-70, y: 70)
+        soundButton.position = CGPoint(x: frame.midX, y: 100)
         soundButton.name = "sound"
         addChild(soundButton)
     }

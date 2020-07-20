@@ -9,8 +9,12 @@
 import Foundation
 import SpriteKit
 
+import AVFoundation
+
 class GameOverScene: SKScene{
     var del: AppDelegate!
+    
+    var audioPlayer: AVAudioPlayer?
     
     override func didMove(to view: SKView){
         let app = UIApplication.shared
@@ -65,8 +69,10 @@ class GameOverScene: SKScene{
     }
     
     func returnToMain(){
-        let ogScene = GameScene(fileNamed: "SelectModeScene")
-        ogScene?.scaleMode = .aspectFill
-        self.view?.presentScene(ogScene!, transition: .flipVertical(withDuration: 0.5))
+        del.buttonSound()
+        
+        let modeScene = GameScene(fileNamed: "SelectModeScene")
+        modeScene?.scaleMode = .aspectFill
+        self.view?.presentScene(modeScene!, transition: .flipVertical(withDuration: 0.5))
     }
 }

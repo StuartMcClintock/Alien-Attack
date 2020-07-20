@@ -8,6 +8,8 @@
 
 import UIKit
 
+import AVFoundation
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -20,6 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var isMute: Bool = false
 
+    var audioPlayer: AVAudioPlayer?
     
     // Define Award Constants
     let BLITZ_BRONZE_SCORE = 30
@@ -29,6 +32,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let STAN_BRONZE_SCORE = 100
     let STAN_SILVER_SCORE = 250
     let STAN_GOLD_SCORE = 500
+    
+    func buttonSound(){
+        if !isMute{
+            do{
+                try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.ambient)
+                try AVAudioSession.sharedInstance().setActive(true)
+                
+                let soundPath = Bundle.main.path(forResource: "buttonNoise", ofType: "wav")
+                audioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: soundPath!))
+                audioPlayer?.play()
+            }
+            catch {}
+        }
+    }
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
