@@ -12,10 +12,11 @@ import SpriteKit
 class SelectModeScene: SKScene{
     var del: AppDelegate!
     
+    var soundButton: SKSpriteNode!
+    
     override func didMove(to view: SKView) {
         let app = UIApplication.shared
         del = app.delegate as? AppDelegate
-        
         
         let background = SKSpriteNode(imageNamed: "whitehouse")
         background.position = CGPoint(x:frame.midX, y:frame.midY)
@@ -24,7 +25,6 @@ class SelectModeScene: SKScene{
         background.zPosition = -1
         addChild(background)
         
-        
         let headerLabel = SKLabelNode(fontNamed: "DIN Alternate Bold")
         headerLabel.fontSize = 94.0
         headerLabel.fontColor = .white
@@ -32,17 +32,40 @@ class SelectModeScene: SKScene{
         headerLabel.text = "Select Option:"
         addChild(headerLabel)
         
+        addSceneButtons()
+        initSoundButton()
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        for touch in touches{
+            let touchedNode = atPoint(touch.location(in: self))
+            if touchedNode.name == "blitz"{
+                del.isBlitz = true
+                del.highScore = UserDefaults.standard.integer(forKey: "highScore-blitz")
+                startGame()
+            }
+            if touchedNode.name == "standard"{
+                del.isBlitz = false
+                del.highScore = UserDefaults.standard.integer(forKey: "highScore-standard")
+                startGame()
+            }
+            if touchedNode.name == "awards"{
+                dispAwards()
+            }
+            if touchedNode.name == "sound"{
+                soundPressed()
+            }
+        }
+    }
+    
+    func addSceneButtons(){
         let buttonSize = CGSize(width: 500, height: 120)
-        
         let standardPointPosition = CGPoint(x: frame.midX, y: frame.midY-30)
         let standardButtonColor = SKColor.init(displayP3Red: 71/255, green: 145/255, blue: 214/255, alpha: 1)
-        
         let blitzPointPosition = CGPoint(x: frame.midX, y: frame.midY-215)
         let blitzButtonColor = SKColor.red
-        
         let awardPointPosition = CGPoint(x: frame.midX, y: frame.midY-400)
         let awardButtonColor = SKColor.init(displayP3Red: 184/255, green: 156/255, blue: 20/255, alpha: 1)
-        
         
         let standardButton = SKSpriteNode(color: standardButtonColor, size: buttonSize)
         standardButton.position = standardPointPosition
@@ -81,22 +104,28 @@ class SelectModeScene: SKScene{
         addChild(awardText)
     }
     
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        for touch in touches{
-            let touchedNode = atPoint(touch.location(in: self))
-            if touchedNode.name == "blitz"{
-                del.isBlitz = true
-                del.highScore = UserDefaults.standard.integer(forKey: "highScore-blitz")
-                startGame()
-            }
-            if touchedNode.name == "standard"{
-                del.isBlitz = false
-                del.highScore = UserDefaults.standard.integer(forKey: "highScore-standard")
-                startGame()
-            }
-            if touchedNode.name == "awards"{
-                dispAwards()
-            }
+    func initSoundButton(){
+        del.isMute = UserDefaults.standard.bool(forKey: "isMute")
+        if del.isMute{
+            soundButton = SKSpriteNode(imageNamed: "notMute")
+        }
+        else{
+            soundButton = SKSpriteNode(imageNamed: "mute")
+        }
+        soundButton.size = CGSize(width: 100, height: 100)
+        soundButton.position = CGPoint(x: frame.maxX-70, y: 70)
+        soundButton.name = "sound"
+        addChild(soundButton)
+    }
+    
+    func soundPressed(){
+        del.isMute = !del.isMute
+        UserDefaults.standard.set(del.isMute, forKey: "isMute")
+        if del.isMute{
+            soundButton.texture = SKTexture(imageNamed: "notMute")
+        }
+        else{
+            soundButton.texture = SKTexture(imageNamed: "mute")
         }
     }
     

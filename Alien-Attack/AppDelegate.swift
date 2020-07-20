@@ -17,6 +17,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var highScore: Int = 0
     
     var isBlitz: Bool = false
+    
+    var isMute: Bool = false
 
     
     // Define Award Constants
