@@ -170,7 +170,7 @@ class GameScene: SKScene {
     
     func sensoryFeedback(){
         //AudioServicesPlayAlertSoundWithCompletion(SystemSoundID(kSystemSoundID_Vibrate)) { }
-        let impactFeedbackgenerator = UIImpactFeedbackGenerator(style: .medium)
+        let impactFeedbackgenerator = UIImpactFeedbackGenerator(style: .heavy)
         impactFeedbackgenerator.prepare()
         impactFeedbackgenerator.impactOccurred()
         

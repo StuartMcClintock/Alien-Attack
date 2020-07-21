@@ -25,13 +25,6 @@ class SelectModeScene: SKScene{
         background.zPosition = -1
         addChild(background)
         
-        let headerLabel = SKLabelNode(fontNamed: "DIN Alternate Bold")
-        headerLabel.fontSize = 94.0
-        headerLabel.fontColor = .white
-        headerLabel.position = CGPoint(x: frame.midX, y: frame.maxY - 330)
-        headerLabel.text = "Select Option:"
-        addChild(headerLabel)
-        
         addSceneButtons()
         initSoundButton()
     }
@@ -64,12 +57,13 @@ class SelectModeScene: SKScene{
     
     func addSceneButtons(){
         let buttonSize = CGSize(width: 500, height: 120)
-        let standardPointPosition = CGPoint(x: frame.midX, y: frame.midY-30)
         let standardButtonColor = SKColor.init(displayP3Red: 71/255, green: 145/255, blue: 214/255, alpha: 1)
-        let blitzPointPosition = CGPoint(x: frame.midX, y: frame.midY-215)
         let blitzButtonColor = SKColor.red
-        let awardPointPosition = CGPoint(x: frame.midX, y: frame.midY-400)
         let awardButtonColor = SKColor.init(displayP3Red: 184/255, green: 156/255, blue: 20/255, alpha: 1)
+        
+        let standardPointPosition = CGPoint(x: frame.midX, y: frame.midY+200)
+        let blitzPointPosition = CGPoint(x: frame.midX, y: frame.midY)
+        let awardPointPosition = CGPoint(x: frame.midX, y: frame.midY-200)
         
         let standardButton = SKSpriteNode(color: standardButtonColor, size: buttonSize)
         standardButton.position = standardPointPosition
