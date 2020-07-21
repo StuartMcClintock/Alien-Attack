@@ -236,10 +236,14 @@ class GameScene: SKScene {
         endingNoise()
         
         let smilingAlien = SKSpriteNode(imageNamed: "smilingAlien")
-        smilingAlien.position = CGPoint(x: frame.midX, y: frame.midY-50)
-        smilingAlien.alpha = 0.5
+        smilingAlien.position = CGPoint(x: frame.midX, y: frame.midY+135)
+        smilingAlien.size = CGSize(width: 706, height: 850)
+        smilingAlien.alpha = 0.2
         smilingAlien.zPosition = 2
         addChild(smilingAlien)
+        
+        let fade = SKAction.fadeAlpha(to: 1.0, duration: 4)
+        smilingAlien.run(fade)
     }
     
     func endingNoise(){
@@ -251,7 +255,7 @@ class GameScene: SKScene {
                 let soundPath = Bundle.main.path(forResource: "lossNoises", ofType: "wav")
                 audioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: soundPath!))
                 audioPlayer?.play()
-                audioPlayer?.setVolume(0, fadeDuration: 3)
+                audioPlayer?.setVolume(0, fadeDuration: 4)
             }
             catch {}
         }

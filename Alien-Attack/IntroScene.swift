@@ -13,9 +13,13 @@ import AVFoundation
 
 class IntroScene: SKScene{
     
-    var audioPlayer: AVAudioPlayer!
+    var audioPlayer: AVAudioPlayer?
+    var del: AppDelegate!
     
     override func didMove(to view: SKView){
+        let app = UIApplication.shared
+        del = app.delegate as? AppDelegate
+        
         self.backgroundColor = SKColor.white
         displayBackground()
         displayText()
@@ -71,6 +75,7 @@ class IntroScene: SKScene{
     }
     
     func startNextScene(){
+        del.buttonSound()
         let modeScene = GameScene(fileNamed: "SelectModeScene")
         modeScene?.scaleMode = .aspectFill
         self.view?.presentScene(modeScene!)
