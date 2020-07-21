@@ -143,7 +143,9 @@ class GameScene: SKScene {
             return
         }
         let row = splitCoords[1]
-        processTap(col: Int(col)!, row: Int(row)!)
+        if (!gameOver){
+            processTap(col: Int(col)!, row: Int(row)!)
+        }
     }
     
     func processTap(col: Int, row: Int){
@@ -206,7 +208,6 @@ class GameScene: SKScene {
         totalVisible += 1
         
         if (totalVisible >= MAX_FACES){
-            gameOver = true
             del.recentScore = scoreVal
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.27, execute: { [weak self] in
@@ -221,13 +222,13 @@ class GameScene: SKScene {
     
     func endScene(){
         if (totalVisible >= MAX_FACES){
+            gameOver = true
             endingAnimation()
             DispatchQueue.main.asyncAfter(deadline: .now() + 4.20, execute: { [weak self] in
                 self?.chooseNextScene()
             })
         }
         else{
-            gameOver = false
             dispFaces()
         }
     }

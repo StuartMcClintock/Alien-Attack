@@ -32,6 +32,9 @@ class IntroScene: SKScene{
     
     func makeLandingNoise(){
         do{
+            try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.ambient)
+            try AVAudioSession.sharedInstance().setActive(true)
+            
             let soundPath = Bundle.main.path(forResource: "shipLanding", ofType: "wav")
             audioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: soundPath!))
             audioPlayer?.play()
