@@ -18,6 +18,8 @@ class GameViewController: UIViewController {
         super.viewDidLoad()
         del = UIApplication.shared.delegate as? AppDelegate
         
+        del.numGold = UserDefaults.standard.integer(forKey: "numGold")
+        
         if let view = self.view as! SKView? {
             // Load the SKScene from 'GameScene.sks'
             if let scene = SKScene(fileNamed: "IntroScene") {

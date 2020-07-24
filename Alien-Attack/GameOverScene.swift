@@ -37,7 +37,7 @@ class GameOverScene: SKScene{
         
         if (del.recentScore > del.highScore){
             del.highScore = del.recentScore
-            self.backgroundColor = SKColor.yellow
+            self.backgroundColor = SKColor.white
             overLabel.text = "New High Score!"
             
             if (del.isBlitz){

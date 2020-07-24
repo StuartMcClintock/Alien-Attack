@@ -27,6 +27,7 @@ class SelectModeScene: SKScene{
         
         addSceneButtons()
         initSoundButton()
+        displayCoinInfo()
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -52,18 +53,26 @@ class SelectModeScene: SKScene{
                 soundPressed()
                 del.buttonSound()
             }
+            if touchedNode.name == "store"{
+                del.buttonSound()
+                print("chungus")
+            }
         }
     }
     
     func addSceneButtons(){
         let buttonSize = CGSize(width: 500, height: 120)
+        
         let standardButtonColor = SKColor.init(displayP3Red: 71/255, green: 145/255, blue: 214/255, alpha: 1)
         let blitzButtonColor = SKColor.red
         let awardButtonColor = SKColor.init(displayP3Red: 184/255, green: 156/255, blue: 20/255, alpha: 1)
+        let storeButtonColor = SKColor.init(displayP3Red: 17/255, green: 125/255, blue: 7/255, alpha: 1)
         
-        let standardPointPosition = CGPoint(x: frame.midX, y: frame.midY+200)
-        let blitzPointPosition = CGPoint(x: frame.midX, y: frame.midY)
-        let awardPointPosition = CGPoint(x: frame.midX, y: frame.midY-200)
+        
+        let awardPointPosition = CGPoint(x: frame.midX, y: frame.midY+310)
+        let storePointPosition = CGPoint(x: frame.midX, y: frame.midY+130)
+        let standardPointPosition = CGPoint(x: frame.midX, y: frame.midY-50)
+        let blitzPointPosition = CGPoint(x: frame.midX, y: frame.midY-230)
         
         let standardButton = SKSpriteNode(color: standardButtonColor, size: buttonSize)
         standardButton.position = standardPointPosition
@@ -100,6 +109,41 @@ class SelectModeScene: SKScene{
         awardText.fontSize = 68
         awardText.name = "awards"
         addChild(awardText)
+        
+        let storeButton = SKSpriteNode(color: storeButtonColor, size: buttonSize)
+        storeButton.position = storePointPosition
+        storeButton.name = "store"
+        addChild(storeButton)
+        let storeText = SKLabelNode(text: "Visit Store")
+        storeText.position = CGPoint(x:storePointPosition.x, y:storePointPosition.y-25)
+        storeText.fontName = "DIN Alternate Bold"
+        storeText.fontColor = SKColor.white
+        storeText.fontSize = 68
+        storeText.name = "store"
+        addChild(storeText)
+    }
+    
+    func displayCoinInfo(){
+        let offsetX:CGFloat = 185
+        let offsetY:CGFloat = 430
+        let coinDist:CGFloat = 40
+        
+        let goldLabel = SKLabelNode(fontNamed: "DIN Alternate Bold")
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        let labelText = formatter.string(from: NSNumber(value:del.numGold))
+        goldLabel.horizontalAlignmentMode = .left
+        goldLabel.verticalAlignmentMode = .center
+        goldLabel.text = labelText
+        goldLabel.position = CGPoint(x: frame.midX-offsetX, y: frame.midY-offsetY)
+        goldLabel.fontColor = SKColor.white
+        goldLabel.fontSize = 58
+        addChild(goldLabel)
+        
+        let goldImage = SKSpriteNode(imageNamed: "coin0")
+        goldImage.position = CGPoint(x:frame.midX-offsetX-coinDist, y:frame.midY-offsetY)
+        goldImage.size = CGSize(width: 50, height: 50)
+        addChild(goldImage)
     }
     
     func initSoundButton(){

@@ -223,6 +223,7 @@ class GameScene: SKScene {
     func endScene(){
         if (totalVisible >= MAX_FACES){
             gameOver = true
+            del.addGold(score: scoreVal)
             endingAnimation()
             DispatchQueue.main.asyncAfter(deadline: .now() + 4.20, execute: { [weak self] in
                 self?.chooseNextScene()

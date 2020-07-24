@@ -17,9 +17,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var recentScore: Int = 0
     var highScore: Int = 0
+    var numGold: Int = 0
     
     var isBlitz: Bool = false
-    
     var isMute: Bool = false
 
     var audioPlayer: AVAudioPlayer?
@@ -45,6 +45,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
             catch {}
         }
+    }
+    
+    
+    var addedGold = 0
+    
+    func addGold(score: Int){
+        if isBlitz{
+            addedGold = Int(score/5)
+        }
+        else{
+            addedGold = Int(score/10)
+        }
+        numGold += addedGold
+        print(addedGold)
+        UserDefaults.standard.set(numGold, forKey: "numGold")
     }
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
