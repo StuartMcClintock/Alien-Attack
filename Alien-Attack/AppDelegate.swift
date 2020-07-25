@@ -30,7 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let BLITZ_SILVER_SCORE = 75
     let BLITZ_GOLD_SCORE = 150
     
-    let STAN_BRONZE_SCORE = 100
+    let STAN_BRONZE_SCORE = 10
     let STAN_SILVER_SCORE = 250
     let STAN_GOLD_SCORE = 500
     
@@ -66,7 +66,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var coinFrames: [SKTexture] = []
     
     func buildCoinFrames(){
-        let coinAnimatedAtlas = SKTextureAtlas(named: "Coins2")
+        let coinAnimatedAtlas = SKTextureAtlas(named: "Coins3")
         var frames: [SKTexture] = []
         for i in 0..<coinAnimatedAtlas.textureNames.count{
             frames.append(coinAnimatedAtlas.textureNamed("coin\(i)"))

@@ -54,6 +54,9 @@ class ReceiveAwardScene: SKScene{
     func setImage(mode: String, awardLevel: String){
         let displayText = SKLabelNode(fontNamed: "DIN Alternate Bold")
         var awardImage: SKSpriteNode!
+        
+        displayGold(alreadyHad: UserDefaults.standard.bool(forKey: mode+awardLevel))
+        
         if UserDefaults.standard.bool(forKey: mode+awardLevel){
             self.backgroundColor = SKColor.black
             awardImage = SKSpriteNode(imageNamed: "ribon"+awardLevel)
@@ -89,12 +92,49 @@ class ReceiveAwardScene: SKScene{
             addChild(line2)
         }
         
+        awardImage.zPosition = -1
         addChild(awardImage)
         addChild(displayText)
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         returnToMain()
+    }
+    
+    func displayGold(alreadyHad:Bool){
+        var offsetY:CGFloat = 160
+        var offsetX:CGFloat = 0
+        var coinDist:CGFloat = 70
+        var coinSize = 75
+        
+        if alreadyHad{
+            offsetY = 135
+            offsetX = 0
+            coinDist = 70
+            coinSize = 75
+            let goldLabel = SKLabelNode(fontNamed: "DIN Alternate Bold")
+            let formatter = NumberFormatter()
+            formatter.numberStyle = .decimal
+            let labelText = formatter.string(from: NSNumber(value:del.addedGold))
+            goldLabel.horizontalAlignmentMode = .left
+            goldLabel.verticalAlignmentMode = .center
+            goldLabel.text = labelText
+            goldLabel.position = CGPoint(x: frame.midX+(coinDist/2)-offsetX, y: offsetY)
+            goldLabel.fontColor = SKColor.white
+            goldLabel.fontSize = 76
+            addChild(goldLabel)
+        }
+        
+        let goldImage = SKSpriteNode(texture: del.coinFrames[0])
+        if alreadyHad{
+            goldImage.position = CGPoint(x:frame.midX-(coinDist/2)-offsetX, y:offsetY)
+        }
+        else{
+            goldImage.position = CGPoint(x:frame.midX-(coinDist/2)-offsetX, y:frame.maxY-offsetY)
+        }
+        goldImage.size = CGSize(width: coinSize, height: coinSize)
+        addChild(goldImage)
+        goldImage.run(SKAction.repeatForever(SKAction.animate(with: del.coinFrames, timePerFrame: 0.04, resize: false, restore: true)), withKey: "rotatingCoin")
     }
     
     func returnToMain(){

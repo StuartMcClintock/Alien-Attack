@@ -124,9 +124,9 @@ class SelectModeScene: SKScene{
     }
     
     func displayCoinInfo(){
-        let offsetX:CGFloat = 160
+        let offsetX:CGFloat = 175
         let offsetY:CGFloat = 430
-        let coinDist:CGFloat = 60
+        let coinDist:CGFloat = 45
         
         let goldLabel = SKLabelNode(fontNamed: "DIN Alternate Bold")
         let formatter = NumberFormatter()
@@ -135,15 +135,16 @@ class SelectModeScene: SKScene{
         goldLabel.horizontalAlignmentMode = .left
         goldLabel.verticalAlignmentMode = .center
         goldLabel.text = labelText
-        goldLabel.position = CGPoint(x: frame.midX-offsetX, y: frame.midY-offsetY)
+        goldLabel.position = CGPoint(x: frame.midX-offsetX, y: frame.midY-offsetY-5)
         goldLabel.fontColor = SKColor.white
         goldLabel.fontSize = 58
         addChild(goldLabel)
         
-        let goldImage = SKSpriteNode(imageNamed: "coin0")
+        let goldImage = SKSpriteNode(texture: del.coinFrames[0])
         goldImage.position = CGPoint(x:frame.midX-offsetX-coinDist, y:frame.midY-offsetY)
-        goldImage.size = CGSize(width: 75, height: 75)
+        goldImage.size = CGSize(width: 65, height: 65)
         addChild(goldImage)
+        goldImage.run(SKAction.repeatForever(SKAction.animate(with: del.coinFrames, timePerFrame: 0.04, resize: false, restore: true)), withKey: "rotatingCoin")
     }
     
     func initSoundButton(){

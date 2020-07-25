@@ -73,7 +73,7 @@ class GameOverScene: SKScene{
     func displayGold(){
         let offsetY:CGFloat = 425
         let offsetX:CGFloat = 0
-        let coinDist:CGFloat = 75
+        let coinDist:CGFloat = 70
         
         let goldLabel = SKLabelNode(fontNamed: "DIN Alternate Bold")
         let formatter = NumberFormatter()
@@ -91,7 +91,7 @@ class GameOverScene: SKScene{
         goldImage.position = CGPoint(x:frame.midX-(coinDist/2)-offsetX, y:frame.midY-offsetY)
         goldImage.size = CGSize(width: 75, height: 75)
         addChild(goldImage)
-        goldImage.run(SKAction.repeatForever(SKAction.animate(with: del.coinFrames, timePerFrame: 0.05, resize: false, restore: true)), withKey: "rotatingCoin")
+        goldImage.run(SKAction.repeatForever(SKAction.animate(with: del.coinFrames, timePerFrame: 0.04, resize: false, restore: true)), withKey: "rotatingCoin")
     }
     
     func returnToMain(){
