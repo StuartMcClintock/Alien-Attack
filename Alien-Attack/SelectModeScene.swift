@@ -135,7 +135,7 @@ class SelectModeScene: SKScene{
         goldLabel.horizontalAlignmentMode = .left
         goldLabel.verticalAlignmentMode = .center
         goldLabel.text = labelText
-        goldLabel.position = CGPoint(x: frame.midX-offsetX, y: frame.midY-offsetY-5)
+        goldLabel.position = CGPoint(x: frame.midX-offsetX, y: frame.midY-offsetY)
         goldLabel.fontColor = SKColor.white
         goldLabel.fontSize = 58
         addChild(goldLabel)

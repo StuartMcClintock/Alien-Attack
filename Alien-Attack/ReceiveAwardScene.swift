@@ -77,17 +77,17 @@ class ReceiveAwardScene: SKScene{
             self.backgroundColor = SKColor.white
             UserDefaults.standard.set(true, forKey: mode+awardLevel)
             awardImage = SKSpriteNode(imageNamed: mode+awardLevel)
-            awardImage.position = CGPoint(x: frame.midX, y: frame.midY+80)
-            displayText.position = CGPoint(x:frame.midX, y: 145)
+            awardImage.position = CGPoint(x: frame.midX, y: frame.midY+115)
+            displayText.position = CGPoint(x:frame.midX, y: 210)
             displayText.zPosition = 2
-            displayText.fontSize = 62
+            displayText.fontSize = 66
             displayText.fontColor = SKColor.black
             displayText.text = "Score of \(del.recentScore)"
             
             let line2 = SKLabelNode(fontNamed: "DIN Alternate Bold")
             line2.text = "\(awardLevel) Medal!"
-            line2.position = CGPoint(x:frame.midX, y: 70)
-            line2.fontSize = 62
+            line2.position = CGPoint(x:frame.midX, y: 55)
+            line2.fontSize = 66
             line2.fontColor = SKColor.black
             addChild(line2)
         }
@@ -102,36 +102,36 @@ class ReceiveAwardScene: SKScene{
     }
     
     func displayGold(alreadyHad:Bool){
-        var offsetY:CGFloat = 160
+        var offsetY:CGFloat = 155
         var offsetX:CGFloat = 0
-        var coinDist:CGFloat = 70
-        var coinSize = 75
+        var coinDist:CGFloat = 50
+        var coinSize = 55
+        var labelFontSize:CGFloat = 62
+        var labelColor = SKColor.black
         
         if alreadyHad{
             offsetY = 135
             offsetX = 0
             coinDist = 70
             coinSize = 75
-            let goldLabel = SKLabelNode(fontNamed: "DIN Alternate Bold")
-            let formatter = NumberFormatter()
-            formatter.numberStyle = .decimal
-            let labelText = formatter.string(from: NSNumber(value:del.addedGold))
-            goldLabel.horizontalAlignmentMode = .left
-            goldLabel.verticalAlignmentMode = .center
-            goldLabel.text = labelText
-            goldLabel.position = CGPoint(x: frame.midX+(coinDist/2)-offsetX, y: offsetY)
-            goldLabel.fontColor = SKColor.white
-            goldLabel.fontSize = 76
-            addChild(goldLabel)
+            labelFontSize = 76
+            labelColor = SKColor.white
         }
         
+        let goldLabel = SKLabelNode(fontNamed: "DIN Alternate Bold")
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        let labelText = formatter.string(from: NSNumber(value:del.addedGold))
+        goldLabel.horizontalAlignmentMode = .left
+        goldLabel.verticalAlignmentMode = .center
+        goldLabel.text = labelText
+        goldLabel.position = CGPoint(x: frame.midX+(coinDist/2)-offsetX, y: offsetY)
+        goldLabel.fontColor = labelColor
+        goldLabel.fontSize = labelFontSize
+        addChild(goldLabel)
+        
         let goldImage = SKSpriteNode(texture: del.coinFrames[0])
-        if alreadyHad{
-            goldImage.position = CGPoint(x:frame.midX-(coinDist/2)-offsetX, y:offsetY)
-        }
-        else{
-            goldImage.position = CGPoint(x:frame.midX-(coinDist/2)-offsetX, y:frame.maxY-offsetY)
-        }
+        goldImage.position = CGPoint(x:frame.midX-(coinDist/2)-offsetX, y:offsetY)
         goldImage.size = CGSize(width: coinSize, height: coinSize)
         addChild(goldImage)
         goldImage.run(SKAction.repeatForever(SKAction.animate(with: del.coinFrames, timePerFrame: 0.04, resize: false, restore: true)), withKey: "rotatingCoin")
