@@ -35,7 +35,7 @@ class AwardDisplayScene: SKScene{
         
         let modeScene = GameScene(fileNamed: "SelectModeScene")
         modeScene?.scaleMode = .aspectFill
-        self.view?.presentScene(modeScene!, transition: .flipVertical(withDuration: 0.5))
+        self.view?.presentScene(modeScene!, transition: .flipHorizontal(withDuration: 0.5))
     }
     
     func initImages(){

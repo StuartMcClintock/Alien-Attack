@@ -55,7 +55,7 @@ class SelectModeScene: SKScene{
             }
             if touchedNode.name == "store"{
                 del.buttonSound()
-                print("chungus")
+                visitStore()
             }
         }
     }
@@ -180,6 +180,12 @@ class SelectModeScene: SKScene{
     func dispAwards(){
         let scene = GameScene(fileNamed: "AwardDisplayScene")
         scene?.scaleMode = .fill
-        self.view?.presentScene(scene!, transition: .flipVertical(withDuration: 0.5))
+        self.view?.presentScene(scene!, transition: .flipHorizontal(withDuration: 0.5))
+    }
+    
+    func visitStore(){
+        let scene = GameScene(fileNamed: "StoreScene")
+        scene?.scaleMode = .fill
+        self.view?.presentScene(scene!, transition: .flipHorizontal(withDuration: 0.5))
     }
 }

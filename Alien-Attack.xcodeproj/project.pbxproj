@@ -17,6 +17,8 @@
 		3C956A8E24C5756300D09B93 /* buttonNoise.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3C956A8C24C5756300D09B93 /* buttonNoise.wav */; };
 		3C956A9324C661AE00D09B93 /* lossNoises.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3C956A9224C661AE00D09B93 /* lossNoises.wav */; };
 		3C956A9524C6811B00D09B93 /* alienDestroyed.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3C956A9424C6811B00D09B93 /* alienDestroyed.wav */; };
+		3C956A9724CBBC3B00D09B93 /* StoreScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3C956A9624CBBC3B00D09B93 /* StoreScene.sks */; };
+		3C956A9924CBBC5000D09B93 /* StoreScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C956A9824CBBC5000D09B93 /* StoreScene.swift */; };
 		3C99B17F24B589E30089CAF4 /* ReceiveAwardScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3C99B17E24B589E30089CAF4 /* ReceiveAwardScene.sks */; };
 		3C99B18124B589FC0089CAF4 /* ReceiveAwardScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C99B18024B589FC0089CAF4 /* ReceiveAwardScene.swift */; };
 		3CB09C4624BB9EA4008B9E8B /* Disappear.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3CB09C4524BB9EA4008B9E8B /* Disappear.sks */; };
@@ -62,6 +64,8 @@
 		3C956A8C24C5756300D09B93 /* buttonNoise.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = buttonNoise.wav; sourceTree = "<group>"; };
 		3C956A9224C661AE00D09B93 /* lossNoises.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = lossNoises.wav; sourceTree = "<group>"; };
 		3C956A9424C6811B00D09B93 /* alienDestroyed.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = alienDestroyed.wav; sourceTree = "<group>"; };
+		3C956A9624CBBC3B00D09B93 /* StoreScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = StoreScene.sks; sourceTree = "<group>"; };
+		3C956A9824CBBC5000D09B93 /* StoreScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreScene.swift; sourceTree = "<group>"; };
 		3C99B17E24B589E30089CAF4 /* ReceiveAwardScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = ReceiveAwardScene.sks; sourceTree = "<group>"; };
 		3C99B18024B589FC0089CAF4 /* ReceiveAwardScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiveAwardScene.swift; sourceTree = "<group>"; };
 		3CB09C4524BB9EA4008B9E8B /* Disappear.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Disappear.sks; sourceTree = "<group>"; };
@@ -147,6 +151,15 @@
 			name = SelectModeScene;
 			sourceTree = "<group>";
 		};
+		3C956A9A24CBBC5B00D09B93 /* StoreScene */ = {
+			isa = PBXGroup;
+			children = (
+				3C956A9624CBBC3B00D09B93 /* StoreScene.sks */,
+				3C956A9824CBBC5000D09B93 /* StoreScene.swift */,
+			);
+			name = StoreScene;
+			sourceTree = "<group>";
+		};
 		3C99B18224B58A060089CAF4 /* ReceiveAwardScene */ = {
 			isa = PBXGroup;
 			children = (
@@ -206,6 +219,7 @@
 				3C51469424B3DCAA0074E9AE /* GameOverScene */,
 				3CB09C4B24BBCF50008B9E8B /* AwardDisplayScene */,
 				3C99B18224B58A060089CAF4 /* ReceiveAwardScene */,
+				3C956A9A24CBBC5B00D09B93 /* StoreScene */,
 				3CEC79122461E83E00C4A1C7 /* GameViewController.swift */,
 				3CEC79142461E83E00C4A1C7 /* Main.storyboard */,
 				3CEC790E2461E83E00C4A1C7 /* Actions.sks */,
@@ -347,6 +361,7 @@
 				3CEC79182461E83F00C4A1C7 /* Assets.xcassets in Resources */,
 				3CB09C4624BB9EA4008B9E8B /* Disappear.sks in Resources */,
 				3CEC791B2461E83F00C4A1C7 /* LaunchScreen.storyboard in Resources */,
+				3C956A9724CBBC3B00D09B93 /* StoreScene.sks in Resources */,
 				3C51469024B2B6960074E9AE /* SelectModeScene.sks in Resources */,
 				3C51468A24A32DC90074E9AE /* GameOverScene.sks in Resources */,
 				3C99B17F24B589E30089CAF4 /* ReceiveAwardScene.sks in Resources */,
@@ -380,6 +395,7 @@
 			files = (
 				3C51468C24A51FDD0074E9AE /* IntroScene.swift in Sources */,
 				3CEC79112461E83E00C4A1C7 /* GameScene.swift in Sources */,
+				3C956A9924CBBC5000D09B93 /* StoreScene.swift in Sources */,
 				3CEC79132461E83E00C4A1C7 /* GameViewController.swift in Sources */,
 				3C51468824A32D900074E9AE /* GameOverScene.swift in Sources */,
 				3CEC790B2461E83E00C4A1C7 /* AppDelegate.swift in Sources */,
