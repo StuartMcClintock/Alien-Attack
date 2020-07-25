@@ -174,18 +174,18 @@ class SelectModeScene: SKScene{
     func startGame(){
         let scene = GameScene(fileNamed: "GameScene")
         scene?.scaleMode = .fill
-        self.view?.presentScene(scene!, transition: .flipVertical(withDuration: 0.5))
+        self.view?.presentScene(scene!, transition: .crossFade(withDuration: 0.5))
     }
     
     func dispAwards(){
         let scene = GameScene(fileNamed: "AwardDisplayScene")
         scene?.scaleMode = .fill
-        self.view?.presentScene(scene!, transition: .flipHorizontal(withDuration: 0.5))
+        self.view?.presentScene(scene!, transition: .doorsOpenVertical(withDuration: 0.4))
     }
     
     func visitStore(){
         let scene = GameScene(fileNamed: "StoreScene")
         scene?.scaleMode = .fill
-        self.view?.presentScene(scene!, transition: .flipHorizontal(withDuration: 0.5))
+        self.view?.presentScene(scene!, transition: .doorsOpenVertical(withDuration: 0.4))
     }
 }
