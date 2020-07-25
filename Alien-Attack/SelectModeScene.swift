@@ -124,9 +124,9 @@ class SelectModeScene: SKScene{
     }
     
     func displayCoinInfo(){
-        let offsetX:CGFloat = 185
+        let offsetX:CGFloat = 160
         let offsetY:CGFloat = 430
-        let coinDist:CGFloat = 40
+        let coinDist:CGFloat = 60
         
         let goldLabel = SKLabelNode(fontNamed: "DIN Alternate Bold")
         let formatter = NumberFormatter()
@@ -142,7 +142,7 @@ class SelectModeScene: SKScene{
         
         let goldImage = SKSpriteNode(imageNamed: "coin0")
         goldImage.position = CGPoint(x:frame.midX-offsetX-coinDist, y:frame.midY-offsetY)
-        goldImage.size = CGSize(width: 50, height: 50)
+        goldImage.size = CGSize(width: 75, height: 75)
         addChild(goldImage)
     }
     

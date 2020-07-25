@@ -9,6 +9,7 @@
 import UIKit
 
 import AVFoundation
+import SpriteKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -60,6 +61,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         numGold += addedGold
         print(addedGold)
         UserDefaults.standard.set(numGold, forKey: "numGold")
+    }
+    
+    var coinFrames: [SKTexture] = []
+    
+    func buildCoinFrames(){
+        let coinAnimatedAtlas = SKTextureAtlas(named: "Coins")
+        var frames: [SKTexture] = []
+        for i in 0..<coinAnimatedAtlas.textureNames.count{
+            frames.append(coinAnimatedAtlas.textureNamed("coin\(i)"))
+        }
+        coinFrames = frames
     }
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {

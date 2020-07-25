@@ -19,6 +19,7 @@ class GameViewController: UIViewController {
         del = UIApplication.shared.delegate as? AppDelegate
         
         del.numGold = UserDefaults.standard.integer(forKey: "numGold")
+        del.buildCoinFrames()
         
         if let view = self.view as! SKView? {
             // Load the SKScene from 'GameScene.sks'

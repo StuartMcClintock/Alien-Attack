@@ -62,10 +62,36 @@ class GameOverScene: SKScene{
             }
             addChild(highLabel)
         }
+        
+        displayGold()
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         returnToMain()
+    }
+    
+    func displayGold(){
+        let offsetY:CGFloat = 425
+        let offsetX:CGFloat = 0
+        let coinDist:CGFloat = 75
+        
+        let goldLabel = SKLabelNode(fontNamed: "DIN Alternate Bold")
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        let labelText = formatter.string(from: NSNumber(value:del.addedGold))
+        goldLabel.horizontalAlignmentMode = .left
+        goldLabel.verticalAlignmentMode = .center
+        goldLabel.text = labelText
+        goldLabel.position = CGPoint(x: frame.midX+(coinDist/2)-offsetX, y: frame.midY-offsetY)
+        goldLabel.fontColor = SKColor.black
+        goldLabel.fontSize = 76
+        addChild(goldLabel)
+        
+        let goldImage = SKSpriteNode(texture: del.coinFrames[0])
+        goldImage.position = CGPoint(x:frame.midX-(coinDist/2)-offsetX, y:frame.midY-offsetY)
+        goldImage.size = CGSize(width: 65, height: 65)
+        addChild(goldImage)
+        goldImage.run(SKAction.repeatForever(SKAction.animate(with: del.coinFrames, timePerFrame: 0.05, resize: false, restore: true)), withKey: "rotatingCoin")
     }
     
     func returnToMain(){

@@ -19,6 +19,7 @@
 		3C956A9524C6811B00D09B93 /* alienDestroyed.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3C956A9424C6811B00D09B93 /* alienDestroyed.wav */; };
 		3C956A9724CBBC3B00D09B93 /* StoreScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3C956A9624CBBC3B00D09B93 /* StoreScene.sks */; };
 		3C956A9924CBBC5000D09B93 /* StoreScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C956A9824CBBC5000D09B93 /* StoreScene.swift */; };
+		3C956A9C24CC10E400D09B93 /* Coins.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 3C956A9B24CC10E300D09B93 /* Coins.atlas */; };
 		3C99B17F24B589E30089CAF4 /* ReceiveAwardScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3C99B17E24B589E30089CAF4 /* ReceiveAwardScene.sks */; };
 		3C99B18124B589FC0089CAF4 /* ReceiveAwardScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C99B18024B589FC0089CAF4 /* ReceiveAwardScene.swift */; };
 		3CB09C4624BB9EA4008B9E8B /* Disappear.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3CB09C4524BB9EA4008B9E8B /* Disappear.sks */; };
@@ -66,6 +67,7 @@
 		3C956A9424C6811B00D09B93 /* alienDestroyed.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = alienDestroyed.wav; sourceTree = "<group>"; };
 		3C956A9624CBBC3B00D09B93 /* StoreScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = StoreScene.sks; sourceTree = "<group>"; };
 		3C956A9824CBBC5000D09B93 /* StoreScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreScene.swift; sourceTree = "<group>"; };
+		3C956A9B24CC10E300D09B93 /* Coins.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Coins.atlas; sourceTree = "<group>"; };
 		3C99B17E24B589E30089CAF4 /* ReceiveAwardScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = ReceiveAwardScene.sks; sourceTree = "<group>"; };
 		3C99B18024B589FC0089CAF4 /* ReceiveAwardScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiveAwardScene.swift; sourceTree = "<group>"; };
 		3CB09C4524BB9EA4008B9E8B /* Disappear.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Disappear.sks; sourceTree = "<group>"; };
@@ -212,6 +214,7 @@
 		3CEC79092461E83E00C4A1C7 /* Alien-Attack */ = {
 			isa = PBXGroup;
 			children = (
+				3C956A9B24CC10E300D09B93 /* Coins.atlas */,
 				3CB09C4224BAD1FB008B9E8B /* Sounds */,
 				3C51469624B3DCDF0074E9AE /* IntroScene */,
 				3C51469724B3DCF80074E9AE /* SelectModeScene */,
@@ -363,6 +366,7 @@
 				3CEC791B2461E83F00C4A1C7 /* LaunchScreen.storyboard in Resources */,
 				3C956A9724CBBC3B00D09B93 /* StoreScene.sks in Resources */,
 				3C51469024B2B6960074E9AE /* SelectModeScene.sks in Resources */,
+				3C956A9C24CC10E400D09B93 /* Coins.atlas in Resources */,
 				3C51468A24A32DC90074E9AE /* GameOverScene.sks in Resources */,
 				3C99B17F24B589E30089CAF4 /* ReceiveAwardScene.sks in Resources */,
 				3C956A9324C661AE00D09B93 /* lossNoises.wav in Resources */,
