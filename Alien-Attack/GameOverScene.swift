@@ -89,7 +89,7 @@ class GameOverScene: SKScene{
         
         let goldImage = SKSpriteNode(texture: del.coinFrames[0])
         goldImage.position = CGPoint(x:frame.midX-(coinDist/2)-offsetX, y:frame.midY-offsetY)
-        goldImage.size = CGSize(width: 65, height: 65)
+        goldImage.size = CGSize(width: 75, height: 75)
         addChild(goldImage)
         goldImage.run(SKAction.repeatForever(SKAction.animate(with: del.coinFrames, timePerFrame: 0.05, resize: false, restore: true)), withKey: "rotatingCoin")
     }

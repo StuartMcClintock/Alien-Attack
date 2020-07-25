@@ -66,7 +66,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var coinFrames: [SKTexture] = []
     
     func buildCoinFrames(){
-        let coinAnimatedAtlas = SKTextureAtlas(named: "Coins")
+        let coinAnimatedAtlas = SKTextureAtlas(named: "Coins2")
         var frames: [SKTexture] = []
         for i in 0..<coinAnimatedAtlas.textureNames.count{
             frames.append(coinAnimatedAtlas.textureNamed("coin\(i)"))
