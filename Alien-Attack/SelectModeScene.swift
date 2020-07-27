@@ -28,6 +28,7 @@ class SelectModeScene: SKScene{
         addSceneButtons()
         initSoundButton()
         displayCoinInfo()
+        displayMercInfo()
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -69,10 +70,10 @@ class SelectModeScene: SKScene{
         let storeButtonColor = SKColor.init(displayP3Red: 17/255, green: 125/255, blue: 7/255, alpha: 1)
         
         
-        let standardPointPosition = CGPoint(x: frame.midX, y: frame.midY+310)
-        let blitzPointPosition = CGPoint(x: frame.midX, y: frame.midY+130)
-        let awardPointPosition = CGPoint(x: frame.midX, y: frame.midY-50)
-        let storePointPosition = CGPoint(x: frame.midX, y: frame.midY-230)
+        let standardPointPosition = CGPoint(x: frame.midX, y: frame.midY+390)
+        let blitzPointPosition = CGPoint(x: frame.midX, y: frame.midY+210)
+        let awardPointPosition = CGPoint(x: frame.midX, y: frame.midY+30)
+        let storePointPosition = CGPoint(x: frame.midX, y: frame.midY-150)
         
         let standardButton = SKSpriteNode(color: standardButtonColor, size: buttonSize)
         standardButton.position = standardPointPosition
@@ -124,9 +125,9 @@ class SelectModeScene: SKScene{
     }
     
     func displayCoinInfo(){
-        let offsetX:CGFloat = 175
-        let offsetY:CGFloat = 430
-        let coinDist:CGFloat = 45
+        let offsetX:CGFloat = 160
+        let offsetY:CGFloat = 325
+        let coinDist:CGFloat = 65
         
         let goldLabel = SKLabelNode(fontNamed: "DIN Alternate Bold")
         let formatter = NumberFormatter()
@@ -142,9 +143,33 @@ class SelectModeScene: SKScene{
         
         let goldImage = SKSpriteNode(texture: del.coinFrames[0])
         goldImage.position = CGPoint(x:frame.midX-offsetX-coinDist, y:frame.midY-offsetY)
-        goldImage.size = CGSize(width: 65, height: 65)
+        goldImage.size = CGSize(width: 75, height: 75)
         addChild(goldImage)
         goldImage.run(SKAction.repeatForever(SKAction.animate(with: del.coinFrames, timePerFrame: 0.04, resize: false, restore: true)), withKey: "rotatingCoin")
+    }
+    
+    func displayMercInfo(){
+        let offsetX:CGFloat = 160
+        let offsetY:CGFloat = 445
+        let imgDist:CGFloat = 65
+        
+        let mercImg = SKSpriteNode(imageNamed: "mercenaryAlien-lightGrey")
+        mercImg.position = CGPoint(x:frame.midX-offsetX-imgDist, y:frame.midY-offsetY)
+        mercImg.size = CGSize(width: 85, height: 85)
+        mercImg.zPosition = 10
+        addChild(mercImg)
+        
+        let mercLabel = SKLabelNode(fontNamed: "DIN Alternate Bold")
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        let labelText = formatter.string(from: NSNumber(value:del.numMercs))
+        mercLabel.horizontalAlignmentMode = .left
+        mercLabel.verticalAlignmentMode = .center
+        mercLabel.text = labelText
+        mercLabel.position = CGPoint(x: frame.midX-offsetX, y: frame.midY-offsetY)
+        mercLabel.fontColor = SKColor.white
+        mercLabel.fontSize = 70
+        addChild(mercLabel)
     }
     
     func initSoundButton(){

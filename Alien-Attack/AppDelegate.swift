@@ -19,6 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var recentScore: Int = 0
     var highScore: Int = 0
     var numGold: Int = 0
+    var numMercs: Int = 0
     
     var isBlitz: Bool = false
     var isMute: Bool = false

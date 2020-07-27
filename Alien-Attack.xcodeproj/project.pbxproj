@@ -15,7 +15,6 @@
 		3C51468E24A51FFA0074E9AE /* IntroScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3C51468D24A51FFA0074E9AE /* IntroScene.sks */; };
 		3C51469024B2B6960074E9AE /* SelectModeScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3C51468F24B2B6960074E9AE /* SelectModeScene.sks */; };
 		3C51469224B2B6B10074E9AE /* SelectModeScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C51469124B2B6B10074E9AE /* SelectModeScene.swift */; };
-		3C5EB2A124C41A4500AF8398 /* shipLanding.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3C5EB29F24C41A4500AF8398 /* shipLanding.wav */; };
 		3C956A8E24C5756300D09B93 /* buttonNoise.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3C956A8C24C5756300D09B93 /* buttonNoise.wav */; };
 		3C956A9324C661AE00D09B93 /* lossNoises.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3C956A9224C661AE00D09B93 /* lossNoises.wav */; };
 		3C956A9524C6811B00D09B93 /* alienDestroyed.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3C956A9424C6811B00D09B93 /* alienDestroyed.wav */; };
@@ -64,7 +63,6 @@
 		3C51468D24A51FFA0074E9AE /* IntroScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = IntroScene.sks; sourceTree = "<group>"; };
 		3C51468F24B2B6960074E9AE /* SelectModeScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SelectModeScene.sks; sourceTree = "<group>"; };
 		3C51469124B2B6B10074E9AE /* SelectModeScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectModeScene.swift; sourceTree = "<group>"; };
-		3C5EB29F24C41A4500AF8398 /* shipLanding.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = shipLanding.wav; sourceTree = "<group>"; };
 		3C956A8C24C5756300D09B93 /* buttonNoise.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = buttonNoise.wav; sourceTree = "<group>"; };
 		3C956A9224C661AE00D09B93 /* lossNoises.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = lossNoises.wav; sourceTree = "<group>"; };
 		3C956A9424C6811B00D09B93 /* alienDestroyed.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = alienDestroyed.wav; sourceTree = "<group>"; };
@@ -178,7 +176,6 @@
 			children = (
 				3C3F160324CEB820002EBD61 /* shipLanding-faster.mp3 */,
 				3C956A9424C6811B00D09B93 /* alienDestroyed.wav */,
-				3C5EB29F24C41A4500AF8398 /* shipLanding.wav */,
 				3C956A8C24C5756300D09B93 /* buttonNoise.wav */,
 				3C956A9224C661AE00D09B93 /* lossNoises.wav */,
 			);
@@ -362,7 +359,6 @@
 				3CEC79162461E83E00C4A1C7 /* Main.storyboard in Resources */,
 				3C956A8E24C5756300D09B93 /* buttonNoise.wav in Resources */,
 				3C3F160224CC4154002EBD61 /* Coins3.atlas in Resources */,
-				3C5EB2A124C41A4500AF8398 /* shipLanding.wav in Resources */,
 				3C51468E24A51FFA0074E9AE /* IntroScene.sks in Resources */,
 				3C3F160424CEB820002EBD61 /* shipLanding-faster.mp3 in Resources */,
 				3CEC790D2461E83E00C4A1C7 /* GameScene.sks in Resources */,
