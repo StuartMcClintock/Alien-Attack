@@ -10,7 +10,6 @@ import Foundation
 import SpriteKit
 
 class ReceiveAwardScene: SKScene{
-    
     var del: AppDelegate!
     
     override func didMove(to view: SKView) {
