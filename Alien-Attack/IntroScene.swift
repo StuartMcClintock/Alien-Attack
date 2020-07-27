@@ -26,7 +26,7 @@ class IntroScene: SKScene{
         makeLandingNoise()
         displayBackground()
         introAnimation()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 10.0, execute: { [weak self] in
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3.8, execute: { [weak self] in
             self?.displayText()
         })
     }
@@ -40,7 +40,7 @@ class IntroScene: SKScene{
             try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.ambient)
             try AVAudioSession.sharedInstance().setActive(true)
             
-            let soundPath = Bundle.main.path(forResource: "shipLanding", ofType: "wav")
+            let soundPath = Bundle.main.path(forResource: "shipLanding-faster", ofType: "mp3")
             audioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: soundPath!))
             audioPlayer?.play()
         }
@@ -53,7 +53,7 @@ class IntroScene: SKScene{
         saucer.position = CGPoint(x: frame.midX, y: frame.maxY+100)
         saucer.size = CGSize(width: 500, height: 184)
         addChild(saucer)
-        let saucerPath = SKAction.moveTo(y: frame.midY-485, duration: 9)
+        let saucerPath = SKAction.moveTo(y: frame.midY-485, duration: 3.3)
         saucer.run(saucerPath)
     }
     

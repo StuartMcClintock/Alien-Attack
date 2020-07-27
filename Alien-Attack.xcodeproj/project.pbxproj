@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3C3F160224CC4154002EBD61 /* Coins3.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 3C3F160124CC4154002EBD61 /* Coins3.atlas */; };
+		3C3F160424CEB820002EBD61 /* shipLanding-faster.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3C3F160324CEB820002EBD61 /* shipLanding-faster.mp3 */; };
 		3C51468824A32D900074E9AE /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C51468724A32D900074E9AE /* GameOverScene.swift */; };
 		3C51468A24A32DC90074E9AE /* GameOverScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3C51468924A32DC90074E9AE /* GameOverScene.sks */; };
 		3C51468C24A51FDD0074E9AE /* IntroScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C51468B24A51FDD0074E9AE /* IntroScene.swift */; };
@@ -56,6 +57,7 @@
 
 /* Begin PBXFileReference section */
 		3C3F160124CC4154002EBD61 /* Coins3.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Coins3.atlas; sourceTree = "<group>"; };
+		3C3F160324CEB820002EBD61 /* shipLanding-faster.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "shipLanding-faster.mp3"; sourceTree = "<group>"; };
 		3C51468724A32D900074E9AE /* GameOverScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverScene.swift; sourceTree = "<group>"; };
 		3C51468924A32DC90074E9AE /* GameOverScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameOverScene.sks; sourceTree = "<group>"; };
 		3C51468B24A51FDD0074E9AE /* IntroScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroScene.swift; sourceTree = "<group>"; };
@@ -174,6 +176,7 @@
 		3CB09C4224BAD1FB008B9E8B /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				3C3F160324CEB820002EBD61 /* shipLanding-faster.mp3 */,
 				3C956A9424C6811B00D09B93 /* alienDestroyed.wav */,
 				3C5EB29F24C41A4500AF8398 /* shipLanding.wav */,
 				3C956A8C24C5756300D09B93 /* buttonNoise.wav */,
@@ -361,6 +364,7 @@
 				3C3F160224CC4154002EBD61 /* Coins3.atlas in Resources */,
 				3C5EB2A124C41A4500AF8398 /* shipLanding.wav in Resources */,
 				3C51468E24A51FFA0074E9AE /* IntroScene.sks in Resources */,
+				3C3F160424CEB820002EBD61 /* shipLanding-faster.mp3 in Resources */,
 				3CEC790D2461E83E00C4A1C7 /* GameScene.sks in Resources */,
 				3CEC79182461E83F00C4A1C7 /* Assets.xcassets in Resources */,
 				3CB09C4624BB9EA4008B9E8B /* Disappear.sks in Resources */,
