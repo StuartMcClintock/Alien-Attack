@@ -16,14 +16,19 @@ class IntroScene: SKScene{
     var audioPlayer: AVAudioPlayer?
     var del: AppDelegate!
     
+    var background:SKSpriteNode!
+    
     override func didMove(to view: SKView){
         let app = UIApplication.shared
         del = app.delegate as? AppDelegate
         
         self.backgroundColor = SKColor.white
-        displayBackground()
-        displayText()
         makeLandingNoise()
+        displayBackground()
+        introAnimation()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 10.0, execute: { [weak self] in
+            self?.displayText()
+        })
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -42,16 +47,28 @@ class IntroScene: SKScene{
         catch {}
     }
     
+    func introAnimation(){
+        let saucer = SKSpriteNode(imageNamed: "saucer")
+        saucer.zPosition = 0
+        saucer.position = CGPoint(x: frame.midX, y: frame.maxY+100)
+        saucer.size = CGSize(width: 500, height: 184)
+        addChild(saucer)
+        let saucerPath = SKAction.moveTo(y: frame.midY-485, duration: 9)
+        saucer.run(saucerPath)
+    }
+    
     func displayBackground(){
-        let background = SKSpriteNode(imageNamed: "whitehouse")
+        background = SKSpriteNode(imageNamed: "whitehouse")
         background.position = CGPoint(x:frame.midX, y:frame.midY)
         background.blendMode = .replace
-        background.alpha = 0.3
+        background.alpha = 1
         background.zPosition = -1
         addChild(background)
     }
     
     func displayText(){
+        background.alpha = 0.3
+        
         let headingLabel = SKLabelNode(fontNamed: "DIN Alternate Bold")
         headingLabel.fontSize = 52
         headingLabel.fontColor = .white
