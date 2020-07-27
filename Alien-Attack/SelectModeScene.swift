@@ -69,10 +69,10 @@ class SelectModeScene: SKScene{
         let storeButtonColor = SKColor.init(displayP3Red: 17/255, green: 125/255, blue: 7/255, alpha: 1)
         
         
-        let awardPointPosition = CGPoint(x: frame.midX, y: frame.midY+310)
-        let storePointPosition = CGPoint(x: frame.midX, y: frame.midY+130)
-        let standardPointPosition = CGPoint(x: frame.midX, y: frame.midY-50)
-        let blitzPointPosition = CGPoint(x: frame.midX, y: frame.midY-230)
+        let standardPointPosition = CGPoint(x: frame.midX, y: frame.midY+310)
+        let blitzPointPosition = CGPoint(x: frame.midX, y: frame.midY+130)
+        let awardPointPosition = CGPoint(x: frame.midX, y: frame.midY-50)
+        let storePointPosition = CGPoint(x: frame.midX, y: frame.midY-230)
         
         let standardButton = SKSpriteNode(color: standardButtonColor, size: buttonSize)
         standardButton.position = standardPointPosition
