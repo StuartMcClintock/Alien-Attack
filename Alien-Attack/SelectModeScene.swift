@@ -138,7 +138,10 @@ class SelectModeScene: SKScene{
         goldLabel.text = labelText
         goldLabel.position = CGPoint(x: frame.midX-offsetX, y: frame.midY-offsetY)
         goldLabel.fontColor = SKColor.white
-        goldLabel.fontSize = 58
+        goldLabel.fontSize = 70
+        if (del.numGold >= 100000000000){
+            goldLabel.fontSize = 50
+        }
         addChild(goldLabel)
         
         let goldImage = SKSpriteNode(texture: del.coinFrames[0])
@@ -153,7 +156,7 @@ class SelectModeScene: SKScene{
         let offsetY:CGFloat = 445
         let imgDist:CGFloat = 65
         
-        let mercImg = SKSpriteNode(imageNamed: "mercenaryAlien-lightGrey")
+        let mercImg = SKSpriteNode(imageNamed: "mercenaryAlien-white")
         mercImg.position = CGPoint(x:frame.midX-offsetX-imgDist, y:frame.midY-offsetY)
         mercImg.size = CGSize(width: 85, height: 85)
         mercImg.zPosition = 10

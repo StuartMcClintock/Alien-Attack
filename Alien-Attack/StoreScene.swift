@@ -88,7 +88,7 @@ class StoreScene: SKScene{
             
             
             
-            let mercImage = SKSpriteNode(imageNamed: "mercenaryAlien-Black")
+            let mercImage = SKSpriteNode(imageNamed: "mercenaryAlien-black")
             mercImage.size = CGSize(width: 100, height: 100)
             mercImage.position = CGPoint(x: 80, y: frame.maxY-yOffset+(gapSpace/2))
             addChild(mercImage)
@@ -145,6 +145,7 @@ class StoreScene: SKScene{
             if touchedNode.name == "back"{
                 returnToMain()
             }
+            
         }
     }
     
