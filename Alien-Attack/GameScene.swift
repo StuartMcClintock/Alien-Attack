@@ -119,8 +119,8 @@ class GameScene: SKScene {
     }
     
     func initMercImg(){
-        mercImage = SKSpriteNode(texture: SKTexture(imageNamed: "mercenaryAlien-clickable"), size: CGSize(width: 170, height: 150))
-        mercImage.position = CGPoint(x: frame.midX, y: frame.maxY-200)
+        mercImage = SKSpriteNode(texture: SKTexture(imageNamed: "mercenaryAlien-clickable"), size: CGSize(width: 144, height: 120))
+        mercImage.position = CGPoint(x: 80, y: frame.maxY-375)
         mercImage.name = "Merc Button"
         addChild(mercImage)
         updateMercs()
@@ -128,8 +128,8 @@ class GameScene: SKScene {
     
     func updateMercs(){
         if del.numMercs == 0{
-            mercImage.texture = SKTexture(imageNamed: "mercenaryAlien-clickable")
-            mercImage.alpha = 0.4
+            mercImage.texture = SKTexture(imageNamed: "mercenaryAlien-notClickable")
+            mercImage.alpha = 0.3
         }
     }
     
@@ -148,6 +148,12 @@ class GameScene: SKScene {
         for touch in touches{
             let touchedNode = atPoint(touch.location(in: self))
             let name:String = touchedNode.name ?? ""
+            if name == "Merc Button"{
+                if (!gameOver){
+                    mercButtonTapped()
+                }
+                return
+            }
             if name == ""{
                 return
             }
@@ -158,6 +164,11 @@ class GameScene: SKScene {
                 processTap(col: Int(col)!, row: Int(row)!)
             }
         }
+    }
+    
+    func mercButtonTapped(){
+        del.numMercs -= 1
+        updateMercs()
     }
     
     func processTap(col: Int, row: Int){
