@@ -103,7 +103,7 @@ class ReceiveAwardScene: SKScene{
     func displayGold(alreadyHad:Bool){
         var offsetY:CGFloat = 155
         var offsetX:CGFloat = 0
-        var coinDist:CGFloat = 50
+        var coinDist:CGFloat = 45
         var coinSize = 55
         var labelFontSize:CGFloat = 62
         var labelColor = SKColor.black

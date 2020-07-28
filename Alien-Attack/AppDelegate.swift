@@ -60,7 +60,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             addedGold = Int(score/10)
         }
         numGold += addedGold
-        print(addedGold)
         UserDefaults.standard.set(numGold, forKey: "numGold")
     }
     

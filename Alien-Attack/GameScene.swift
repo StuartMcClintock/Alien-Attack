@@ -58,6 +58,7 @@ class GameScene: SKScene {
     
     var gameOver = false
     
+    var mercImage: SKSpriteNode!
     
     override func didMove(to view: SKView){
         
@@ -113,7 +114,22 @@ class GameScene: SKScene {
             }
         }
         
+        initMercImg()
         dispFaces()
+    }
+    
+    func initMercImg(){
+        mercImage = SKSpriteNode(texture: SKTexture(imageNamed: "mercenaryAlien-clickable"), size: CGSize(width: 170, height: 150))
+        mercImage.position = CGPoint(x: frame.midX, y: frame.maxY-200)
+        addChild(mercImage)
+        updateMercs()
+    }
+    
+    func updateMercs(){
+        if del.numMercs == 0{
+            mercImage.texture = SKTexture(imageNamed: "mercenaryAlien-clickable")
+            mercImage.alpha = 0.4
+        }
     }
     
     func addFace(at position: CGPoint, name:String){

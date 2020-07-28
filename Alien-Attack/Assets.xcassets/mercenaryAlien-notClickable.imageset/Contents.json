@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "mercenaryAlien-lightGrey.png",
+      "filename" : "mercenaryAlien-notClickable.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
