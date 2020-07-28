@@ -19,6 +19,7 @@ class GameViewController: UIViewController {
         del = UIApplication.shared.delegate as? AppDelegate
         
         del.numGold = UserDefaults.standard.integer(forKey: "numGold")
+        del.numMercs = UserDefaults.standard.integer(forKey: "numMercs")
         del.buildCoinFrames()
         
         if let view = self.view as! SKView? {

@@ -221,6 +221,8 @@ class GameScene: SKScene {
     }
     
     func endScene(){
+        UserDefaults.standard.set(del.numMercs, forKey: "numMercs")
+        
         if (totalVisible >= MAX_FACES){
             gameOver = true
             del.addGold(score: scoreVal)
