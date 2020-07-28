@@ -121,6 +121,7 @@ class GameScene: SKScene {
     func initMercImg(){
         mercImage = SKSpriteNode(texture: SKTexture(imageNamed: "mercenaryAlien-clickable"), size: CGSize(width: 170, height: 150))
         mercImage.position = CGPoint(x: frame.midX, y: frame.maxY-200)
+        mercImage.name = "Merc Button"
         addChild(mercImage)
         updateMercs()
     }
@@ -144,23 +145,18 @@ class GameScene: SKScene {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        let touch:UITouch = touches[touches.startIndex] as UITouch
-        let positionInScene = touch.location(in: self)
-        let touchedNode = self.nodes(at: positionInScene)
-        
-        
-        let description = touchedNode.description
-        let name = description.components(separatedBy: " ")[1]
-        let coords = name.components(separatedBy: "'")[1]
-        let splitCoords = coords.components(separatedBy: ",")
-        
-        let col = splitCoords[0]
-        if (col == "(null)"){
-            return
-        }
-        let row = splitCoords[1]
-        if (!gameOver){
-            processTap(col: Int(col)!, row: Int(row)!)
+        for touch in touches{
+            let touchedNode = atPoint(touch.location(in: self))
+            let name:String = touchedNode.name ?? ""
+            if name == ""{
+                return
+            }
+            let splitCoords = name.components(separatedBy: ",")
+            let col = splitCoords[0]
+            let row = splitCoords[1]
+            if (!gameOver){
+                processTap(col: Int(col)!, row: Int(row)!)
+            }
         }
     }
     
