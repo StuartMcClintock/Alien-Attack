@@ -131,7 +131,7 @@ class GameScene: SKScene {
     func updateMercs(){
         if del.numMercs == 0{
             mercImage.texture = SKTexture(imageNamed: "mercenaryAlien-notClickable")
-            mercImage.alpha = 0.3
+            mercImage.alpha = 0.25
         }
     }
     
@@ -171,8 +171,13 @@ class GameScene: SKScene {
     func mercButtonTapped(){
         del.numMercs -= 1
         for row in 0..<numRows{
-            
+            for col in 0..<numCols{
+                processTap(col: col, row: row)
+            }
         }
+        print(waitTime)
+        waitTime = waitTime/(pow(waitTimeMultiplier, 5))
+        print(waitTime)
         updateMercs()
     }
     
