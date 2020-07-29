@@ -23,8 +23,8 @@ class GameScene: SKScene {
     var faces = [SKSpriteNode]()
     var poofs = [SKEmitterNode?]()
     
-    let numCols:CGFloat = 6
-    let numRows:CGFloat = 5
+    let numCols = 6
+    let numRows = 5
     
     var scoreVal = 0{
         didSet{
@@ -106,11 +106,11 @@ class GameScene: SKScene {
         addChild(highScoreLabel)
         highScoreVal = del.highScore
         
-        let gapX = (frame.maxX)/numRows
-        let gapY = (frame.midY)/numCols
+        let gapX = (frame.maxX)/CGFloat(numRows)
+        let gapY = (frame.midY)/CGFloat(numCols)
         
-        for row in 0..<Int(numRows) {
-            for col in 0..<Int(numCols) {
+        for row in 0..<numRows {
+            for col in 0..<numCols {
                 addFace(at: CGPoint(x:70+Int(gapX*CGFloat(row)), y:Int(frame.midY)-Int(CGFloat(col)*gapY)+30), name:String(col)+","+String(row))
                 poofs.append(nil)
             }
@@ -170,11 +170,14 @@ class GameScene: SKScene {
     
     func mercButtonTapped(){
         del.numMercs -= 1
+        for row in 0..<numRows{
+            
+        }
         updateMercs()
     }
     
     func processTap(col: Int, row: Int){
-        if (faces[col+row*Int(numCols)].alpha == 1){
+        if (faces[col+row*numCols].alpha == 1){
             scoreVal += 1
             if (scoreVal > highScoreVal){
                 highScoreVal = scoreVal
@@ -182,10 +185,10 @@ class GameScene: SKScene {
             }
             totalVisible -= 1
             
-            faces[col+row*Int(numCols)].alpha = 0
+            faces[col+row*numCols].alpha = 0
             if let poof = SKEmitterNode(fileNamed: "Disappear"){
-                poof.position = faces[col+row*Int(numCols)].position
-                poofs[col+row*Int(numCols)] = poof
+                poof.position = faces[col+row*numCols].position
+                poofs[col+row*numCols] = poof
                 addChild(poof)
             }
             
@@ -218,9 +221,9 @@ class GameScene: SKScene {
         }
         waitTime *= waitTimeMultiplier
         
-        var dispNum = Int.random(in: 0..<Int(numCols*numRows))
+        var dispNum = Int.random(in: 0..<(numCols*numRows))
         while (faces[dispNum].alpha == 1){
-            dispNum = Int.random(in: 0..<Int(numCols*numRows))
+            dispNum = Int.random(in: 0..<(numCols*numRows))
         }
         
         // Hide potential leftover animations from last time face was tapped
