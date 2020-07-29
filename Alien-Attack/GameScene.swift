@@ -175,9 +175,7 @@ class GameScene: SKScene {
                 processTap(col: col, row: row)
             }
         }
-        print(waitTime)
         waitTime = waitTime/(pow(waitTimeMultiplier, 5))
-        print(waitTime)
         updateMercs()
     }
     

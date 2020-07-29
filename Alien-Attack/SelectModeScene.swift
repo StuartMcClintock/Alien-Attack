@@ -20,7 +20,6 @@ class SelectModeScene: SKScene{
         
         let background = SKSpriteNode(imageNamed: "whitehouse")
         background.position = CGPoint(x:frame.midX, y:frame.midY)
-        background.blendMode = .replace
         background.alpha = 0.2
         background.zPosition = -1
         addChild(background)
@@ -159,7 +158,6 @@ class SelectModeScene: SKScene{
         let mercImg = SKSpriteNode(imageNamed: "mercenaryAlien-white")
         mercImg.position = CGPoint(x:frame.midX-offsetX-imgDist, y:frame.midY-offsetY)
         mercImg.size = CGSize(width: 85, height: 85)
-        mercImg.zPosition = 10
         addChild(mercImg)
         
         let mercLabel = SKLabelNode(fontNamed: "DIN Alternate Bold")
