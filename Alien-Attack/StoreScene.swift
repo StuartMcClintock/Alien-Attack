@@ -21,6 +21,8 @@ class StoreScene: SKScene{
     
     let moneyGreen = SKColor.init(displayP3Red: 17/255, green: 125/255, blue: 7/255, alpha: 1)
     
+    var compressed = true
+    
     enum listingType{
         case mercenary
     }
@@ -41,8 +43,8 @@ class StoreScene: SKScene{
         self.backgroundColor = SKColor.white
         addBackButton()
         createListings()
-        displayUserHoldings()
         drawListings()
+        displayUserHoldings()
     }
     
     func createListings(){
@@ -59,7 +61,11 @@ class StoreScene: SKScene{
     
     func drawListings(){
         let innerGap:CGFloat = 150
-        let firstGap:CGFloat = 200
+        var firstGap:CGFloat = 150
+        if UIScreen.main.bounds.height > 800{
+            compressed = false
+            firstGap = 200
+        }
         var yOffset = innerGap+firstGap
         
         var rowNum = 0
@@ -161,8 +167,14 @@ class StoreScene: SKScene{
     func displayUserHoldings(){
         /*var userGoldLabel: SKLabelNode
         var userMercLabel: SKLabelNode*/
+        
+        var yOffset:CGFloat = 115
+        if compressed{
+            yOffset = 75
+        }
+        
         let goldImage = SKSpriteNode(texture: del.coinFrames[0])
-        goldImage.position = CGPoint(x: 60, y: frame.maxY-115)
+        goldImage.position = CGPoint(x: 60, y: frame.maxY-yOffset)
         goldImage.size = CGSize(width:75, height:75)
         addChild(goldImage)
         goldImage.run(SKAction.repeatForever(SKAction.animate(with: del.coinFrames, timePerFrame: 0.04, resize: false, restore: true)), withKey: "rotatingCoin")
@@ -172,19 +184,19 @@ class StoreScene: SKScene{
         userGoldLabel.horizontalAlignmentMode = .left
         userGoldLabel.fontSize = 54
         userGoldLabel.fontColor = SKColor.black
-        userGoldLabel.position = CGPoint(x: 125, y: frame.maxY-115)
+        userGoldLabel.position = CGPoint(x: 125, y: frame.maxY-yOffset)
         addChild(userGoldLabel)
         
         userMercLabel = SKLabelNode(fontNamed: "DIN Alternate Bold")
         userMercLabel.verticalAlignmentMode = .center
         userMercLabel.fontSize = 54
         userMercLabel.fontColor = SKColor.black
-        userMercLabel.position = CGPoint(x: frame.maxX-125, y: frame.maxY-115)
+        userMercLabel.position = CGPoint(x: frame.maxX-125, y: frame.maxY-yOffset)
         addChild(userMercLabel)
         
         let mercImage = SKSpriteNode(imageNamed: "mercenaryAlien-black")
         mercImage.size = CGSize(width: 75, height: 75)
-        mercImage.position = CGPoint(x: frame.maxX-215, y: frame.maxY-115)
+        mercImage.position = CGPoint(x: frame.maxX-200, y: frame.maxY-yOffset)
         addChild(mercImage)
         
         updateUserLabels()
