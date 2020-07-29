@@ -21,8 +21,10 @@ class GameScene: SKScene {
     var highScoreLabel: SKLabelNode!
     
     var faces = [SKSpriteNode]()
-    
     var poofs = [SKEmitterNode?]()
+    
+    let numCols:CGFloat = 6
+    let numRows:CGFloat = 5
     
     var scoreVal = 0{
         didSet{
@@ -104,11 +106,11 @@ class GameScene: SKScene {
         addChild(highScoreLabel)
         highScoreVal = del.highScore
         
-        let gapX = (frame.maxX)/5
-        let gapY = (frame.midY)/6
+        let gapX = (frame.maxX)/numRows
+        let gapY = (frame.midY)/numCols
         
-        for row in 0..<5 {
-            for col in 0..<6 {
+        for row in 0..<Int(numRows) {
+            for col in 0..<Int(numCols) {
                 addFace(at: CGPoint(x:70+Int(gapX*CGFloat(row)), y:Int(frame.midY)-Int(CGFloat(col)*gapY)+30), name:String(col)+","+String(row))
                 poofs.append(nil)
             }
@@ -172,7 +174,7 @@ class GameScene: SKScene {
     }
     
     func processTap(col: Int, row: Int){
-        if (faces[col+row*6].alpha == 1){
+        if (faces[col+row*Int(numCols)].alpha == 1){
             scoreVal += 1
             if (scoreVal > highScoreVal){
                 highScoreVal = scoreVal
@@ -180,10 +182,10 @@ class GameScene: SKScene {
             }
             totalVisible -= 1
             
-            faces[col+row*6].alpha = 0
+            faces[col+row*Int(numCols)].alpha = 0
             if let poof = SKEmitterNode(fileNamed: "Disappear"){
-                poof.position = faces[col+row*6].position
-                poofs[col+row*6] = poof
+                poof.position = faces[col+row*Int(numCols)].position
+                poofs[col+row*Int(numCols)] = poof
                 addChild(poof)
             }
             
@@ -216,9 +218,9 @@ class GameScene: SKScene {
         }
         waitTime *= waitTimeMultiplier
         
-        var dispNum = Int.random(in: 0..<30)
+        var dispNum = Int.random(in: 0..<Int(numCols*numRows))
         while (faces[dispNum].alpha == 1){
-            dispNum = Int.random(in: 0..<30)
+            dispNum = Int.random(in: 0..<Int(numCols*numRows))
         }
         
         // Hide potential leftover animations from last time face was tapped

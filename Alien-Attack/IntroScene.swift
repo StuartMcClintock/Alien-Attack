@@ -53,7 +53,7 @@ class IntroScene: SKScene{
         saucer.position = CGPoint(x: frame.midX, y: frame.maxY+100)
         saucer.size = CGSize(width: 500, height: 184)
         addChild(saucer)
-        let saucerPath = SKAction.moveTo(y: frame.midY-485, duration: 3.3)
+        let saucerPath = SKAction.moveTo(y: 200, duration: 3.3)
         saucer.run(saucerPath)
     }
     
