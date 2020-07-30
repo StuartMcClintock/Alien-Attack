@@ -116,6 +116,9 @@ class ReceiveAwardScene: SKScene{
             labelFontSize = 76
             labelColor = SKColor.white
         }
+        else{
+            addBonus()
+        }
         
         let goldLabel = SKLabelNode(fontNamed: "DIN Alternate Bold")
         let formatter = NumberFormatter()
@@ -134,6 +137,35 @@ class ReceiveAwardScene: SKScene{
         goldImage.size = CGSize(width: coinSize, height: coinSize)
         addChild(goldImage)
         goldImage.run(SKAction.repeatForever(SKAction.animate(with: del.coinFrames, timePerFrame: 0.04, resize: false, restore: true)), withKey: "rotatingCoin")
+    }
+    
+    func addBonus(){
+        if !del.isBlitz && del.recentScore >= del.STAN_GOLD_SCORE{
+            del.addedGold += del.GOLD_BONUS
+            del.numGold += del.GOLD_BONUS
+        }
+        else if del.isBlitz && del.recentScore >= del.BLITZ_GOLD_SCORE{
+            del.addedGold += del.GOLD_BONUS
+            del.numGold += del.GOLD_BONUS
+        }
+        else if !del.isBlitz && del.recentScore >= del.STAN_SILVER_SCORE{
+            del.addedGold += del.SILVER_BONUS
+            del.numGold += del.SILVER_BONUS
+        }
+        else if del.isBlitz && del.recentScore >= del.BLITZ_SILVER_SCORE{
+            del.addedGold += del.SILVER_BONUS
+            del.numGold += del.SILVER_BONUS
+        }
+        else if !del.isBlitz && del.recentScore >= del.STAN_BRONZE_SCORE{
+            del.addedGold += del.BRONZE_BONUS
+            del.numGold += del.BRONZE_BONUS
+        }
+        else if del.isBlitz && del.recentScore >= del.BLITZ_BRONZE_SCORE{
+            del.addedGold += del.BRONZE_BONUS
+            del.numGold += del.BRONZE_BONUS
+        }
+        
+        UserDefaults.standard.set(del.numGold, forKey: "numGold")
     }
     
     func returnToMain(){

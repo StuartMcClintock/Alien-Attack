@@ -31,9 +31,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let BLITZ_SILVER_SCORE = 75
     let BLITZ_GOLD_SCORE = 150
     
-    let STAN_BRONZE_SCORE = 10
+    let STAN_BRONZE_SCORE = 20
     let STAN_SILVER_SCORE = 250
     let STAN_GOLD_SCORE = 500
+    
+    let BRONZE_BONUS = 1000
+    let SILVER_BONUS = 10000
+    let GOLD_BONUS = 100000
     
     func buttonSound(){
         if !isMute{
