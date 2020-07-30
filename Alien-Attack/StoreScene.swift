@@ -257,15 +257,17 @@ class StoreScene: SKScene{
         if hasFunds{
             fileName = "purchaseSuccess"
         }
-        do{
-            try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.ambient)
-            try AVAudioSession.sharedInstance().setActive(true)
-            
-            let soundPath = Bundle.main.path(forResource: fileName, ofType: "mp3")
-            audioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: soundPath!))
-            audioPlayer?.play()
+        if (!del.isMute){
+            do{
+                try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.ambient)
+                try AVAudioSession.sharedInstance().setActive(true)
+                
+                let soundPath = Bundle.main.path(forResource: fileName, ofType: "mp3")
+                audioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: soundPath!))
+                audioPlayer?.play()
+            }
+            catch {}
         }
-        catch {}
     }
     
     func updateButtonColors(){
