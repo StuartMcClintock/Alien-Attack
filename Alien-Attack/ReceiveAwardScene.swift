@@ -173,6 +173,9 @@ class ReceiveAwardScene: SKScene{
         
         let modeScene = GameScene(fileNamed: "SelectModeScene")
         modeScene?.scaleMode = .aspectFill
+        if UIDevice.current.model == "iPad"{
+            modeScene?.scaleMode = .fill
+        }
         self.view?.presentScene(modeScene!, transition: .flipVertical(withDuration: 0.5))
     }
     

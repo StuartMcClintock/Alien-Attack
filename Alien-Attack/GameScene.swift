@@ -184,7 +184,7 @@ class GameScene: SKScene {
             scoreVal += 1
             if (scoreVal > highScoreVal){
                 highScoreVal = scoreVal
-                highScoreLabel.fontColor = .init(displayP3Red: 160/255, green: 0, blue: 0, alpha: 1)
+                highScoreLabel.fontColor = .init(displayP3Red: 121/255, green: 19/255, blue: 50/255, alpha: 1)
             }
             totalVisible -= 1
             
@@ -363,6 +363,9 @@ class GameScene: SKScene {
     func goToAwardScene(){
         let awardScene = GameScene(fileNamed: "ReceiveAwardScene")
         awardScene?.scaleMode = .aspectFill
+        if UIDevice.current.model == "iPad"{
+            awardScene?.scaleMode = .fill
+        }
         self.view?.presentScene(awardScene!, transition: .flipVertical(withDuration: 0.5))
         
     }

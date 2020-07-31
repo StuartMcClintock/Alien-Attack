@@ -98,6 +98,9 @@ class IntroScene: SKScene{
         del.buttonSound()
         let modeScene = GameScene(fileNamed: "SelectModeScene")
         modeScene?.scaleMode = .aspectFill
+        if UIDevice.current.model == "iPad"{
+            modeScene?.scaleMode = .fill
+        }
         self.view?.presentScene(modeScene!)
     }
 }

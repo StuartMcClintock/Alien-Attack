@@ -62,7 +62,7 @@ class StoreScene: SKScene{
     func drawListings(){
         let innerGap:CGFloat = 150
         var firstGap:CGFloat = 150
-        if UIScreen.main.bounds.height > 800{
+        if UIDevice.current.model == "iPhone" && UIScreen.main.bounds.height > 800{
             compressed = false
             firstGap = 200
         }
@@ -288,6 +288,9 @@ class StoreScene: SKScene{
         
         let modeScene = GameScene(fileNamed: "SelectModeScene")
         modeScene?.scaleMode = .aspectFill
+        if UIDevice.current.model == "iPad"{
+            modeScene?.scaleMode = .fill
+        }
         self.view?.presentScene(modeScene!, transition: .doorsCloseVertical(withDuration: 0.4))
     }
 }

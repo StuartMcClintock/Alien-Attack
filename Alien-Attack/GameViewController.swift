@@ -22,11 +22,17 @@ class GameViewController: UIViewController {
         del.numMercs = UserDefaults.standard.integer(forKey: "numMercs")
         del.buildCoinFrames()
         
+        
+        print(UIScreen.main.bounds)
+        
         if let view = self.view as! SKView? {
             // Load the SKScene from 'GameScene.sks'
             if let scene = SKScene(fileNamed: "IntroScene") {
                 // Set the scale mode to scale to fit the window
                 scene.scaleMode = .aspectFill
+                if UIDevice.current.model == "iPad"{
+                    scene.scaleMode = .fill
+                }
                 
                 // Present the scene
                 view.presentScene(scene)
