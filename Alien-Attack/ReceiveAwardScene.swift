@@ -54,14 +54,19 @@ class ReceiveAwardScene: SKScene{
         let displayText = SKLabelNode(fontNamed: "DIN Alternate Bold")
         var awardImage: SKSpriteNode!
         
+        var yShift:CGFloat = 0
+        if UIDevice.current.model == "iPhone" && UIScreen.main.bounds.height > 800{
+            yShift = 30
+        }
+        
         displayGold(alreadyHad: UserDefaults.standard.bool(forKey: mode+awardLevel))
         
         if UserDefaults.standard.bool(forKey: mode+awardLevel){
             self.backgroundColor = SKColor.black
             awardImage = SKSpriteNode(imageNamed: "ribon"+awardLevel)
-            awardImage.position = CGPoint(x: frame.midX, y: frame.midY)
+            awardImage.position = CGPoint(x: frame.midX, y: frame.midY+15)
             awardImage.alpha = 0.25
-            displayText.position = CGPoint(x: frame.midX, y: frame.midY)
+            displayText.position = CGPoint(x: frame.midX, y: frame.midY+15)
             displayText.fontSize = 124
             displayText.fontColor = SKColor.white
             displayText.text = "Score:"
@@ -76,7 +81,7 @@ class ReceiveAwardScene: SKScene{
             self.backgroundColor = SKColor.white
             UserDefaults.standard.set(true, forKey: mode+awardLevel)
             awardImage = SKSpriteNode(imageNamed: mode+awardLevel)
-            awardImage.position = CGPoint(x: frame.midX, y: frame.midY+115)
+            awardImage.position = CGPoint(x: frame.midX, y: frame.midY+140-yShift)
             displayText.position = CGPoint(x:frame.midX, y: 210)
             displayText.zPosition = 2
             displayText.fontSize = 66
@@ -118,6 +123,10 @@ class ReceiveAwardScene: SKScene{
         }
         else{
             addBonus()
+        }
+        
+        if del.addedGold >= 10{
+            offsetX += CGFloat((String(del.addedGold).count-1)*25)
         }
         
         let goldLabel = SKLabelNode(fontNamed: "DIN Alternate Bold")

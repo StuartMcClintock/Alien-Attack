@@ -92,6 +92,29 @@ class IntroScene: SKScene{
         contLabel.numberOfLines = 2
         contLabel.text = "(tap to begin)"
         addChild(contLabel)
+        
+        addSkipButton()
+    }
+    
+    func addSkipButton(){
+        var yOffset:CGFloat = 0
+        if UIDevice.current.model == "iPhone" && UIScreen.main.bounds.height > 800{
+            yOffset = 35
+        }
+        
+        let skipButton = SKSpriteNode(color: SKColor.white, size: CGSize(width: 250, height: 85))
+        skipButton.position = CGPoint(x: frame.midX, y: frame.maxY-67-yOffset)
+        skipButton.name = "skip"
+        skipButton.alpha = 0.75
+        addChild(skipButton)
+        
+        let skipText = SKLabelNode(fontNamed: "DIN Alternate Bold")
+        skipText.position = CGPoint(x: frame.midX, y: frame.maxY-85-yOffset)
+        skipText.fontSize = 50
+        skipText.text = "Skip >>>"
+        skipText.name = "skip"
+        skipText.fontColor = SKColor.black
+        addChild(skipText)
     }
     
     func startNextScene(){
