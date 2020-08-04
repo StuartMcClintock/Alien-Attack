@@ -18,6 +18,12 @@ class IntroScene: SKScene{
     
     var background:SKSpriteNode!
     
+    var contLabel:SKLabelNode?
+    var saucer:SKSpriteNode?
+    var displayLabel:SKLabelNode!
+    
+    var stage:Int? = 0
+    
     override func didMove(to view: SKView){
         let app = UIApplication.shared
         del = app.delegate as? AppDelegate
@@ -27,12 +33,24 @@ class IntroScene: SKScene{
         displayBackground()
         introAnimation()
         DispatchQueue.main.asyncAfter(deadline: .now() + 3.8, execute: { [weak self] in
-            self?.displayText()
+            self?.displayIntro()
         })
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        startNextScene()
+        for touch in touches{
+            let touchedNode = atPoint(touch.location(in: self))
+            if touchedNode.name == "skip"{
+                startNextScene()
+            }
+        }
+        
+        if (stage == 0){
+            contLabel?.removeFromParent()
+            displayIntro()
+        }
+        
+        stage? += 1
     }
     
     func makeLandingNoise(){
@@ -48,13 +66,13 @@ class IntroScene: SKScene{
     }
     
     func introAnimation(){
-        let saucer = SKSpriteNode(imageNamed: "saucer")
-        saucer.zPosition = 0
-        saucer.position = CGPoint(x: frame.midX, y: frame.maxY+100)
-        saucer.size = CGSize(width: 500, height: 184)
-        addChild(saucer)
+        saucer = SKSpriteNode(imageNamed: "saucer")
+        saucer?.zPosition = 0
+        saucer?.position = CGPoint(x: frame.midX, y: frame.maxY+100)
+        saucer?.size = CGSize(width: 500, height: 184)
+        addChild(saucer!)
         let saucerPath = SKAction.moveTo(y: 200, duration: 3.3)
-        saucer.run(saucerPath)
+        saucer?.run(saucerPath)
     }
     
     func displayBackground(){
@@ -66,54 +84,51 @@ class IntroScene: SKScene{
         addChild(background)
     }
     
-    func displayText(){
-        background.alpha = 0.3
+    func displayIntro(){
+        if (stage != 0){
+            return
+        }
+        
+        background.alpha = 0.5
         
         let headingLabel = SKLabelNode(fontNamed: "DIN Alternate Bold")
-        headingLabel.fontSize = 52
+        headingLabel.fontSize = 72
         headingLabel.fontColor = .white
-        headingLabel.position = CGPoint(x: frame.midX, y: frame.midY+135)
-        headingLabel.numberOfLines = 2
-        headingLabel.text = "   THE WHITE HOUSE IS\nUNDER ALIEN INVASION!"
+        headingLabel.position = CGPoint(x: frame.midX, y: frame.midY-175)
+        headingLabel.numberOfLines = 3
+        headingLabel.text = "THE WHITE HOUSE\n        IS UNDER\n ALIEN INVASION!"
         addChild(headingLabel)
         
-        let descLabel = SKLabelNode(fontNamed: "DIN Alternate Bold")
-        descLabel.fontSize = 30.0
-        descLabel.fontColor = .white
-        descLabel.position = CGPoint(x: frame.midX, y: frame.midY-170)
-        descLabel.numberOfLines = 3
-        descLabel.text = "   Tap on the alien faces that pop up to\nremove them. Make sure that five faces don't\n   remain on the screen at the same time!"
-        addChild(descLabel)
+        contLabel = SKLabelNode(fontNamed: "DIN Alternate Bold")
+        contLabel?.fontSize = 32
+        contLabel?.fontColor = SKColor.white
+        contLabel?.alpha = 0.5
+        contLabel?.position = CGPoint(x: frame.midX, y: 230)
+        contLabel?.numberOfLines = 2
+        contLabel?.text = "(tap screen for instructions)"
+        if (stage == 0){
+            addChild(contLabel!)
+        }
         
-        let contLabel = SKLabelNode(fontNamed: "DIN Alternate Bold")
-        contLabel.fontSize = 38.0
-        contLabel.fontColor = .lightGray
-        contLabel.position = CGPoint(x: frame.midX, y: frame.midY-370)
-        contLabel.numberOfLines = 2
-        contLabel.text = "(tap to begin)"
-        addChild(contLabel)
-        
+        saucer?.removeFromParent()
         addSkipButton()
     }
     
     func addSkipButton(){
-        var yOffset:CGFloat = 0
-        if UIDevice.current.model == "iPhone" && UIScreen.main.bounds.height > 800{
-            yOffset = 35
-        }
         
-        let skipButton = SKSpriteNode(color: SKColor.white, size: CGSize(width: 250, height: 85))
-        skipButton.position = CGPoint(x: frame.midX, y: frame.maxY-67-yOffset)
+        let skipButton = SKSpriteNode(color: SKColor.white, size: CGSize(width: 250, height: 80))
+        skipButton.position = CGPoint(x: frame.midX, y: 100)
         skipButton.name = "skip"
-        skipButton.alpha = 0.75
+        skipButton.color = SKColor.init(red: 235/255, green: 235/255, blue: 235/255, alpha: 1)
         addChild(skipButton)
         
         let skipText = SKLabelNode(fontNamed: "DIN Alternate Bold")
-        skipText.position = CGPoint(x: frame.midX, y: frame.maxY-85-yOffset)
+        skipText.position = CGPoint(x: frame.midX, y: 120)
+        skipText.verticalAlignmentMode = .top
         skipText.fontSize = 50
         skipText.text = "Skip >>>"
         skipText.name = "skip"
-        skipText.fontColor = SKColor.black
+        skipText.fontColor = SKColor.init(red: 50/255, green: 60/255, blue: 9/255, alpha: 1)
         addChild(skipText)
     }
     
