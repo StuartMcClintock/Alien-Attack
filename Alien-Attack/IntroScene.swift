@@ -22,6 +22,8 @@ class IntroScene: SKScene{
     var saucer:SKSpriteNode?
     var displayLabel:SKLabelNode!
     
+    var messages:[String] = ["   Tap on the alien faces that pop up to\nremove them. Make sure that five faces don't\n   remain on the screen at the same time!", "big chungus"]
+    
     var stage:Int? = 0
     
     override func didMove(to view: SKView){
@@ -49,8 +51,22 @@ class IntroScene: SKScene{
             contLabel?.removeFromParent()
             displayIntro()
         }
+        else{
+            updateMessage(index: stage!-1)
+        }
         
         stage? += 1
+    }
+    
+    func updateMessage(index:Int){
+        if index >= messages.count{
+            startNextScene()
+            return
+        }
+        displayLabel.fontSize = 30.0
+        displayLabel.position = CGPoint(x: frame.midX, y: frame.midY-170)
+        displayLabel.text = messages[index]
+        
     }
     
     func makeLandingNoise(){
@@ -91,13 +107,13 @@ class IntroScene: SKScene{
         
         background.alpha = 0.5
         
-        let headingLabel = SKLabelNode(fontNamed: "DIN Alternate Bold")
-        headingLabel.fontSize = 72
-        headingLabel.fontColor = .white
-        headingLabel.position = CGPoint(x: frame.midX, y: frame.midY-175)
-        headingLabel.numberOfLines = 3
-        headingLabel.text = "THE WHITE HOUSE\n        IS UNDER\n ALIEN INVASION!"
-        addChild(headingLabel)
+        displayLabel = SKLabelNode(fontNamed: "DIN Alternate Bold")
+        displayLabel.fontSize = 72
+        displayLabel.fontColor = .white
+        displayLabel.position = CGPoint(x: frame.midX, y: frame.midY-175)
+        displayLabel.numberOfLines = 3
+        displayLabel.text = "THE WHITE HOUSE\n        IS UNDER\n ALIEN INVASION!"
+        addChild(displayLabel)
         
         contLabel = SKLabelNode(fontNamed: "DIN Alternate Bold")
         contLabel?.fontSize = 32
