@@ -22,6 +22,8 @@ class IntroScene: SKScene{
     var saucer:SKSpriteNode?
     var displayLabel:SKLabelNode!
     
+    var showsCont = true
+    
     let messages:[String] = ["   Tap on the alien faces that pop up to\nremove them. Make sure that five faces don't\n   remain on the screen at the same time!", "big chungus"]
     
     var stage:Int? = 0
@@ -35,7 +37,7 @@ class IntroScene: SKScene{
         displayBackground()
         introAnimation()
         DispatchQueue.main.asyncAfter(deadline: .now() + 3.8, execute: { [weak self] in
-            self?.displayIntro()
+            self?.untappedIntro()
         })
     }
     
@@ -47,8 +49,12 @@ class IntroScene: SKScene{
             }
         }
         
-        if (stage == 0){
+        if showsCont{
             contLabel?.removeFromParent()
+            showsCont = false
+        }
+        
+        if (stage == 0){
             displayIntro()
         }
         else{
@@ -66,7 +72,6 @@ class IntroScene: SKScene{
         displayLabel.fontSize = 30.0
         displayLabel.position = CGPoint(x: frame.midX, y: frame.midY-170)
         displayLabel.text = messages[index]
-        
     }
     
     func makeLandingNoise(){
@@ -100,11 +105,15 @@ class IntroScene: SKScene{
         addChild(background)
     }
     
-    func displayIntro(){
+    func untappedIntro(){
         if (stage != 0){
             return
         }
-        
+        stage = 1
+        displayIntro()
+    }
+    
+    func displayIntro(){
         background.alpha = 0.5
         
         displayLabel = SKLabelNode(fontNamed: "DIN Alternate Bold")
@@ -122,9 +131,8 @@ class IntroScene: SKScene{
         contLabel?.position = CGPoint(x: frame.midX, y: 230)
         contLabel?.numberOfLines = 2
         contLabel?.text = "(tap screen for instructions)"
-        if (stage == 0){
-            addChild(contLabel!)
-        }
+        addChild(contLabel!)
+        showsCont = true
         
         saucer?.removeFromParent()
         addSkipButton()

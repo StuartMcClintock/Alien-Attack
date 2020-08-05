@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "3CEC79062461E83E00C4A1C7"
-               BuildableName = "Aliens.app"
+               BuildableName = "(&#x25e3;_&#x25e2;).app"
                BlueprintName = "Alien-Attack"
                ReferencedContainer = "container:Alien-Attack.xcodeproj">
             </BuildableReference>
@@ -65,7 +65,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "3CEC79062461E83E00C4A1C7"
-            BuildableName = "Aliens.app"
+            BuildableName = "(&#x25e3;_&#x25e2;).app"
             BlueprintName = "Alien-Attack"
             ReferencedContainer = "container:Alien-Attack.xcodeproj">
          </BuildableReference>
@@ -82,7 +82,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "3CEC79062461E83E00C4A1C7"
-            BuildableName = "Aliens.app"
+            BuildableName = "(&#x25e3;_&#x25e2;).app"
             BlueprintName = "Alien-Attack"
             ReferencedContainer = "container:Alien-Attack.xcodeproj">
          </BuildableReference>
