@@ -22,7 +22,7 @@ class IntroScene: SKScene{
     var saucer:SKSpriteNode?
     var displayLabel:SKLabelNode!
     
-    var messages:[String] = ["   Tap on the alien faces that pop up to\nremove them. Make sure that five faces don't\n   remain on the screen at the same time!", "big chungus"]
+    let messages:[String] = ["   Tap on the alien faces that pop up to\nremove them. Make sure that five faces don't\n   remain on the screen at the same time!", "big chungus"]
     
     var stage:Int? = 0
     

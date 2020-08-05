@@ -37,6 +37,7 @@
 		3CEC791B2461E83F00C4A1C7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3CEC79192461E83F00C4A1C7 /* LaunchScreen.storyboard */; };
 		3CEC79262461E83F00C4A1C7 /* Whack_A_TrumpTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CEC79252461E83F00C4A1C7 /* Whack_A_TrumpTests.swift */; };
 		3CEC79312461E83F00C4A1C7 /* Whack_A_TrumpUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CEC79302461E83F00C4A1C7 /* Whack_A_TrumpUITests.swift */; };
+		6725E09C01F94CF0C937FDDB /* libPods-Alien-Attack.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CFCC81526BD8A76C48102786 /* libPods-Alien-Attack.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,6 +94,9 @@
 		3CEC792C2461E83F00C4A1C7 /* Alien-AttackUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Alien-AttackUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3CEC79302461E83F00C4A1C7 /* Whack_A_TrumpUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Whack_A_TrumpUITests.swift; sourceTree = "<group>"; };
 		3CEC79322461E83F00C4A1C7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B35455C311EECF09B136C9EE /* Pods-Alien-Attack.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Alien-Attack.debug.xcconfig"; path = "Target Support Files/Pods-Alien-Attack/Pods-Alien-Attack.debug.xcconfig"; sourceTree = "<group>"; };
+		CFCC81526BD8A76C48102786 /* libPods-Alien-Attack.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Alien-Attack.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EF511D60B229984F5DCED0B7 /* Pods-Alien-Attack.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Alien-Attack.release.xcconfig"; path = "Target Support Files/Pods-Alien-Attack/Pods-Alien-Attack.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +104,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6725E09C01F94CF0C937FDDB /* libPods-Alien-Attack.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -204,6 +209,8 @@
 				3CEC79242461E83F00C4A1C7 /* Alien-AttackTests */,
 				3CEC792F2461E83F00C4A1C7 /* Alien-AttackUITests */,
 				3CEC79082461E83E00C4A1C7 /* Products */,
+				4A7961699D4C013D78745591 /* Pods */,
+				C9054E3A0309E7EAE18920AE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -258,6 +265,23 @@
 			path = "Alien-AttackUITests";
 			sourceTree = "<group>";
 		};
+		4A7961699D4C013D78745591 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B35455C311EECF09B136C9EE /* Pods-Alien-Attack.debug.xcconfig */,
+				EF511D60B229984F5DCED0B7 /* Pods-Alien-Attack.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		C9054E3A0309E7EAE18920AE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CFCC81526BD8A76C48102786 /* libPods-Alien-Attack.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -265,6 +289,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3CEC79352461E83F00C4A1C7 /* Build configuration list for PBXNativeTarget "Alien-Attack" */;
 			buildPhases = (
+				6AF3B0231C94014940A5F836 /* [CP] Check Pods Manifest.lock */,
 				3CEC79032461E83E00C4A1C7 /* Sources */,
 				3CEC79042461E83E00C4A1C7 /* Frameworks */,
 				3CEC79052461E83E00C4A1C7 /* Resources */,
@@ -400,6 +425,31 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		6AF3B0231C94014940A5F836 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Alien-Attack-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		3CEC79032461E83E00C4A1C7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -518,7 +568,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -572,7 +622,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -584,12 +634,18 @@
 		};
 		3CEC79362461E83F00C4A1C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B35455C311EECF09B136C9EE /* Pods-Alien-Attack.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = LZ8PHR27VM;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = "Alien-Attack/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -604,12 +660,18 @@
 		};
 		3CEC79372461E83F00C4A1C7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EF511D60B229984F5DCED0B7 /* Pods-Alien-Attack.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = LZ8PHR27VM;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = "Alien-Attack/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
