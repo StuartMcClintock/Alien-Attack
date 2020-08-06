@@ -9,13 +9,28 @@
 import UIKit
 import SpriteKit
 import GameplayKit
+import GoogleMobileAds
 
 class GameViewController: UIViewController {
     
     var del: AppDelegate!
     
+    var interstitialAd: GADInterstitial!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        interstitialAd = GADInterstitial(adUnitID: "ca-app-pub-3940256099942544/4411468910")
+        let request = GADRequest()
+        interstitialAd.load(request)
+        
+        
+        if interstitialAd.isReady {
+          interstitialAd.present(fromRootViewController: self)
+        } else {
+          print("Ad wasn't ready")
+        }
+        
         del = UIApplication.shared.delegate as? AppDelegate
         
         del.numGold = UserDefaults.standard.integer(forKey: "numGold")

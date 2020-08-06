@@ -12,7 +12,6 @@ import SpriteKit
 import AVFoundation
 
 class IntroScene: SKScene{
-    
     var audioPlayer: AVAudioPlayer?
     var del: AppDelegate!
     
@@ -29,6 +28,7 @@ class IntroScene: SKScene{
     var stage:Int? = 0
     
     override func didMove(to view: SKView){
+        
         let app = UIApplication.shared
         del = app.delegate as? AppDelegate
         
@@ -61,6 +61,7 @@ class IntroScene: SKScene{
             updateMessage(index: stage!-1)
         }
         
+        makeTapNoise()
         stage? += 1
     }
     
@@ -80,6 +81,18 @@ class IntroScene: SKScene{
             try AVAudioSession.sharedInstance().setActive(true)
             
             let soundPath = Bundle.main.path(forResource: "shipLanding-faster", ofType: "mp3")
+            audioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: soundPath!))
+            audioPlayer?.play()
+        }
+        catch {}
+    }
+    
+    func makeTapNoise(){
+        do{
+            try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.ambient)
+            try AVAudioSession.sharedInstance().setActive(true)
+            
+            let soundPath = Bundle.main.path(forResource: "intructionTap", ofType: "wav")
             audioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: soundPath!))
             audioPlayer?.play()
         }
@@ -158,6 +171,7 @@ class IntroScene: SKScene{
     
     func startNextScene(){
         del.buttonSound()
+        
         let modeScene = GameScene(fileNamed: "SelectModeScene")
         modeScene?.scaleMode = .aspectFill
         if UIDevice.current.model == "iPad"{

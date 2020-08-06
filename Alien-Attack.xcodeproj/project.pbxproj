@@ -27,6 +27,7 @@
 		3CB09C4624BB9EA4008B9E8B /* Disappear.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3CB09C4524BB9EA4008B9E8B /* Disappear.sks */; };
 		3CB09C4824BBCF1A008B9E8B /* AwardDisplayScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB09C4724BBCF1A008B9E8B /* AwardDisplayScene.swift */; };
 		3CB09C4A24BBCF38008B9E8B /* AwardDisplayScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3CB09C4924BBCF38008B9E8B /* AwardDisplayScene.sks */; };
+		3CC6FE4324DB9635001D7C51 /* intructionTap.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3CC6FE4224DB9635001D7C51 /* intructionTap.wav */; };
 		3CEC790B2461E83E00C4A1C7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CEC790A2461E83E00C4A1C7 /* AppDelegate.swift */; };
 		3CEC790D2461E83E00C4A1C7 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3CEC790C2461E83E00C4A1C7 /* GameScene.sks */; };
 		3CEC790F2461E83E00C4A1C7 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3CEC790E2461E83E00C4A1C7 /* Actions.sks */; };
@@ -78,6 +79,7 @@
 		3CB09C4524BB9EA4008B9E8B /* Disappear.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Disappear.sks; sourceTree = "<group>"; };
 		3CB09C4724BBCF1A008B9E8B /* AwardDisplayScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwardDisplayScene.swift; sourceTree = "<group>"; };
 		3CB09C4924BBCF38008B9E8B /* AwardDisplayScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = AwardDisplayScene.sks; sourceTree = "<group>"; };
+		3CC6FE4224DB9635001D7C51 /* intructionTap.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = intructionTap.wav; sourceTree = "<group>"; };
 		3CEC79072461E83E00C4A1C7 /* Aliens.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Aliens.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3CEC790A2461E83E00C4A1C7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3CEC790C2461E83E00C4A1C7 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -183,6 +185,7 @@
 		3CB09C4224BAD1FB008B9E8B /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				3CC6FE4224DB9635001D7C51 /* intructionTap.wav */,
 				3C3F160324CEB820002EBD61 /* shipLanding-faster.mp3 */,
 				3C3F160624CFA69D002EBD61 /* purchaseFailure.mp3 */,
 				3C3F160524CFA69D002EBD61 /* purchaseSuccess.mp3 */,
@@ -404,6 +407,7 @@
 				3C956A9324C661AE00D09B93 /* lossNoises.wav in Resources */,
 				3CEC790F2461E83E00C4A1C7 /* Actions.sks in Resources */,
 				3C3F160724CFA69D002EBD61 /* purchaseSuccess.mp3 in Resources */,
+				3CC6FE4324DB9635001D7C51 /* intructionTap.wav in Resources */,
 				3C956A9524C6811B00D09B93 /* alienDestroyed.wav in Resources */,
 				3CB09C4A24BBCF38008B9E8B /* AwardDisplayScene.sks in Resources */,
 			);
