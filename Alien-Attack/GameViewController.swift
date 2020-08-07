@@ -15,23 +15,17 @@ class GameViewController: UIViewController {
     
     var del: AppDelegate!
     
-    var interstitialAd: GADInterstitial!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        interstitialAd = GADInterstitial(adUnitID: "ca-app-pub-3940256099942544/4411468910")
-        let request = GADRequest()
-        interstitialAd.load(request)
-        
-        
-        if interstitialAd.isReady {
-          interstitialAd.present(fromRootViewController: self)
-        } else {
-          print("Ad wasn't ready")
-        }
-        
         del = UIApplication.shared.delegate as? AppDelegate
+        
+        del.adBanner = GADBannerView(adSize: kGADAdSizeSmartBannerPortrait)
+        del.adBanner!.tag = 1
+        del.adBanner!.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+        del.adBanner!.rootViewController = self
+        del.adBanner!.load(GADRequest())
+        del.adBanner!.frame = CGRect(x: 0, y: view.bounds.height - del.adBanner!.frame.size.height, width: del.adBanner!.frame.width, height: del.adBanner!.frame.height)
         
         del.numGold = UserDefaults.standard.integer(forKey: "numGold")
         del.numMercs = UserDefaults.standard.integer(forKey: "numMercs")

@@ -9,9 +9,10 @@
 import Foundation
 import SpriteKit
 
+import GoogleMobileAds
+
 class SelectModeScene: SKScene{
     var del: AppDelegate!
-    
     var soundButton: SKSpriteNode!
     
     override func didMove(to view: SKView) {

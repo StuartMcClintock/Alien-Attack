@@ -8,8 +8,9 @@
 
 import Foundation
 import SpriteKit
-
 import AVFoundation
+
+import GoogleMobileAds
 
 class IntroScene: SKScene{
     struct instrImg{
@@ -83,6 +84,9 @@ class IntroScene: SKScene{
     }
     
     func updateAnimation(index:Int){
+        if index >= instrImgs.count{
+            return
+        }
         if (index>0){
             instrImgs[index-1]?.image.removeFromParent()
         }

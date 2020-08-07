@@ -24,6 +24,7 @@ class AwardDisplayScene: SKScene{
         initScoreLabels()
         addAwards()
         reflectAchievement()
+        view.addSubview(del.adBanner!)
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
