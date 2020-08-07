@@ -141,7 +141,7 @@ class GameScene: SKScene {
         newFace.zPosition = 1
         newFace.alpha = 0
         newFace.name = name
-        newFace.size = CGSize(width: 102, height: 93)
+        newFace.size = del.greenAlienSize
         addChild(newFace)
         faces.append(newFace)
     }

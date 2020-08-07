@@ -41,6 +41,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let SILVER_BONUS = 10000
     let GOLD_BONUS = 100000
     
+    let greenAlienSize = CGSize(width: 102, height: 93)
+    
     func buttonSound(){
         if !isMute{
             do{

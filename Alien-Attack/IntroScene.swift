@@ -12,6 +12,19 @@ import SpriteKit
 import AVFoundation
 
 class IntroScene: SKScene{
+    struct instrImg{
+        var image: SKSpriteNode
+        var location: CGPoint
+        var scaleAmount: CGFloat
+        init(imageName:String, loc:CGPoint, sa: CGFloat, initSize: CGSize){
+            image = SKSpriteNode(imageNamed: imageName)
+            image.position = loc
+            image.size = initSize
+            location = loc
+            scaleAmount = sa
+        }
+    }
+    
     var audioPlayer: AVAudioPlayer?
     var del: AppDelegate!
     
@@ -23,14 +36,17 @@ class IntroScene: SKScene{
     
     var showsCont = true
     
-    let messages:[String] = ["   Tap on the alien faces that pop up to\nremove them. Make sure that five faces don't\n   remain on the screen at the same time!", "big chungus"]
+    var messages:[String] = []
+    var instrImgs:[instrImg?] = []
     
     var stage:Int? = 0
     
     override func didMove(to view: SKView){
-        
         let app = UIApplication.shared
         del = app.delegate as? AppDelegate
+        
+        messages = ["   Tap on the alien faces that pop up to\nremove them. Make sure that five faces don't\n   remain on the screen at the same time!", "big chungus"]
+        instrImgs = [instrImg(imageName: "greenAlien", loc: CGPoint(x: frame.midX, y: 350), sa: 1.5, initSize: del.greenAlienSize), nil]
         
         self.backgroundColor = SKColor.white
         makeLandingNoise()
@@ -59,10 +75,24 @@ class IntroScene: SKScene{
         }
         else{
             updateMessage(index: stage!-1)
+            updateAnimation(index: stage!-1)
         }
         
         makeTapNoise()
         stage? += 1
+    }
+    
+    func updateAnimation(index:Int){
+        if (index>0){
+            instrImgs[index-1]?.image.removeFromParent()
+        }
+        if let obj = instrImgs[index]{
+            let img = obj.image
+            addChild(img)
+            let scaleUp = SKAction.scale(by: obj.scaleAmount, duration: 1)
+            let scaleDown = SKAction.scale(by: 1/obj.scaleAmount, duration: 1)
+            img.run(SKAction.repeatForever(SKAction.sequence([scaleUp, scaleDown])))
+        }
     }
     
     func updateMessage(index:Int){
