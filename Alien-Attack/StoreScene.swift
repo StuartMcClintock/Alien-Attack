@@ -203,7 +203,7 @@ class StoreScene: SKScene{
     }
     
     func addBackButton(){
-        let pos = CGPoint(x:frame.midX, y:120)
+        let pos = CGPoint(x:frame.midX, y:160)
         
         let button = SKSpriteNode(color: SKColor.black, size: CGSize(width: 300, height: 100))
         button.name = "back"

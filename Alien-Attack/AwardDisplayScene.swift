@@ -77,35 +77,35 @@ class AwardDisplayScene: SKScene{
     func addAwards(){
         var yShift:CGFloat = 0
         if UIDevice.current.model == "iPhone" && UIScreen.main.bounds.height > 800{
-            yShift = 10
+            yShift = 20
         }
         
         let standardLabel = SKLabelNode(fontNamed: "DIN Alternate Bold")
         standardLabel.fontSize = 72
         standardLabel.text = "Standard Mode:"
         standardLabel.fontColor = SKColor.black
-        standardLabel.position = CGPoint(x:frame.midX, y: frame.maxY-130-yShift)
+        standardLabel.position = CGPoint(x:frame.midX, y: frame.maxY-105-yShift)
         addChild(standardLabel)
         
         let blitzLabel = SKLabelNode(fontNamed: "DIN Alternate Bold")
         blitzLabel.fontSize = 72
         blitzLabel.text = "Blitz Mode:"
         blitzLabel.fontColor = SKColor.black
-        blitzLabel.position = CGPoint(x:frame.midX, y: frame.maxY-755-yShift)
+        blitzLabel.position = CGPoint(x:frame.midX, y: frame.maxY-720-yShift)
         addChild(blitzLabel)
         
-        awardImages[0].position = CGPoint(x: 130, y: frame.maxY-375-yShift)
-        scoreLabels[0].position = CGPoint(x: 130, y: frame.maxY-625-yShift)
-        awardImages[1].position = CGPoint(x: 375, y: frame.maxY-375-yShift)
-        scoreLabels[1].position = CGPoint(x: 375, y: frame.maxY-625-yShift)
-        awardImages[2].position = CGPoint(x: 620, y: frame.maxY-375-yShift)
-        scoreLabels[2].position = CGPoint(x: 620, y: frame.maxY-625-yShift)
-        awardImages[3].position = CGPoint(x: 130, y: frame.maxY-1000-yShift)
-        scoreLabels[3].position = CGPoint(x: 130, y: frame.maxY-1250-yShift)
-        awardImages[4].position = CGPoint(x: 375, y: frame.maxY-1000-yShift)
-        scoreLabels[4].position = CGPoint(x: 375, y: frame.maxY-1250-yShift)
-        awardImages[5].position = CGPoint(x: 620, y: frame.maxY-1000-yShift)
-        scoreLabels[5].position = CGPoint(x: 620, y: frame.maxY-1250-yShift)
+        awardImages[0].position = CGPoint(x: 130, y: frame.maxY-350-yShift)
+        scoreLabels[0].position = CGPoint(x: 130, y: frame.maxY-600-yShift)
+        awardImages[1].position = CGPoint(x: 375, y: frame.maxY-350-yShift)
+        scoreLabels[1].position = CGPoint(x: 375, y: frame.maxY-600-yShift)
+        awardImages[2].position = CGPoint(x: 620, y: frame.maxY-350-yShift)
+        scoreLabels[2].position = CGPoint(x: 620, y: frame.maxY-600-yShift)
+        awardImages[3].position = CGPoint(x: 130, y: frame.maxY-960-yShift)
+        scoreLabels[3].position = CGPoint(x: 130, y: frame.maxY-1210-yShift)
+        awardImages[4].position = CGPoint(x: 375, y: frame.maxY-960-yShift)
+        scoreLabels[4].position = CGPoint(x: 375, y: frame.maxY-1210-yShift)
+        awardImages[5].position = CGPoint(x: 620, y: frame.maxY-960-yShift)
+        scoreLabels[5].position = CGPoint(x: 620, y: frame.maxY-1210-yShift)
         for i in 0..<awardImages.count{
             addChild(awardImages[i])
             addChild(scoreLabels[i])
