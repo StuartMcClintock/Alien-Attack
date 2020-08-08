@@ -61,13 +61,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
     var addedGold = 0
+    let pointsPerGold_BLITZ = 3
+    let pointsPerGold_STANDARD = 5
     
     func addGold(score: Int){
         if isBlitz{
-            addedGold = Int(score/5)
+            addedGold = Int(score/pointsPerGold_BLITZ)
         }
         else{
-            addedGold = Int(score/10)
+            addedGold = Int(score/pointsPerGold_STANDARD)
         }
         numGold += addedGold
         UserDefaults.standard.set(numGold, forKey: "numGold")

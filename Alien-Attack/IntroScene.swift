@@ -17,12 +17,25 @@ class IntroScene: SKScene{
         var image: SKSpriteNode
         var location: CGPoint
         var scaleAmount: CGFloat
+        var animationKey: String?
+        var textureList: [SKTexture]?
+        var timePerFrame: TimeInterval?
         init(imageName:String, loc:CGPoint, sa: CGFloat, initSize: CGSize){
             image = SKSpriteNode(imageNamed: imageName)
             image.position = loc
             image.size = initSize
             location = loc
             scaleAmount = sa
+        }
+        init(texture:SKTexture, loc:CGPoint, sa: CGFloat, initSize: CGSize, tl: [SKTexture], key:String?, tpf:TimeInterval){
+            image = SKSpriteNode(texture: texture)
+            image.position = loc
+            image.size = initSize
+            location = loc
+            scaleAmount = sa
+            animationKey = key
+            textureList = tl
+            timePerFrame = tpf
         }
     }
     
@@ -46,8 +59,16 @@ class IntroScene: SKScene{
         let app = UIApplication.shared
         del = app.delegate as? AppDelegate
         
-        messages = ["   Tap on the alien faces that pop up to\nremove them. Make sure that five faces don't\n   remain on the screen at the same time!", "big chungus"]
-        instrImgs = [instrImg(imageName: "greenAlien", loc: CGPoint(x: frame.midX, y: 350), sa: 1.5, initSize: del.greenAlienSize), nil]
+        /*
+         let goldImage = SKSpriteNode(texture: del.coinFrames[0])
+         goldImage.position = CGPoint(x: 290, y: frame.maxY-yOffset+(innerGap/2))
+         goldImage.size = CGSize(width:65, height:65)
+         addChild(goldImage)
+         goldImage.run(SKAction.repeatForever(SKAction.animate(with: del.coinFrames, timePerFrame: 0.04, resize: false, restore: true)), withKey: "rotatingCoin")
+         */
+        
+        messages = ["       Tap on the alien faces that pop up to\nremove them. Make sure that five faces don't\n    remain on the screen at the same time!","   You can play in either STANDARD or BLITZ\n mode and will get a point for each alien killed.\nWin awards based on points scored and mode.", "        You will earn coins for scoring points.\n1 coin = \(del.pointsPerGold_STANDARD) points in STANDARD and \(del.pointsPerGold_BLITZ) in BLITZ.\n      Coins are also given for certain awards."]
+        instrImgs = [instrImg(imageName: "greenAlien", loc: CGPoint(x: frame.midX, y: 350), sa: 1.5, initSize: del.greenAlienSize), instrImg(imageName: "standardGold", loc: CGPoint(x: frame.midX, y: 325), sa: 1.2, initSize: CGSize(width: 110, height: 200)), instrImg(texture: del.coinFrames[0], loc: CGPoint(x: frame.midX, y: 325), sa: 1.3, initSize: CGSize(width: 100, height: 100), tl: del.coinFrames, key: "rotatingCoin", tpf:0.035)]
         
         self.backgroundColor = SKColor.white
         makeLandingNoise()
@@ -96,6 +117,9 @@ class IntroScene: SKScene{
             let scaleUp = SKAction.scale(by: obj.scaleAmount, duration: 1)
             let scaleDown = SKAction.scale(by: 1/obj.scaleAmount, duration: 1)
             img.run(SKAction.repeatForever(SKAction.sequence([scaleUp, scaleDown])))
+            if let key = obj.animationKey{
+                img.run(SKAction.repeatForever(SKAction.animate(with: obj.textureList!, timePerFrame: obj.timePerFrame!, resize: false, restore: true)), withKey: key)
+            }
         }
     }
     
