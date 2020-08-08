@@ -178,7 +178,6 @@ class SelectModeScene: SKScene{
     }
     
     func initSoundButton(){
-        del.isMute = UserDefaults.standard.bool(forKey: "isMute")
         if del.isMute{
             soundButton = SKSpriteNode(imageNamed: "notMute")
         }
