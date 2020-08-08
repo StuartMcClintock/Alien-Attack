@@ -172,6 +172,9 @@ class GameScene: SKScene {
     }
     
     func mercButtonTapped(){
+        if del.numMercs == 0{
+            return
+        }
         del.numMercs -= 1
         for row in 0..<numRows{
             for col in 0..<numCols{

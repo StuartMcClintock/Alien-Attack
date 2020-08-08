@@ -34,7 +34,7 @@ class GameViewController: UIViewController {
         del.topBanner!.rootViewController = self
         del.topBanner!.load(GADRequest())
         if UIDevice.current.model == "iPhone" && UIScreen.main.bounds.height > 800{
-            del.topBanner!.frame = CGRect(x: 0, y: 35, width: del.topBanner!.frame.width, height: del.topBanner!.frame.height)
+            del.topBanner!.frame = CGRect(x: 0, y: 30, width: del.topBanner!.frame.width, height: del.topBanner!.frame.height)
         }
         else{
             del.topBanner!.frame = CGRect(x: 0, y: 0, width: del.topBanner!.frame.width, height: del.topBanner!.frame.height)
