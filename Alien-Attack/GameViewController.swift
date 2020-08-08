@@ -20,12 +20,25 @@ class GameViewController: UIViewController {
         
         del = UIApplication.shared.delegate as? AppDelegate
         
-        del.adBanner = GADBannerView(adSize: kGADAdSizeSmartBannerPortrait)
-        del.adBanner!.tag = 1
-        del.adBanner!.adUnitID = "ca-app-pub-3940256099942544/2934735716"
-        del.adBanner!.rootViewController = self
-        del.adBanner!.load(GADRequest())
-        del.adBanner!.frame = CGRect(x: 0, y: view.bounds.height - del.adBanner!.frame.size.height, width: del.adBanner!.frame.width, height: del.adBanner!.frame.height)
+        let bannerId = "ca-app-pub-3940256099942544/2934735716"
+        
+        del.bottomBanner = GADBannerView(adSize: kGADAdSizeSmartBannerPortrait)
+        //del.bottomBanner!.tag = 1
+        del.bottomBanner!.adUnitID = bannerId
+        del.bottomBanner!.rootViewController = self
+        del.bottomBanner!.load(GADRequest())
+        del.bottomBanner!.frame = CGRect(x: 0, y: view.bounds.height - del.bottomBanner!.frame.size.height, width: del.bottomBanner!.frame.width, height: del.bottomBanner!.frame.height)
+        
+        del.topBanner = GADBannerView(adSize: kGADAdSizeSmartBannerPortrait)
+        del.topBanner!.adUnitID = bannerId
+        del.topBanner!.rootViewController = self
+        del.topBanner!.load(GADRequest())
+        if UIDevice.current.model == "iPhone" && UIScreen.main.bounds.height > 800{
+            del.topBanner!.frame = CGRect(x: 0, y: 35, width: del.topBanner!.frame.width, height: del.topBanner!.frame.height)
+        }
+        else{
+            del.topBanner!.frame = CGRect(x: 0, y: 0, width: del.topBanner!.frame.width, height: del.topBanner!.frame.height)
+        }
         
         del.numGold = UserDefaults.standard.integer(forKey: "numGold")
         del.numMercs = UserDefaults.standard.integer(forKey: "numMercs")

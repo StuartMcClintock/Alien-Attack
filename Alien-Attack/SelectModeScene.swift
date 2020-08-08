@@ -18,6 +18,9 @@ class SelectModeScene: SKScene{
     override func didMove(to view: SKView) {
         let app = UIApplication.shared
         del = app.delegate as? AppDelegate
+        if let banner = del.bottomBanner{
+            view.addSubview(banner)
+        }
         
         let background = SKSpriteNode(imageNamed: "whitehouse")
         background.position = CGPoint(x:frame.midX, y:frame.midY)

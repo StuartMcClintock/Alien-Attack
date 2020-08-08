@@ -42,7 +42,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     let greenAlienSize = CGSize(width: 102, height: 93)
     
-    var adBanner: GADBannerView?
+    var bottomBanner: GADBannerView?
+    var topBanner: GADBannerView?
     
     func buttonSound(){
         if !isMute{

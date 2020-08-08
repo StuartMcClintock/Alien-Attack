@@ -63,9 +63,12 @@ class GameScene: SKScene {
     var mercImage: SKSpriteNode!
     
     override func didMove(to view: SKView){
-        
         let app = UIApplication.shared
         del = app.delegate as? AppDelegate
+        del.bottomBanner?.removeFromSuperview()
+        if let banner = del.topBanner{
+            view.addSubview(banner)
+        }
         
         if (del.isBlitz){
             waitTime = BWT
@@ -253,6 +256,7 @@ class GameScene: SKScene {
     
     func endScene(){
         UserDefaults.standard.set(del.numMercs, forKey: "numMercs")
+        del.topBanner?.removeFromSuperview()
         
         if (totalVisible >= MAX_FACES){
             gameOver = true
