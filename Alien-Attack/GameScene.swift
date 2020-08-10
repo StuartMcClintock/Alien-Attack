@@ -114,7 +114,7 @@ class GameScene: SKScene {
         
         for row in 0..<numRows {
             for col in 0..<numCols {
-                addFace(at: CGPoint(x:70+Int(gapX*CGFloat(row)), y:Int(frame.midY)-Int(CGFloat(col)*gapY)+30), name:String(col)+","+String(row))
+                addFace(at: CGPoint(x:70+Int(gapX*CGFloat(row)), y:Int(frame.midY)-Int(CGFloat(col)*gapY)+50), name:String(col)+","+String(row))
                 poofs.append(nil)
             }
         }

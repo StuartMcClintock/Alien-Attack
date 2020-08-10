@@ -59,8 +59,13 @@ class IntroScene: SKScene{
         let app = UIApplication.shared
         del = app.delegate as? AppDelegate
         
-        messages = [" Tap on the aliens that pop up increasingly\nfrequently to remove them. Make sure that\n five aren't on the screen at the same time!","   You can play in either STANDARD or BLITZ\n mode and will get a point for each alien killed.\nWin awards based on points scored and mode.", "        You will earn coins for scoring points.\n1 coin = \(del.pointsPerGold_STANDARD) points in STANDARD and \(del.pointsPerGold_BLITZ) in BLITZ.\n      Coins are also given for certain awards.", " There are mercenaries hiding in the bushes!\nHire with gold and use by tapping shown icon,\nremoving invaders and slowing their arrival."]
-        instrImgs = [instrImg(imageName: "greenAlien", loc: CGPoint(x: frame.midX, y: 350), sa: 1.5, initSize: del.greenAlienSize), instrImg(imageName: "standardGold", loc: CGPoint(x: frame.midX, y: 325), sa: 1.2, initSize: CGSize(width: 110, height: 200)), instrImg(texture: del.coinFrames[0], loc: CGPoint(x: frame.midX, y: 325), sa: 1.3, initSize: CGSize(width: 100, height: 100), tl: del.coinFrames, key: "rotatingCoin", tpf:0.035), instrImg(imageName: "mercenaryAlien-notClickable", loc: CGPoint(x: 145, y: frame.maxY-375), sa: 1.25, initSize: CGSize(width: 144, height: 120))]
+        var mercX:CGFloat = 90
+        if UIDevice.current.model == "iPhone" && UIScreen.main.bounds.height > 800{
+            mercX = 145
+        }
+        
+        messages = [" Tap on the aliens (who pop up increasingly\nfrequently) to remove them. Make sure that\n five aren't on the screen at the same time!","   You can play in either STANDARD or BLITZ\n mode and will get a point for each alien killed.\nWin awards based on points scored and mode.", "         You will earn coins for scoring points.\n  1 coin = \(del.pointsPerGold_STANDARD) points in STANDARD and \(del.pointsPerGold_BLITZ) in BLITZ.\n Coins are also given for winning certain awards.", " There are mercenaries hiding in the bushes!\nHire with gold and use by tapping shown icon,\n removing invaders and slowing their arrival."]
+        instrImgs = [instrImg(imageName: "greenAlien", loc: CGPoint(x: frame.midX, y: 350), sa: 1.5, initSize: del.greenAlienSize), instrImg(imageName: "standardGold", loc: CGPoint(x: frame.midX, y: 325), sa: 1.2, initSize: CGSize(width: 110, height: 200)), instrImg(texture: del.coinFrames[0], loc: CGPoint(x: frame.midX, y: 325), sa: 1.3, initSize: CGSize(width: 100, height: 100), tl: del.coinFrames, key: "rotatingCoin", tpf:0.035), instrImg(imageName: "mercenaryAlien-clickable", loc: CGPoint(x: mercX, y: frame.maxY-365), sa: 1.25, initSize: CGSize(width: 144, height: 120))]
         
         self.backgroundColor = SKColor.white
         if (!del.isMute){

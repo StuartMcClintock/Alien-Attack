@@ -73,10 +73,10 @@ class SelectModeScene: SKScene{
         let storeButtonColor = SKColor.init(displayP3Red: 17/255, green: 125/255, blue: 7/255, alpha: 1)
         
         
-        let standardPointPosition = CGPoint(x: frame.midX, y: frame.midY+445)
-        let blitzPointPosition = CGPoint(x: frame.midX, y: frame.midY+265)
-        let awardPointPosition = CGPoint(x: frame.midX, y: frame.midY+85)
-        let storePointPosition = CGPoint(x: frame.midX, y: frame.midY-95)
+        let standardPointPosition = CGPoint(x: frame.midX, y: frame.midY+460)
+        let blitzPointPosition = CGPoint(x: frame.midX, y: frame.midY+280)
+        let awardPointPosition = CGPoint(x: frame.midX, y: frame.midY+100)
+        let storePointPosition = CGPoint(x: frame.midX, y: frame.midY-80)
         
         let standardButton = SKSpriteNode(color: standardButtonColor, size: buttonSize)
         standardButton.position = standardPointPosition
@@ -129,7 +129,7 @@ class SelectModeScene: SKScene{
     
     func displayCoinInfo(){
         let offsetX:CGFloat = 160
-        let offsetY:CGFloat = 270
+        let offsetY:CGFloat = 255
         let coinDist:CGFloat = 65
         
         let goldLabel = SKLabelNode(fontNamed: "DIN Alternate Bold")
@@ -156,7 +156,7 @@ class SelectModeScene: SKScene{
     
     func displayMercInfo(){
         let offsetX:CGFloat = 160
-        let offsetY:CGFloat = 390
+        let offsetY:CGFloat = 375
         let imgDist:CGFloat = 65
         
         let mercImg = SKSpriteNode(imageNamed: "mercenaryAlien-white")
@@ -185,7 +185,7 @@ class SelectModeScene: SKScene{
             soundButton = SKSpriteNode(imageNamed: "mute")
         }
         soundButton.size = CGSize(width: 100, height: 100)
-        soundButton.position = CGPoint(x: frame.midX, y: 160)
+        soundButton.position = CGPoint(x: frame.midX, y: 175)
         soundButton.name = "sound"
         addChild(soundButton)
     }
