@@ -28,17 +28,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var audioPlayer: AVAudioPlayer?
     
     // Define Award Constants
-    let BLITZ_BRONZE_SCORE = 30
-    let BLITZ_SILVER_SCORE = 75
-    let BLITZ_GOLD_SCORE = 150
+    let BLITZ_BRONZE_SCORE = 50
+    let BLITZ_SILVER_SCORE = 100
+    let BLITZ_GOLD_SCORE = 200
     
-    let STAN_BRONZE_SCORE = 20
+    let STAN_BRONZE_SCORE = 100
     let STAN_SILVER_SCORE = 250
     let STAN_GOLD_SCORE = 500
     
     let BRONZE_BONUS = 1000
-    let SILVER_BONUS = 10000
-    let GOLD_BONUS = 100000
+    let SILVER_BONUS = 5000
+    let GOLD_BONUS = 10000
     
     let greenAlienSize = CGSize(width: 102, height: 93)
     
@@ -61,7 +61,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
     var addedGold = 0
-    let pointsPerGold_BLITZ = 3
+    let pointsPerGold_BLITZ = 2
     let pointsPerGold_STANDARD = 5
     
     func addGold(score: Int){

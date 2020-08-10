@@ -49,14 +49,19 @@ class StoreScene: SKScene{
     
     func createListings(){
         let listing1 = Listing()
-        listing1.goldRequired = 500
+        listing1.goldRequired = 750
         listing1.mercenariesReceived = 1
         listings.append(listing1)
         
         let listing2 = Listing()
-        listing2.goldRequired = 2000
+        listing2.goldRequired = 3000
         listing2.mercenariesReceived = 5
         listings.append(listing2)
+        
+        let listing3 = Listing()
+        listing3.goldRequired = 5000
+        listing3.mercenariesReceived = 10
+        listings.append(listing3)
     }
     
     func drawListings(){

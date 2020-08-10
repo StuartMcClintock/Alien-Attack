@@ -48,12 +48,12 @@ class GameScene: SKScene {
     var waitTimeMultiplier = 0.0
     
     // Constants for Standard Mode
-    let SWT = 0.75
-    let SWTM = 0.992
+    let SWT = 0.5
+    let SWTM = 0.994
     
     // Constants for Blitz Mode
-    let BWT = 0.4
-    let BWTM = 0.965
+    let BWT = 0.5
+    let BWTM = 0.963
     
     var totalVisible = 0
     //let visibleLock = NSLock()
