@@ -53,7 +53,12 @@ class IntroScene: SKScene{
     var messages:[String] = []
     var instrImgs:[instrImg?] = []
     
-    var stage:Int? = 0
+    var progressLabel:SKLabelNode?
+    var stage:Int = 0{
+        didSet{
+            progressLabel?.text = "\(stage)/\(messages.count+1)"
+        }
+    }
     
     override func didMove(to view: SKView){
         let app = UIApplication.shared
@@ -95,14 +100,14 @@ class IntroScene: SKScene{
             displayIntro()
         }
         else{
-            updateMessage(index: stage!-1)
-            updateAnimation(index: stage!-1)
+            updateMessage(index: stage-1)
+            updateAnimation(index: stage-1)
         }
         
         if (!del.isMute){
             makeTapNoise()
         }
-        stage? += 1
+        stage += 1
     }
     
     func updateAnimation(index:Int){
@@ -208,10 +213,23 @@ class IntroScene: SKScene{
         
         saucer?.removeFromParent()
         addSkipButton()
+        addProgressLabel()
+    }
+    
+    func addProgressLabel(){
+        var yOffset:CGFloat = 65
+        if UIDevice.current.model == "iPhone" && UIScreen.main.bounds.height > 800{
+            yOffset = 115
+        }
+        progressLabel = SKLabelNode(fontNamed: "DIN Alternate Bold")
+        progressLabel?.text = "1/\(messages.count+1)"
+        progressLabel?.position = CGPoint(x: frame.midX, y: frame.maxY-yOffset)
+        progressLabel?.fontColor = SKColor.black
+        progressLabel?.fontSize = 72
+        addChild(progressLabel!)
     }
     
     func addSkipButton(){
-        
         let skipButton = SKSpriteNode(color: SKColor.white, size: CGSize(width: 250, height: 80))
         skipButton.position = CGPoint(x: frame.midX, y: 100)
         skipButton.name = "skip"
