@@ -21,17 +21,15 @@ class GameViewController: UIViewController {
         del = UIApplication.shared.delegate as? AppDelegate
         del.isMute = UserDefaults.standard.bool(forKey: "isMute")
         
-        let bannerAdId = "ca-app-pub-3940256099942544/2934735716"
-        
         del.bottomBanner = GADBannerView(adSize: kGADAdSizeSmartBannerPortrait)
         //del.bottomBanner!.tag = 1
-        del.bottomBanner!.adUnitID = bannerAdId
+        del.bottomBanner!.adUnitID = "ca-app-pub-3234032935918553/6715107738" //"ca-app-pub-3940256099942544/2934735716"
         del.bottomBanner!.rootViewController = self
         del.bottomBanner!.load(GADRequest())
         del.bottomBanner!.frame = CGRect(x: 0, y: view.bounds.height - del.bottomBanner!.frame.size.height, width: del.bottomBanner!.frame.width, height: del.bottomBanner!.frame.height)
         
         del.topBanner = GADBannerView(adSize: kGADAdSizeSmartBannerPortrait)
-        del.topBanner!.adUnitID = bannerAdId
+        del.topBanner!.adUnitID = "ca-app-pub-3234032935918553/4324748113" //"ca-app-pub-3940256099942544/2934735716"
         del.topBanner!.rootViewController = self
         del.topBanner!.load(GADRequest())
         if UIDevice.current.model == "iPhone" && UIScreen.main.bounds.height > 800{

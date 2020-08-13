@@ -217,15 +217,18 @@ class IntroScene: SKScene{
     }
     
     func addProgressLabel(){
-        var yOffset:CGFloat = 65
+        var xShift = 0
+        var yShift = 0
         if UIDevice.current.model == "iPhone" && UIScreen.main.bounds.height > 800{
-            yOffset = 115
+            xShift = 70
+            yShift = 10
         }
+        
         progressLabel = SKLabelNode(fontNamed: "DIN Alternate Bold")
         progressLabel?.text = "1/\(messages.count+1)"
-        progressLabel?.position = CGPoint(x: frame.midX, y: frame.maxY-yOffset)
-        progressLabel?.fontColor = SKColor.black
-        progressLabel?.fontSize = 72
+        progressLabel?.position = CGPoint(x: 70+xShift, y: 25+yShift)
+        progressLabel?.fontColor = SKColor.white
+        progressLabel?.fontSize = 62
         addChild(progressLabel!)
     }
     
