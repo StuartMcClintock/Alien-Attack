@@ -190,7 +190,7 @@ class GameScene: SKScene {
             scoreVal += 1
             if (scoreVal > highScoreVal){
                 highScoreVal = scoreVal
-                highScoreLabel.fontColor = .init(displayP3Red: 121/255, green: 19/255, blue: 50/255, alpha: 1)
+                highScoreLabel.fontColor = SKColor.red
             }
             totalVisible -= 1
             
