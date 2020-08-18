@@ -26,6 +26,8 @@ class GameScene: SKScene {
     let numCols = 6
     let numRows = 5
     
+    var middleBazooka:SKSpriteNode?
+    
     var scoreVal = 0{
         didSet{
             scoreLabel.text = "Score: \(scoreVal)"
@@ -120,6 +122,7 @@ class GameScene: SKScene {
         }
         
         initMercImg()
+        addBazooka()
         dispFaces()
     }
     
@@ -375,5 +378,13 @@ class GameScene: SKScene {
         }
         self.view?.presentScene(awardScene!, transition: .flipVertical(withDuration: 0.5))
         
+    }
+    
+    func addBazooka(){
+        middleBazooka = SKSpriteNode(imageNamed: "bazooka")
+        middleBazooka?.size = CGSize(width: 360, height: 225)
+        middleBazooka?.position = CGPoint(x: frame.midX, y: frame.maxY-350)
+        addChild(middleBazooka!)
+        middleBazooka?.run(SKAction.rotate(byAngle: CGFloat(Double.pi/2), duration: 0))
     }
 }
