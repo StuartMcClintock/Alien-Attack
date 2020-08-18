@@ -27,6 +27,7 @@ class GameScene: SKScene {
     let numRows = 5
     
     var bazooka:SKSpriteNode?
+    var bazookaTapRegion:SKSpriteNode?
     
     var scoreVal = 0{
         didSet{
@@ -160,6 +161,10 @@ class GameScene: SKScene {
                 if (!gameOver){
                     mercButtonTapped()
                 }
+                return
+            }
+            if name == "bazookaTapRegion"{
+                print("Major bruh moment")
                 return
             }
             if name == ""{
@@ -385,12 +390,23 @@ class GameScene: SKScene {
         let verticalWidth:CGFloat = 225
         let rotationLen:TimeInterval = 2
         let startingRads:CGFloat = 0.75
+        let pos = CGPoint(x: frame.midX, y: frame.maxY-350)
         
         bazooka = SKSpriteNode(imageNamed: "bazooka")
         bazooka?.size = CGSize(width: verticalHeight, height: verticalWidth)
-        bazooka?.position = CGPoint(x: frame.midX, y: frame.maxY-350)
+        bazooka?.position = pos
         addChild(bazooka!)
         bazooka?.run(SKAction.rotate(byAngle: startingRads, duration: 0))
         bazooka?.run(SKAction.repeatForever(SKAction.sequence([SKAction.rotate(byAngle: CGFloat(Double.pi)-startingRads*2, duration: rotationLen), SKAction.rotate(byAngle: -CGFloat(Double.pi)+startingRads*2, duration: rotationLen)])))
+        
+        bazookaTapRegion = SKSpriteNode(color: SKColor.white, size: CGSize(width: 275, height: 325))
+        bazookaTapRegion?.position = pos
+        bazookaTapRegion?.zPosition = 3
+        bazookaTapRegion?.alpha = 0.001
+        bazookaTapRegion?.name = "bazookaTapRegion"
+        addChild(bazookaTapRegion!)
+    }
+    
+    func fireBazooka(){
     }
 }
