@@ -123,7 +123,7 @@ class GameScene: SKScene {
         
         initMercImg()
         addBazooka()
-        dispFaces()
+        //dispFaces()
     }
     
     func initMercImg(){
@@ -381,15 +381,16 @@ class GameScene: SKScene {
     }
     
     func addBazooka(){
-        let verticalHeight = 360
-        let verticalWidth = 225
-        let rotationLen = 2
+        let verticalHeight:CGFloat = 360
+        let verticalWidth:CGFloat = 225
+        let rotationLen:TimeInterval = 2
+        let startingRads:CGFloat = 0.75
         
         bazooka = SKSpriteNode(imageNamed: "bazooka")
         bazooka?.size = CGSize(width: verticalHeight, height: verticalWidth)
-        bazooka?.position = CGPoint(x: frame.midX+75, y: frame.maxY-350)
+        bazooka?.position = CGPoint(x: frame.midX, y: frame.maxY-350)
         addChild(bazooka!)
-        //bazooka?.run(SKAction.rotate(byAngle: CGFloat(Double.pi/2), duration: 0))
-        bazooka?.run(SKAction.repeatForever(SKAction.sequence([SKAction.rotate(byAngle: CGFloat(Double.pi), duration: TimeInterval(rotationLen)), SKAction.rotate(byAngle: -CGFloat(Double.pi), duration: TimeInterval(rotationLen))])))
+        bazooka?.run(SKAction.rotate(byAngle: startingRads, duration: 0))
+        bazooka?.run(SKAction.repeatForever(SKAction.sequence([SKAction.rotate(byAngle: CGFloat(Double.pi)-startingRads*2, duration: rotationLen), SKAction.rotate(byAngle: -CGFloat(Double.pi)+startingRads*2, duration: rotationLen)])))
     }
 }
