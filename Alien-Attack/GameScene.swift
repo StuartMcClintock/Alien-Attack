@@ -26,7 +26,7 @@ class GameScene: SKScene {
     let numCols = 6
     let numRows = 5
     
-    var middleBazooka:SKSpriteNode?
+    var bazooka:SKSpriteNode?
     
     var scoreVal = 0{
         didSet{
@@ -381,10 +381,15 @@ class GameScene: SKScene {
     }
     
     func addBazooka(){
-        middleBazooka = SKSpriteNode(imageNamed: "bazooka")
-        middleBazooka?.size = CGSize(width: 360, height: 225)
-        middleBazooka?.position = CGPoint(x: frame.midX, y: frame.maxY-350)
-        addChild(middleBazooka!)
-        middleBazooka?.run(SKAction.rotate(byAngle: CGFloat(Double.pi/2), duration: 0))
+        let verticalHeight = 360
+        let verticalWidth = 225
+        let rotationLen = 2
+        
+        bazooka = SKSpriteNode(imageNamed: "bazooka")
+        bazooka?.size = CGSize(width: verticalHeight, height: verticalWidth)
+        bazooka?.position = CGPoint(x: frame.midX+75, y: frame.maxY-350)
+        addChild(bazooka!)
+        //bazooka?.run(SKAction.rotate(byAngle: CGFloat(Double.pi/2), duration: 0))
+        bazooka?.run(SKAction.repeatForever(SKAction.sequence([SKAction.rotate(byAngle: CGFloat(Double.pi), duration: TimeInterval(rotationLen)), SKAction.rotate(byAngle: -CGFloat(Double.pi), duration: TimeInterval(rotationLen))])))
     }
 }
