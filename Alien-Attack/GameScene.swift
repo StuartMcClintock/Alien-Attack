@@ -164,7 +164,7 @@ class GameScene: SKScene {
                 return
             }
             if name == "bazookaTapRegion"{
-                print("Major bruh moment")
+                fireBazooka()
                 return
             }
             if name == ""{
@@ -408,5 +408,14 @@ class GameScene: SKScene {
     }
     
     func fireBazooka(){
+        let pauseTime:TimeInterval = 0.75
+        
+        if bazooka?.alpha != 1.0{
+            return
+        }
+        bazooka?.alpha = 0.5
+        DispatchQueue.main.asyncAfter(deadline: .now() + pauseTime, execute: { [weak self] in
+            self?.bazooka?.alpha = 1.0
+        })
     }
 }
