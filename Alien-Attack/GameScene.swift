@@ -28,6 +28,8 @@ class GameScene: SKScene {
     
     var bazooka:SKSpriteNode?
     var bazookaTapRegion:SKSpriteNode?
+    var bazookaPos:CGPoint?
+    var rotationStarted:CFAbsoluteTime?
     
     var scoreVal = 0{
         didSet{
@@ -72,6 +74,8 @@ class GameScene: SKScene {
         if let banner = del.topBanner{
             view.addSubview(banner)
         }
+        
+        bazookaPos = CGPoint(x: frame.midX, y: frame.maxY-350)
         
         if (del.isBlitz){
             waitTime = BWT
@@ -388,19 +392,20 @@ class GameScene: SKScene {
     func addBazooka(){
         let verticalHeight:CGFloat = 360
         let verticalWidth:CGFloat = 225
-        let rotationLen:TimeInterval = 2
+        let rotationLen:CFAbsoluteTime = 2
         let startingRads:CGFloat = 0.75
-        let pos = CGPoint(x: frame.midX, y: frame.maxY-350)
         
         bazooka = SKSpriteNode(imageNamed: "bazooka")
         bazooka?.size = CGSize(width: verticalHeight, height: verticalWidth)
-        bazooka?.position = pos
+        bazooka?.position = bazookaPos!
         addChild(bazooka!)
+        let rotation = SKAction.repeatForever(SKAction.sequence([SKAction.rotate(byAngle: CGFloat(Double.pi)-startingRads*2, duration: rotationLen), SKAction.rotate(byAngle: -CGFloat(Double.pi)+startingRads*2, duration: rotationLen)]))
         bazooka?.run(SKAction.rotate(byAngle: startingRads, duration: 0))
-        bazooka?.run(SKAction.repeatForever(SKAction.sequence([SKAction.rotate(byAngle: CGFloat(Double.pi)-startingRads*2, duration: rotationLen), SKAction.rotate(byAngle: -CGFloat(Double.pi)+startingRads*2, duration: rotationLen)])))
+        rotationStarted = CFAbsoluteTimeGetCurrent()
+        bazooka?.run(rotation)
         
         bazookaTapRegion = SKSpriteNode(color: SKColor.white, size: CGSize(width: 275, height: 325))
-        bazookaTapRegion?.position = pos
+        bazookaTapRegion?.position = bazookaPos!
         bazookaTapRegion?.zPosition = 3
         bazookaTapRegion?.alpha = 0.001
         bazookaTapRegion?.name = "bazookaTapRegion"
@@ -417,5 +422,15 @@ class GameScene: SKScene {
         DispatchQueue.main.asyncAfter(deadline: .now() + pauseTime, execute: { [weak self] in
             self?.bazooka?.alpha = 1.0
         })
+        
+        let timeElapsed = CFAbsoluteTimeGetCurrent() - rotationStarted!
+        print(timeElapsed)
+        
+        let projectile = SKSpriteNode(imageNamed: "bazooka-projectile")
+        projectile.size = CGSize(width: 98, height: 64)
+        projectile.position = bazookaPos!
+        addChild(projectile)
+        projectile.run(SKAction.rotate(toAngle: CGFloat(Double.pi/2), duration: 0))
+        projectile.run(SKAction.moveBy(x: 0, y: -1000, duration: 1))
     }
 }
