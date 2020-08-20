@@ -414,17 +414,17 @@ class GameScene: SKScene {
     
     func fireBazooka(){
         
-        let pauseTime:TimeInterval = 0.75
+        let pauseTime:TimeInterval = 0.5
         
         if bazooka?.alpha != 1.0{
             return
         }
         bazooka?.alpha = 0.5
+        let currentRotation = CGFloat(bazooka!.zRotation)
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + pauseTime, execute: { [weak self] in
             self?.bazooka?.alpha = 1.0
         })
-        
-        print(CGFloat(bazooka!.zRotation))
         
         let projectile = SKSpriteNode(imageNamed: "bazooka-projectile")
         projectile.size = CGSize(width: 98, height: 64)
@@ -432,7 +432,10 @@ class GameScene: SKScene {
         let yPos = bazookaPos?.y
         projectile.position = CGPoint(x: xPos!, y: yPos!)
         addChild(projectile)
-        projectile.run(SKAction.rotate(toAngle: CGFloat(Double.pi/2), duration: 0))
-        projectile.run(SKAction.moveBy(x: 0, y: -1000, duration: 1))
+        
+        let dy = -sin(currentRotation)*2000
+        let dx = -cos(currentRotation)*2000
+        projectile.run(SKAction.rotate(toAngle: currentRotation, duration: 0))
+        projectile.run(SKAction.moveBy(x: dx, y: dy, duration: 1.5))
     }
 }
