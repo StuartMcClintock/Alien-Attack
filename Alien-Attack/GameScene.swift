@@ -392,8 +392,8 @@ class GameScene: SKScene {
     func addBazooka(){
         let verticalHeight:CGFloat = 360
         let verticalWidth:CGFloat = 225
-        let rotationLen:CFAbsoluteTime = 2
         let startingRads:CGFloat = 0.75
+        let rotationLen:TimeInterval = 2
         
         bazooka = SKSpriteNode(imageNamed: "bazooka")
         bazooka?.size = CGSize(width: verticalHeight, height: verticalWidth)
@@ -413,6 +413,7 @@ class GameScene: SKScene {
     }
     
     func fireBazooka(){
+        
         let pauseTime:TimeInterval = 0.75
         
         if bazooka?.alpha != 1.0{
@@ -423,12 +424,13 @@ class GameScene: SKScene {
             self?.bazooka?.alpha = 1.0
         })
         
-        let timeElapsed = CFAbsoluteTimeGetCurrent() - rotationStarted!
-        print(timeElapsed)
+        print(CGFloat(bazooka!.zRotation))
         
         let projectile = SKSpriteNode(imageNamed: "bazooka-projectile")
         projectile.size = CGSize(width: 98, height: 64)
-        projectile.position = bazookaPos!
+        let xPos = bazookaPos?.x
+        let yPos = bazookaPos?.y
+        projectile.position = CGPoint(x: xPos!, y: yPos!)
         addChild(projectile)
         projectile.run(SKAction.rotate(toAngle: CGFloat(Double.pi/2), duration: 0))
         projectile.run(SKAction.moveBy(x: 0, y: -1000, duration: 1))
