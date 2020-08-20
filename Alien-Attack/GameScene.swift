@@ -12,7 +12,7 @@ import GameplayKit
 import AVFoundation
 //import AudioToolbox
 
-class GameScene: SKScene {
+class GameScene: SKScene, SKPhysicsContactDelegate {
     var del: AppDelegate!
     
     var audioPlayer: AVAudioPlayer?
@@ -68,6 +68,8 @@ class GameScene: SKScene {
     var mercImage: SKSpriteNode!
     
     override func didMove(to view: SKView){
+        self.physicsWorld.contactDelegate = self
+        
         let app = UIApplication.shared
         del = app.delegate as? AppDelegate
         del.bottomBanner?.removeFromSuperview()
@@ -128,7 +130,7 @@ class GameScene: SKScene {
         
         initMercImg()
         addBazooka()
-        //dispFaces()
+        dispFaces()
     }
     
     func initMercImg(){
@@ -153,6 +155,9 @@ class GameScene: SKScene {
         newFace.alpha = 0
         newFace.name = name
         newFace.size = del.greenAlienSize
+        //newFace.physicsBody = SKPhysicsBody(rectangleOf: newFace.size)
+        //newFace.physicsBody!.isDynamic = false
+        newFace.name = "bad alien"
         addChild(newFace)
         faces.append(newFace)
     }
@@ -167,18 +172,8 @@ class GameScene: SKScene {
                 }
                 return
             }
-            if name == "bazookaTapRegion"{
+            else{
                 fireBazooka()
-                return
-            }
-            if name == ""{
-                return
-            }
-            let splitCoords = name.components(separatedBy: ",")
-            let col = splitCoords[0]
-            let row = splitCoords[1]
-            if (!gameOver){
-                processTap(col: Int(col)!, row: Int(row)!)
             }
         }
     }
@@ -198,6 +193,7 @@ class GameScene: SKScene {
     }
     
     func processTap(col: Int, row: Int){
+        faces[col+row*numCols].physicsBody = nil
         if (faces[col+row*numCols].alpha == 1){
             scoreVal += 1
             if (scoreVal > highScoreVal){
@@ -253,6 +249,11 @@ class GameScene: SKScene {
             poofs[dispNum]?.removeFromParent()
             poofs[dispNum] = nil
         }
+        
+        faces[dispNum].physicsBody = SKPhysicsBody(rectangleOf: faces[dispNum].size)
+        faces[dispNum].physicsBody!.isDynamic = true
+        faces[dispNum].physicsBody!.affectedByGravity = false
+        //faces[dispNum].physicsBody!.collisionBitMask = 1
         
         totalVisible += 1
         
@@ -432,9 +433,18 @@ class GameScene: SKScene {
         projectile.size = CGSize(width: 98, height: 64)
         let bulletOffset:CGFloat = 150
         projectile.position = CGPoint(x: bazookaPos!.x + CGFloat(dx*bulletOffset), y: bazookaPos!.y + CGFloat(dy*bulletOffset))
+        projectile.physicsBody = SKPhysicsBody(rectangleOf: projectile.size)
+        projectile.physicsBody!.isDynamic = true
+        //projectile.physicsBody!.collisionBitMask = 1
+        projectile.name = "projectile"
         addChild(projectile)
         
-        projectile.run(SKAction.rotate(toAngle: currentRotation, duration: 0))
+        //projectile.run(SKAction.rotate(toAngle: currentRotation, duration: 0))
+        projectile.zRotation = currentRotation
         projectile.run(SKAction.moveBy(x: dx*2000, y: dy*2000, duration: 1.5))
+    }
+    
+    func didBegin(_ contact: SKPhysicsContact){
+        print("\n\n\n\nCONTACT\n\n\n\n")
     }
 }
