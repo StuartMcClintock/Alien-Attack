@@ -20,16 +20,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var scoreLabel: SKLabelNode!
     var highScoreLabel: SKLabelNode!
     
-    var faces = [SKSpriteNode]()
-    var poofs = [SKEmitterNode?]()
-    
-    let numCols = 6
-    let numRows = 5
+    var aliens = [SKSpriteNode]()
     
     var bazooka:SKSpriteNode?
     var bazookaTapRegion:SKSpriteNode?
     var bazookaPos:CGPoint?
     var rotationStarted:CFAbsoluteTime?
+    
+    var alienDest:Int?
     
     var scoreVal = 0{
         didSet{
@@ -47,21 +45,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
-    let MAX_FACES = 5
-    
     var waitTime = 0.0
     var waitTimeMultiplier = 0.0
     
+    let climbDuration:TimeInterval = 2
+    
     // Constants for Standard Mode
-    let SWT = 0.5
+    let SWT = 5.0
     let SWTM = 0.994
     
     // Constants for Blitz Mode
-    let BWT = 0.5
+    let BWT = 2.0
     let BWTM = 0.963
-    
-    var totalVisible = 0
-    //let visibleLock = NSLock()
     
     var gameOver = false
     
@@ -78,6 +73,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         bazookaPos = CGPoint(x: frame.midX, y: frame.maxY-350)
+        alienDest = Int(frame.maxY/20*11)
         
         if (del.isBlitz){
             waitTime = BWT
@@ -118,19 +114,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         addChild(highScoreLabel)
         highScoreVal = del.highScore
         
-        let gapX = (frame.maxX)/CGFloat(numRows)
-        let gapY = (frame.midY)/CGFloat(numCols)
-        
-        for row in 0..<numRows {
-            for col in 0..<numCols {
-                addFace(at: CGPoint(x:70+Int(gapX*CGFloat(row)), y:Int(frame.midY)-Int(CGFloat(col)*gapY)+50), name:String(col)+","+String(row))
-                poofs.append(nil)
-            }
-        }
-        
         initMercImg()
         addBazooka()
-        dispFaces()
+        addAlien()
     }
     
     func initMercImg(){
@@ -146,20 +132,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             mercImage.texture = SKTexture(imageNamed: "mercenaryAlien-notClickable")
             mercImage.alpha = 0.25
         }
-    }
-    
-    func addFace(at position: CGPoint, name:String){
-        let newFace = SKSpriteNode(imageNamed: "greenAlien")
-        newFace.position = position
-        newFace.zPosition = 1
-        newFace.alpha = 0
-        newFace.name = name
-        newFace.size = del.greenAlienSize
-        //newFace.physicsBody = SKPhysicsBody(rectangleOf: newFace.size)
-        //newFace.physicsBody!.isDynamic = false
-        newFace.name = "bad alien"
-        addChild(newFace)
-        faces.append(newFace)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -183,34 +155,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             return
         }
         del.numMercs -= 1
-        for row in 0..<numRows{
-            for col in 0..<numCols{
-                processTap(col: col, row: row)
-            }
+        for face in aliens{
+            face.removeFromParent()
         }
         waitTime = waitTime/(pow(waitTimeMultiplier, 5))
         updateMercs()
     }
     
-    func processTap(col: Int, row: Int){
-        faces[col+row*numCols].physicsBody = nil
-        if (faces[col+row*numCols].alpha == 1){
-            scoreVal += 1
-            if (scoreVal > highScoreVal){
-                highScoreVal = scoreVal
-                highScoreLabel.fontColor = SKColor.red
-            }
-            totalVisible -= 1
-            
-            faces[col+row*numCols].alpha = 0
-            if let poof = SKEmitterNode(fileNamed: "Disappear"){
-                poof.position = faces[col+row*numCols].position
-                poofs[col+row*numCols] = poof
-                addChild(poof)
-            }
-            
-            sensoryFeedback()
-        }
+    func processTap(tappedElement: SKSpriteNode){
+        tappedElement.removeFromParent()
+        sensoryFeedback()
     }
     
     func sensoryFeedback(){
@@ -232,32 +186,28 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
-    func dispFaces(){
+    func addAlien(){
         if (gameOver){
             return
         }
         waitTime *= waitTimeMultiplier
         
-        var dispNum = Int.random(in: 0..<(numCols*numRows))
-        while (faces[dispNum].alpha == 1){
-            dispNum = Int.random(in: 0..<(numCols*numRows))
-        }
+        let availableSpaces = Int(frame.maxX/del.greenAlienSize.width)-2
+        let gap = Int(frame.maxX)-availableSpaces*Int(del.greenAlienSize.width)
+        let startingX = Int.random(in: 0...availableSpaces)*Int(del.greenAlienSize.width)+Int(CGFloat(gap)/2)
         
-        // Hide potential leftover animations from last time face was tapped
-        faces[dispNum].alpha = 1
-        if (poofs[dispNum] != nil){
-            poofs[dispNum]?.removeFromParent()
-            poofs[dispNum] = nil
-        }
+        let position = CGPoint(x: startingX, y: 0)
+        let newFace = SKSpriteNode(imageNamed: "greenAlien")
+        newFace.position = position
+        newFace.name = name
+        newFace.size = del.greenAlienSize
+        newFace.name = "bad alien"
+        addChild(newFace)
+        aliens.append(newFace)
         
-        faces[dispNum].physicsBody = SKPhysicsBody(rectangleOf: faces[dispNum].size)
-        faces[dispNum].physicsBody!.isDynamic = true
-        faces[dispNum].physicsBody!.affectedByGravity = false
-        //faces[dispNum].physicsBody!.collisionBitMask = 1
+        newFace.run(SKAction.move(to: CGPoint(x:startingX, y:alienDest!), duration: climbDuration))
         
-        totalVisible += 1
-        
-        if (totalVisible >= MAX_FACES){
+        if (whTaken()){
             del.recentScore = scoreVal
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.27, execute: { [weak self] in
@@ -266,25 +216,24 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             return
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + waitTime, execute: { [weak self] in
-            self?.dispFaces()
+            self?.addAlien()
         })
+    }
+    
+    func whTaken() -> Bool{
+        return false
     }
     
     func endScene(){
         UserDefaults.standard.set(del.numMercs, forKey: "numMercs")
         del.topBanner?.removeFromSuperview()
         
-        if (totalVisible >= MAX_FACES){
-            gameOver = true
-            del.addGold(score: scoreVal)
-            endingAnimation()
-            DispatchQueue.main.asyncAfter(deadline: .now() + 4.20, execute: { [weak self] in
-                self?.chooseNextScene()
-            })
-        }
-        else{
-            dispFaces()
-        }
+        gameOver = true
+        del.addGold(score: scoreVal)
+        endingAnimation()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 4.20, execute: { [weak self] in
+            self?.chooseNextScene()
+        })
     }
     
     func endingAnimation(){
