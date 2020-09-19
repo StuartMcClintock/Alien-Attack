@@ -22,9 +22,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var aliens = [SKSpriteNode]()
     
-    var bazooka:SKSpriteNode?
-    var bazookaTapRegion:SKSpriteNode?
-    var bazookaPos:CGPoint?
+    var gun:SKSpriteNode?
+    var gunPos:CGPoint?
     var rotationStarted:CFAbsoluteTime?
     
     var alienDest:Int?
@@ -63,8 +62,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var mercImage: SKSpriteNode!
     
     override func didMove(to view: SKView){
-        self.physicsWorld.contactDelegate = self
-        
         let app = UIApplication.shared
         del = app.delegate as? AppDelegate
         del.bottomBanner?.removeFromSuperview()
@@ -72,7 +69,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             view.addSubview(banner)
         }
         
-        bazookaPos = CGPoint(x: frame.midX, y: frame.maxY-350)
+        gunPos = CGPoint(x: 100, y: frame.maxY-350)
         alienDest = Int(frame.maxY/20*11)
         
         if (del.isBlitz){
@@ -115,7 +112,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         highScoreVal = del.highScore
         
         initMercImg()
-        addBazooka()
+        addGun()
         addAlien()
     }
     
@@ -145,7 +142,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 return
             }
             else{
-                fireBazooka()
+                fireGun()
             }
         }
     }
@@ -201,7 +198,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         newFace.position = position
         newFace.name = name
         newFace.size = del.greenAlienSize
-        newFace.name = "bad alien"
+        newFace.name = "badAlien"
+        
         addChild(newFace)
         aliens.append(newFace)
         
@@ -339,61 +337,47 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
     }
     
-    func addBazooka(){
-        let verticalHeight:CGFloat = 360
-        let verticalWidth:CGFloat = 225
-        let startingRads:CGFloat = 0.75
-        let rotationLen:TimeInterval = 2
+    func addGun(){
+        let verticalHeight:CGFloat = 320
+        let verticalWidth:CGFloat = 320
+        //let startingRads:CGFloat = 0.75
+        //let rotationLen:TimeInterval = 2
         
-        bazooka = SKSpriteNode(imageNamed: "bazooka")
-        bazooka?.size = CGSize(width: verticalHeight, height: verticalWidth)
-        bazooka?.position = bazookaPos!
-        addChild(bazooka!)
-        let rotation = SKAction.repeatForever(SKAction.sequence([SKAction.rotate(byAngle: CGFloat(Double.pi)-startingRads*2, duration: rotationLen), SKAction.rotate(byAngle: -CGFloat(Double.pi)+startingRads*2, duration: rotationLen)]))
-        bazooka?.run(SKAction.rotate(byAngle: startingRads, duration: 0))
-        rotationStarted = CFAbsoluteTimeGetCurrent()
-        bazooka?.run(rotation)
-        
-        bazookaTapRegion = SKSpriteNode(color: SKColor.white, size: CGSize(width: 275, height: 325))
-        bazookaTapRegion?.position = bazookaPos!
-        bazookaTapRegion?.zPosition = 3
-        bazookaTapRegion?.alpha = 0.001
-        bazookaTapRegion?.name = "bazookaTapRegion"
-        addChild(bazookaTapRegion!)
+        gun = SKSpriteNode(imageNamed: "laserGun")
+        gun?.size = CGSize(width: verticalHeight, height: verticalWidth)
+        gun?.position = gunPos!
+        gun?.name = "gun"
+        addChild(gun!)
+        /*let rotation = SKAction.repeatForever(SKAction.sequence([SKAction.rotate(byAngle: CGFloat(Double.pi)-startingRads*2, duration: rotationLen), SKAction.rotate(byAngle: -CGFloat(Double.pi)+startingRads*2, duration: rotationLen)]))
+        gun?.run(SKAction.rotate(byAngle: startingRads, duration: 0))*/
+        let lrShift = SKAction.repeatForever(SKAction.sequence([SKAction.move(by: CGVector(dx: 600, dy: 0), duration: 1), SKAction.move(by: CGVector(dx: -600, dy: 0), duration: 1)]))
+        gun?.run(lrShift)
     }
     
-    func fireBazooka(){
-        
+    func fireGun(){
         let pauseTime:TimeInterval = 0.5
         
-        if bazooka?.alpha != 1.0{
+        if gun?.alpha != 1.0{
             return
         }
-        bazooka?.alpha = 0.5
-        let currentRotation = CGFloat(bazooka!.zRotation)
-        let dy = -sin(currentRotation)
-        let dx = -cos(currentRotation)
+        gun?.alpha = 0.5
+        let currentRotation = CGFloat(gun!.zRotation)
+        //let dy = -sin(currentRotation)
+        //let dx = -cos(currentRotation)
         
         DispatchQueue.main.asyncAfter(deadline: .now() + pauseTime, execute: { [weak self] in
-            self?.bazooka?.alpha = 1.0
+            self?.gun?.alpha = 1.0
         })
         
-        let projectile = SKSpriteNode(imageNamed: "bazooka-projectile")
+        /*let projectile = SKSpriteNode(imageNamed: "bazooka-projectile")
         projectile.size = CGSize(width: 98, height: 64)
         let bulletOffset:CGFloat = 150
         projectile.position = CGPoint(x: bazookaPos!.x + CGFloat(dx*bulletOffset), y: bazookaPos!.y + CGFloat(dy*bulletOffset))
-        projectile.physicsBody = SKPhysicsBody(rectangleOf: projectile.size)
-        projectile.physicsBody!.isDynamic = true
-        //projectile.physicsBody!.collisionBitMask = 1
         projectile.name = "projectile"
+        
         addChild(projectile)
         
-        //projectile.run(SKAction.rotate(toAngle: currentRotation, duration: 0))
         projectile.zRotation = currentRotation
-        projectile.run(SKAction.moveBy(x: dx*2000, y: dy*2000, duration: 1.5))
-    }
-    
-    func didBegin(_ contact: SKPhysicsContact){
-        print("\n\n\n\nCONTACT\n\n\n\n")
+        projectile.run(SKAction.moveBy(x: dx*2000, y: dy*2000, duration: 1.5))*/
     }
 }
