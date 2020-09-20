@@ -23,6 +23,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var aliens = [SKSpriteNode]()
     
     var gun:SKSpriteNode?
+    var projectile:SKSpriteNode?
     var gunPos:CGPoint?
     var rotationStarted:CFAbsoluteTime?
     
@@ -350,7 +351,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         addChild(gun!)
         /*let rotation = SKAction.repeatForever(SKAction.sequence([SKAction.rotate(byAngle: CGFloat(Double.pi)-startingRads*2, duration: rotationLen), SKAction.rotate(byAngle: -CGFloat(Double.pi)+startingRads*2, duration: rotationLen)]))
         gun?.run(SKAction.rotate(byAngle: startingRads, duration: 0))*/
-        let lrShift = SKAction.repeatForever(SKAction.sequence([SKAction.move(by: CGVector(dx: 600, dy: 0), duration: 1), SKAction.move(by: CGVector(dx: -600, dy: 0), duration: 1)]))
+        let lrShift = SKAction.repeatForever(SKAction.sequence([SKAction.move(by: CGVector(dx: 600, dy: 0), duration: 2), SKAction.move(by: CGVector(dx: -600, dy: 0), duration: 2)]))
         gun?.run(lrShift)
     }
     
@@ -361,15 +362,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             return
         }
         gun?.alpha = 0.5
-        let currentRotation = CGFloat(gun!.zRotation)
-        //let dy = -sin(currentRotation)
-        //let dx = -cos(currentRotation)
         
         DispatchQueue.main.asyncAfter(deadline: .now() + pauseTime, execute: { [weak self] in
             self?.gun?.alpha = 1.0
         })
         
-        /*let projectile = SKSpriteNode(imageNamed: "bazooka-projectile")
+        /*
+        let currentRotation = CGFloat(gun!.zRotation)
+        let dy = -sin(currentRotation)
+        let dx = -cos(currentRotation)
+        let projectile = SKSpriteNode(imageNamed: "bazooka-projectile")
         projectile.size = CGSize(width: 98, height: 64)
         let bulletOffset:CGFloat = 150
         projectile.position = CGPoint(x: bazookaPos!.x + CGFloat(dx*bulletOffset), y: bazookaPos!.y + CGFloat(dy*bulletOffset))
@@ -379,5 +381,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         projectile.zRotation = currentRotation
         projectile.run(SKAction.moveBy(x: dx*2000, y: dy*2000, duration: 1.5))*/
+        
+        let rayLength = 750
+        
+        projectile = SKSpriteNode(color: SKColor.init(red: 231/255, green: 21/255, blue: 32/255, alpha: 0.85), size: CGSize(width: 30, height: rayLength))
+        projectile!.zPosition = 3
+        projectile!.position = CGPoint(x: gun!.position.x, y:frame.maxY-CGFloat(rayLength/2)-500)
+        addChild(projectile!)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + pauseTime, execute: { [weak self] in
+            self?.projectile?.removeFromParent()
+        })
+        
     }
 }
