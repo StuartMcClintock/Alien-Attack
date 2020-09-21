@@ -172,13 +172,29 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         updateMercs()
     }
     
-    func processTap(tappedElement: SKSpriteNode){
-        tappedElement.removeFromParent()
+    func processShot(xPos: Int){
+        var removeList:[Int] = []
+        for i in 0..<aliens.count{
+            if xPos < aliens[i].maxX && xPos > aliens[i].minX{
+                destroyAlien(element: aliens[i].nodeObject)
+                removeList.insert(i, at: 0)
+            }
+        }
+        for i in removeList{
+            aliens.remove(at: i)
+        }
+    }
+    
+    func destroyAlien(element: SKSpriteNode){
+        if let poof = SKEmitterNode(fileNamed: "Disappear"){
+            poof.position = element.position
+            addChild(poof)
+        }
+        element.removeFromParent()
         sensoryFeedback()
     }
     
     func sensoryFeedback(){
-        //AudioServicesPlayAlertSoundWithCompletion(SystemSoundID(kSystemSoundID_Vibrate)) { }
         let impactFeedbackgenerator = UIImpactFeedbackGenerator(style: .heavy)
         impactFeedbackgenerator.prepare()
         impactFeedbackgenerator.impactOccurred()
@@ -408,6 +424,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         DispatchQueue.main.asyncAfter(deadline: .now() + laserPauseTime, execute: { [weak self] in
             self?.projectile?.removeFromParent()
         })
+        
+        processShot(xPos: Int(projectile!.position.x))
         
     }
 }
