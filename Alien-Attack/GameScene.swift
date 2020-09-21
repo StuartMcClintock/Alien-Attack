@@ -12,6 +12,12 @@ import GameplayKit
 import AVFoundation
 //import AudioToolbox
 
+struct AttackingAlien{
+    var nodeObject = SKSpriteNode(imageNamed: "greenAlien")
+    var minX = 0
+    var maxX = 0
+}
+
 class GameScene: SKScene, SKPhysicsContactDelegate {
     var del: AppDelegate!
     
@@ -20,7 +26,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var scoreLabel: SKLabelNode!
     var highScoreLabel: SKLabelNode!
     
-    var aliens = [SKSpriteNode]()
+    var aliens = [AttackingAlien]()
+    var numInColumn = [Int]()
+    var numColumns:Int?
     
     var gun:SKSpriteNode?
     var projectile:SKSpriteNode?
@@ -72,6 +80,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         gunPos = CGPoint(x: 100, y: frame.maxY-350)
         alienDest = Int(frame.maxY/20*11)
+        numColumns = Int(frame.maxX/del.greenAlienSize.width)
+        numInColumn = Array(repeating: 0, count: numColumns!)
+        print(numInColumn)
         
         if (del.isBlitz){
             waitTime = BWT
@@ -154,7 +165,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         del.numMercs -= 1
         for face in aliens{
-            face.removeFromParent()
+            face.nodeObject.removeFromParent()
         }
         waitTime = waitTime/(pow(waitTimeMultiplier, 5))
         updateMercs()
@@ -189,22 +200,25 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             return
         }
         waitTime *= waitTimeMultiplier
+        let columnIndex = Int.random(in: 0..<numColumns!)
         
-        let availableSpaces = Int(frame.maxX/del.greenAlienSize.width)-2
-        let gap = Int(frame.maxX)-availableSpaces*Int(del.greenAlienSize.width)
-        let startingX = Int.random(in: 0...availableSpaces)*Int(del.greenAlienSize.width)+Int(CGFloat(gap)/2)
+        let gap = Int(frame.maxX)-numColumns!*Int(del.greenAlienSize.width)
+        let startingX = columnIndex*Int(del.greenAlienSize.width)+Int(CGFloat(gap)/2)
         
         let position = CGPoint(x: startingX, y: 0)
-        let newFace = SKSpriteNode(imageNamed: "greenAlien")
-        newFace.position = position
-        newFace.name = name
-        newFace.size = del.greenAlienSize
-        newFace.name = "badAlien"
+        var newAlien = AttackingAlien()
+        newAlien.nodeObject.position = position
+        newAlien.nodeObject.name = name
+        newAlien.nodeObject.size = del.greenAlienSize
+        newAlien.nodeObject.name = "badAlien"
+        newAlien.maxX = startingX+(Int(del.greenAlienSize.width)/2)
+        newAlien.minX = startingX-(Int(del.greenAlienSize.width)/2)
         
-        addChild(newFace)
-        aliens.append(newFace)
+        addChild(newAlien.nodeObject)
+        aliens.append(newAlien)
         
-        newFace.run(SKAction.move(to: CGPoint(x:startingX, y:alienDest!), duration: climbDuration))
+        newAlien.nodeObject.run(SKAction.move(to: CGPoint(x:startingX, y:alienDest!-numInColumn[columnIndex]*Int(del.greenAlienSize.height)), duration: climbDuration))
+        numInColumn[columnIndex] += 1
         
         if (whTaken()){
             del.recentScore = scoreVal
@@ -356,14 +370,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func fireGun(){
-        let pauseTime:TimeInterval = 0.5
+        let laserPauseTime:TimeInterval = 0.05
+        let gunPauseTime:TimeInterval = 0.5
         
         if gun?.alpha != 1.0{
             return
         }
         gun?.alpha = 0.5
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + pauseTime, execute: { [weak self] in
+        DispatchQueue.main.asyncAfter(deadline: .now() + gunPauseTime, execute: { [weak self] in
             self?.gun?.alpha = 1.0
         })
         
@@ -382,14 +397,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         projectile.zRotation = currentRotation
         projectile.run(SKAction.moveBy(x: dx*2000, y: dy*2000, duration: 1.5))*/
         
-        let rayLength = 750
+        let rayLength = 500
         
         projectile = SKSpriteNode(color: SKColor.init(red: 231/255, green: 21/255, blue: 32/255, alpha: 0.85), size: CGSize(width: 30, height: rayLength))
         projectile!.zPosition = 3
         projectile!.position = CGPoint(x: gun!.position.x, y:frame.maxY-CGFloat(rayLength/2)-500)
         addChild(projectile!)
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + pauseTime, execute: { [weak self] in
+        DispatchQueue.main.asyncAfter(deadline: .now() + laserPauseTime, execute: { [weak self] in
             self?.projectile?.removeFromParent()
         })
         
