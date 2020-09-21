@@ -39,6 +39,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var alienDest:Int?
     
+    let directionTime:TimeInterval = 2
+    let gunSpan = 520
+    
     var scoreVal = 0{
         didSet{
             scoreLabel.text = "Score: \(scoreVal)"
@@ -80,11 +83,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             view.addSubview(banner)
         }
         
-        gunPos = CGPoint(x: 100, y: frame.maxY-350)
+        gunPos = CGPoint(x: 100, y: frame.maxY-275)
         alienDest = Int(frame.maxY/20*11)
         numColumns = Int(frame.maxX/del.greenAlienSize.width)
         numInColumn = Array(repeating: 0, count: numColumns!)
-        print(numInColumn)
         
         if (del.isBlitz){
             waitTime = BWT
@@ -131,8 +133,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func initMercImg(){
-        mercImage = SKSpriteNode(texture: SKTexture(imageNamed: "mercenaryAlien-clickable"), size: CGSize(width: 144, height: 120))
-        mercImage.position = CGPoint(x: 80, y: frame.maxY-375)
+        mercImage = SKSpriteNode(texture: SKTexture(imageNamed: "mercenaryAlien-clickable"), size: CGSize(width: 120, height: 100))
+        mercImage.zPosition = 3
+        mercImage.position = CGPoint(x: 60, y: frame.maxY-375)
         mercImage.name = "Merc Button"
         addChild(mercImage)
         updateMercs()
@@ -389,12 +392,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         addChild(gun!)
         /*let rotation = SKAction.repeatForever(SKAction.sequence([SKAction.rotate(byAngle: CGFloat(Double.pi)-startingRads*2, duration: rotationLen), SKAction.rotate(byAngle: -CGFloat(Double.pi)+startingRads*2, duration: rotationLen)]))
         gun?.run(SKAction.rotate(byAngle: startingRads, duration: 0))*/
-        let lrShift = SKAction.repeatForever(SKAction.sequence([SKAction.move(by: CGVector(dx: 600, dy: 0), duration: 2), SKAction.move(by: CGVector(dx: -600, dy: 0), duration: 2)]))
-        gun?.run(lrShift)
+        let lrShift = SKAction.repeatForever(SKAction.sequence([SKAction.move(to: CGPoint(x:frame.maxX-100, y:gunPos!.y), duration: directionTime),SKAction.move(to: CGPoint(x:100, y:gunPos!.y), duration: directionTime)]))
+        gun?.run(lrShift, withKey:"lrShift")
     }
     
     func fireGun(){
-        let laserPauseTime:TimeInterval = 0.05
+        if gameOver{
+            return
+        }
+        
+        let laserPauseTime:TimeInterval = 0.06
         let gunPauseTime:TimeInterval = 0.5
         
         if gun?.alpha != 1.0{
@@ -421,15 +428,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         projectile.zRotation = currentRotation
         projectile.run(SKAction.moveBy(x: dx*2000, y: dy*2000, duration: 1.5))*/
         
-        let rayLength = 800
+        let rayLength = 1000
         
-        projectile = SKSpriteNode(color: SKColor.init(red: 231/255, green: 21/255, blue: 32/255, alpha: 0.75), size: CGSize(width: 30, height: rayLength))
+        projectile = SKSpriteNode(color: SKColor.init(red: 231/255, green: 21/255, blue: 32/255, alpha: 0.4), size: CGSize(width: 30, height: rayLength))
         projectile!.zPosition = 3
-        projectile!.position = CGPoint(x: gun!.position.x, y:frame.maxY-CGFloat(rayLength/2)-490)
+        projectile!.position = CGPoint(x: gun!.position.x, y:frame.maxY-CGFloat(rayLength/2)-420)
         addChild(projectile!)
         
+        gun?.action(forKey: "lrShift")?.speed = 0
         DispatchQueue.main.asyncAfter(deadline: .now() + laserPauseTime, execute: { [weak self] in
             self?.projectile?.removeFromParent()
+        })
+        DispatchQueue.main.asyncAfter(deadline: .now() + laserPauseTime, execute: { [weak self] in
+            self?.gun?.action(forKey: "lrShift")?.speed = 1
         })
         
         processShot(xPos: Int(projectile!.position.x))
