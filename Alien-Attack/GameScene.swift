@@ -16,6 +16,7 @@ struct AttackingAlien{
     var nodeObject = SKSpriteNode(imageNamed: "greenAlien")
     var minX = 0
     var maxX = 0
+    var reachedEnd = false
 }
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
@@ -200,7 +201,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             return
         }
         waitTime *= waitTimeMultiplier
-        let columnIndex = Int.random(in: 0..<numColumns!)
+        let columnIndex = Int.random(in: 1..<numColumns!)
         
         let gap = Int(frame.maxX)-numColumns!*Int(del.greenAlienSize.width)
         let startingX = columnIndex*Int(del.greenAlienSize.width)+Int(CGFloat(gap)/2)
