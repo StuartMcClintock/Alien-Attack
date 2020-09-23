@@ -51,7 +51,7 @@ class IntroScene: SKScene{
     var showsCont = true
     
     var messages:[String] = []
-    var instrImgs:[instrImg?] = []
+    var instrImgs:[[instrImg?]] = []
     
     var progressLabel:SKLabelNode?
     var stage:Int = 0{
@@ -69,8 +69,8 @@ class IntroScene: SKScene{
             mercX = 145
         }
         
-        messages = [" Tap on the aliens (who pop up increasingly\nfrequently) to remove them. Make sure that\n five aren't on the screen at the same time!","   You can play in either STANDARD or BLITZ\n mode and will get a point for each alien killed.\nWin awards based on points scored and mode.", "         You will earn coins for scoring points.\n  1 coin = \(del.pointsPerGold_STANDARD) points in STANDARD and \(del.pointsPerGold_BLITZ) in BLITZ.\n Coins are also given for winning certain awards.", " There are mercenaries hiding in the bushes!\nHire with gold and use by tapping shown icon,\n removing invaders and slowing their arrival."]
-        instrImgs = [instrImg(imageName: "greenAlien", loc: CGPoint(x: frame.midX, y: 350), sa: 1.5, initSize: del.greenAlienSize), instrImg(imageName: "standardGold", loc: CGPoint(x: frame.midX, y: 325), sa: 1.2, initSize: CGSize(width: 110, height: 200)), instrImg(texture: del.coinFrames[0], loc: CGPoint(x: frame.midX, y: 325), sa: 1.3, initSize: CGSize(width: 100, height: 100), tl: del.coinFrames, key: "rotatingCoin", tpf:0.035), instrImg(imageName: "mercenaryAlien-clickable", loc: CGPoint(x: mercX, y: frame.maxY-365), sa: 1.25, initSize: CGSize(width: 144, height: 120))]
+        messages = ["   Aliens will rise from the bottom of the screen,\n  tap anywhere to fire the laser to keep them\nfrom the whitehouse. Once 5 arrive, you lose.","   You can play in either STANDARD or BLITZ\n mode and will get a point for each alien killed.\nWin awards based on points scored and mode.", "         You will earn coins for scoring points.\n  1 coin = \(del.pointsPerGold_STANDARD) points in STANDARD and \(del.pointsPerGold_BLITZ) in BLITZ.\n Coins are also given for winning certain awards.", " There are mercenaries hiding in the bushes!\nHire with gold and use by tapping shown icon,\n removing invaders and slowing their arrival."]
+        instrImgs = [[instrImg(imageName: "greenAlien", loc: CGPoint(x: frame.midX, y: 275), sa: 1.5, initSize: del.greenAlienSize),instrImg(imageName: "laserGun", loc: CGPoint(x: frame.midX, y: frame.maxY-350), sa: 1.5, initSize: CGSize(width: 200, height: 200))],[instrImg(imageName: "standardGold", loc: CGPoint(x: frame.midX, y: 325), sa: 1.2, initSize: CGSize(width: 110, height: 200))], [instrImg(texture: del.coinFrames[0], loc: CGPoint(x: frame.midX, y: 325), sa: 1.3, initSize: CGSize(width: 100, height: 100), tl: del.coinFrames, key: "rotatingCoin", tpf:0.035)], [instrImg(imageName: "mercenaryAlien-clickable", loc: CGPoint(x: mercX, y: frame.maxY-365), sa: 1.25, initSize: CGSize(width: 144, height: 120))]]
         
         self.backgroundColor = SKColor.white
         if (!del.isMute){
@@ -115,16 +115,18 @@ class IntroScene: SKScene{
             return
         }
         if (index>0){
-            instrImgs[index-1]?.image.removeFromParent()
+            for images in instrImgs[index-1]{
+                images?.image.removeFromParent()
+            }
         }
-        if let obj = instrImgs[index]{
-            let img = obj.image
-            addChild(img)
-            let scaleUp = SKAction.scale(by: obj.scaleAmount, duration: 1)
-            let scaleDown = SKAction.scale(by: 1/obj.scaleAmount, duration: 1)
-            img.run(SKAction.repeatForever(SKAction.sequence([scaleUp, scaleDown])))
-            if let key = obj.animationKey{
-                img.run(SKAction.repeatForever(SKAction.animate(with: obj.textureList!, timePerFrame: obj.timePerFrame!, resize: false, restore: true)), withKey: key)
+        for obj in instrImgs[index]{
+            let img = obj?.image
+            addChild(img!)
+            let scaleUp = SKAction.scale(by: obj!.scaleAmount, duration: 1)
+            let scaleDown = SKAction.scale(by: 1/obj!.scaleAmount, duration: 1)
+            img!.run(SKAction.repeatForever(SKAction.sequence([scaleUp, scaleDown])))
+            if let key = obj?.animationKey{
+                img!.run(SKAction.repeatForever(SKAction.animate(with: (obj?.textureList!)!, timePerFrame: (obj?.timePerFrame!)!, resize: false, restore: true)), withKey: key)
             }
         }
     }
