@@ -25,12 +25,13 @@ class StoreScene: SKScene{
     
     enum listingType{
         case mercenary
+        case shotSpeed
     }
     
     class Listing{
         var type:listingType = .mercenary
         var goldRequired = 0
-        var mercenariesReceived = 0
+        var rewardFactor = 0
     }
     
     var listings:[Listing] = []
@@ -50,18 +51,24 @@ class StoreScene: SKScene{
     func createListings(){
         let listing1 = Listing()
         listing1.goldRequired = 750
-        listing1.mercenariesReceived = 1
+        listing1.rewardFactor = 1
         listings.append(listing1)
         
         let listing2 = Listing()
         listing2.goldRequired = 3000
-        listing2.mercenariesReceived = 5
+        listing2.rewardFactor = 5
         listings.append(listing2)
         
         let listing3 = Listing()
         listing3.goldRequired = 5000
-        listing3.mercenariesReceived = 10
+        listing3.rewardFactor = 10
         listings.append(listing3)
+        
+        let listing4 = Listing()
+        listing4.type = .shotSpeed
+        listing4.goldRequired = 2500
+        listing4.rewardFactor = 2
+        listings.append(listing4)
     }
     
     func drawListings(){
@@ -118,24 +125,43 @@ class StoreScene: SKScene{
             buyText.name = "BUY\(rowNum)"
             addChild(buyText)
             
+            var goldX:CGFloat = 290
             
-            
-            
-            let mercImage = SKSpriteNode(imageNamed: "mercenaryAlien-black")
-            mercImage.size = CGSize(width: 100, height: 100)
-            mercImage.position = CGPoint(x: 80, y: frame.maxY-yOffset+(innerGap/2))
-            addChild(mercImage)
-            let mercLabel = SKLabelNode(fontNamed: "DIN Alternate Bold")
-            mercLabel.fontSize = 72
-            mercLabel.fontColor = SKColor.black
-            mercLabel.horizontalAlignmentMode = .left
-            mercLabel.verticalAlignmentMode = .center
-            mercLabel.position = CGPoint(x: 175, y: frame.maxY-yOffset+(innerGap/2))
-            mercLabel.text = "\(curr.mercenariesReceived)"
-            addChild(mercLabel)
+            if curr.type == .mercenary{
+                let mercImage = SKSpriteNode(imageNamed: "mercenaryAlien-black")
+                mercImage.size = CGSize(width: 100, height: 100)
+                mercImage.position = CGPoint(x: 80, y: frame.maxY-yOffset+(innerGap/2))
+                addChild(mercImage)
+                let mercLabel = SKLabelNode(fontNamed: "DIN Alternate Bold")
+                mercLabel.fontSize = 72
+                mercLabel.fontColor = SKColor.black
+                mercLabel.horizontalAlignmentMode = .left
+                mercLabel.verticalAlignmentMode = .center
+                mercLabel.position = CGPoint(x: 175, y: frame.maxY-yOffset+(innerGap/2))
+                mercLabel.text = "\(curr.rewardFactor)"
+                addChild(mercLabel)
+            }
+            else if curr.type == .shotSpeed{
+                let gunImage = SKSpriteNode(imageNamed: "laserGun")
+                gunImage.size = CGSize(width: 125, height: 125)
+                gunImage.position = CGPoint(x: 75, y: frame.maxY-yOffset+(innerGap/2))
+                addChild(gunImage)
+                
+                let speedText = SKLabelNode(fontNamed: "DIN Alternate Bold")
+                speedText.fontSize = 46
+                speedText.numberOfLines = 2
+                speedText.fontColor = SKColor.black
+                speedText.text = "Restore\nSpeed X\(curr.rewardFactor)"
+                speedText.verticalAlignmentMode = .center
+                speedText.horizontalAlignmentMode = .left
+                speedText.position = CGPoint(x: 140, y: frame.maxY-yOffset+(innerGap/2))
+                addChild(speedText)
+                
+                goldX = 390
+            }
             
             let goldImage = SKSpriteNode(texture: del.coinFrames[0])
-            goldImage.position = CGPoint(x: 290, y: frame.maxY-yOffset+(innerGap/2))
+            goldImage.position = CGPoint(x: goldX, y: frame.maxY-yOffset+(innerGap/2))
             goldImage.size = CGSize(width:65, height:65)
             addChild(goldImage)
             goldImage.run(SKAction.repeatForever(SKAction.animate(with: del.coinFrames, timePerFrame: 0.04, resize: false, restore: true)), withKey: "rotatingCoin")
@@ -146,10 +172,9 @@ class StoreScene: SKScene{
             goldLabel.fontColor = SKColor.black
             goldLabel.horizontalAlignmentMode = .left
             goldLabel.verticalAlignmentMode = .center
-            goldLabel.position = CGPoint(x: 340, y: frame.maxY-yOffset+(innerGap/2))
+            goldLabel.position = CGPoint(x: goldX+50, y: frame.maxY-yOffset+(innerGap/2))
             goldLabel.text = labelText
             addChild(goldLabel)
-            
             
             yOffset += innerGap
             rowNum += 1
@@ -248,10 +273,18 @@ class StoreScene: SKScene{
             tappedNoise(hasFunds: true)
         }
         
+        if selectedListing.type == .shotSpeed{
+            del.regenTime /= 2
+            UserDefaults.standard.set(del.regenTime, forKey: "regenTime")
+        }
+        else if selectedListing.type == .mercenary{
+            del.numMercs += selectedListing.rewardFactor
+            UserDefaults.standard.set(del.numMercs, forKey: "numMercs")
+        }
+        
         del.numGold -= selectedListing.goldRequired
-        del.numMercs += selectedListing.mercenariesReceived
         UserDefaults.standard.set(del.numGold, forKey: "numGold")
-        UserDefaults.standard.set(del.numMercs, forKey: "numMercs")
+        
         
         updateUserLabels()
         updateButtonColors()

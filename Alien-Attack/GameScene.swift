@@ -12,7 +12,7 @@ import GameplayKit
 import AVFoundation
 //import AudioToolbox
 
-struct AttackingAlien{
+class AttackingAlien{
     var nodeObject = SKSpriteNode(imageNamed: "greenAlien")
     var minX = 0
     var maxX = 0
@@ -42,6 +42,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let directionTime:TimeInterval = 2
     let gunSpan = 520
     
+    var numReachedEnd = 1
+    
     var scoreVal = 0{
         didSet{
             scoreLabel.text = "Score: \(scoreVal)"
@@ -64,12 +66,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let climbDuration:TimeInterval = 2
     
     // Constants for Standard Mode
-    let SWT = 5.0
-    let SWTM = 0.994
+    let SWT = 2.0
+    let SWTM = 0.99
     
     // Constants for Blitz Mode
-    let BWT = 2.0
-    let BWTM = 0.963
+    let BWT = 1.0
+    let BWTM = 0.95
     
     var gameOver = false
     
@@ -184,6 +186,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 if scoreVal > highScoreVal{
                     highScoreVal = scoreVal
                 }
+                if aliens[i].reachedEnd{
+                    numReachedEnd -= 1
+                }
                 numInColumn[aliens[i].columnIndex] -= 1
                 destroyAlien(element: aliens[i].nodeObject)
                 removeList.insert(i, at: 0)
@@ -225,6 +230,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if (gameOver){
             return
         }
+        
+        if (whTaken()){
+            del.recentScore = scoreVal
+            
+            DispatchQueue.main.asyncAfter(deadline: .now(), execute: { [weak self] in
+                self?.endScene()
+            })
+            return
+        }
+        
         waitTime *= waitTimeMultiplier
         let columnIndex = Int.random(in: 1..<numColumns!)
         
@@ -232,7 +247,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let startingX = columnIndex*Int(del.greenAlienSize.width)+Int(CGFloat(gap)/2)
         
         let position = CGPoint(x: startingX, y: 0)
-        var newAlien = AttackingAlien()
+        let newAlien = AttackingAlien()
         newAlien.nodeObject.position = position
         newAlien.nodeObject.name = name
         newAlien.nodeObject.size = del.greenAlienSize
@@ -244,24 +259,22 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         addChild(newAlien.nodeObject)
         aliens.append(newAlien)
         
+        DispatchQueue.main.asyncAfter(deadline: .now() + climbDuration, execute: { [weak self] in
+            newAlien.reachedEnd = true;
+            self?.numReachedEnd += 1;
+        })
         newAlien.nodeObject.run(SKAction.move(to: CGPoint(x:startingX, y:alienDest!-numInColumn[columnIndex]*Int(del.greenAlienSize.height)), duration: climbDuration))
         numInColumn[columnIndex] += 1
         
-        if (whTaken()){
-            del.recentScore = scoreVal
-            
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.27, execute: { [weak self] in
-                self?.endScene()
-            })
-            return
-        }
         DispatchQueue.main.asyncAfter(deadline: .now() + waitTime, execute: { [weak self] in
             self?.addAlien()
         })
     }
-    
+        
     func whTaken() -> Bool{
-        return numInColumn.reduce(0, +) > 5
+        let deathNum = 5
+        print(numReachedEnd)
+        return numReachedEnd >= deathNum
     }
     
     func endScene(){
@@ -376,22 +389,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             awardScene?.scaleMode = .fill
         }
         self.view?.presentScene(awardScene!, transition: .flipVertical(withDuration: 0.5))
-        
     }
     
     func addGun(){
         let verticalHeight:CGFloat = 320
         let verticalWidth:CGFloat = 320
-        //let startingRads:CGFloat = 0.75
-        //let rotationLen:TimeInterval = 2
         
         gun = SKSpriteNode(imageNamed: "laserGun")
         gun?.size = CGSize(width: verticalHeight, height: verticalWidth)
         gun?.position = gunPos!
         gun?.name = "gun"
         addChild(gun!)
-        /*let rotation = SKAction.repeatForever(SKAction.sequence([SKAction.rotate(byAngle: CGFloat(Double.pi)-startingRads*2, duration: rotationLen), SKAction.rotate(byAngle: -CGFloat(Double.pi)+startingRads*2, duration: rotationLen)]))
-        gun?.run(SKAction.rotate(byAngle: startingRads, duration: 0))*/
+        
         let lrShift = SKAction.repeatForever(SKAction.sequence([SKAction.move(to: CGPoint(x:frame.maxX-100, y:gunPos!.y), duration: directionTime),SKAction.move(to: CGPoint(x:100, y:gunPos!.y), duration: directionTime)]))
         gun?.run(lrShift, withKey:"lrShift")
     }
@@ -401,32 +410,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             return
         }
         
-        let laserPauseTime:TimeInterval = 0.06
-        let gunPauseTime:TimeInterval = 0.5
+        let laserPauseTime:TimeInterval = 0.075
         
         if gun?.alpha != 1.0{
             return
         }
         gun?.alpha = 0.5
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + gunPauseTime, execute: { [weak self] in
+        DispatchQueue.main.asyncAfter(deadline: .now() + del.regenTime, execute: { [weak self] in
             self?.gun?.alpha = 1.0
         })
         
-        /*
-        let currentRotation = CGFloat(gun!.zRotation)
-        let dy = -sin(currentRotation)
-        let dx = -cos(currentRotation)
-        let projectile = SKSpriteNode(imageNamed: "bazooka-projectile")
-        projectile.size = CGSize(width: 98, height: 64)
-        let bulletOffset:CGFloat = 150
-        projectile.position = CGPoint(x: bazookaPos!.x + CGFloat(dx*bulletOffset), y: bazookaPos!.y + CGFloat(dy*bulletOffset))
-        projectile.name = "projectile"
-        
-        addChild(projectile)
-        
-        projectile.zRotation = currentRotation
-        projectile.run(SKAction.moveBy(x: dx*2000, y: dy*2000, duration: 1.5))*/
         
         let rayLength = 1000
         
@@ -437,11 +431,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         gun?.action(forKey: "lrShift")?.speed = 0
         DispatchQueue.main.asyncAfter(deadline: .now() + laserPauseTime, execute: { [weak self] in
-            self?.projectile?.removeFromParent()
-        })
-        DispatchQueue.main.asyncAfter(deadline: .now() + laserPauseTime, execute: { [weak self] in
+            self?.projectile?.removeFromParent();
             self?.gun?.action(forKey: "lrShift")?.speed = 1
         })
+        /*DispatchQueue.main.asyncAfter(deadline: .now() + laserPauseTime, execute: { [weak self] in
+            self?.gun?.action(forKey: "lrShift")?.speed = 1
+        })*/
         
         processShot(xPos: Int(projectile!.position.x))
         

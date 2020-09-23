@@ -21,6 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var highScore: Int = 0
     var numGold: Int = 0
     var numMercs: Int = 0
+    var regenTime: TimeInterval = 0.5
     
     var isBlitz: Bool = false
     var isMute: Bool = false
@@ -61,8 +62,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
     var addedGold = 0
-    let pointsPerGold_BLITZ = 2
-    let pointsPerGold_STANDARD = 5
+    let pointsPerGold_BLITZ = 1
+    let pointsPerGold_STANDARD = 2
     
     func addGold(score: Int){
         if isBlitz{
