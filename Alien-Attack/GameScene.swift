@@ -18,6 +18,7 @@ class AttackingAlien{
     var maxX = 0
     var columnIndex = 0
     var reachedEnd = false
+    var destroyed = false
 }
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
@@ -173,6 +174,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         del.numMercs -= 1
         for face in aliens{
             face.nodeObject.removeFromParent()
+            face.destroyed = true
         }
         waitTime = waitTime/(pow(waitTimeMultiplier, 5))
         updateMercs()
@@ -190,7 +192,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     numReachedEnd -= 1
                 }
                 numInColumn[aliens[i].columnIndex] -= 1
-                destroyAlien(element: aliens[i].nodeObject)
+                destroyAlien(alien: aliens[i])
                 removeList.insert(i, at: 0)
             }
         }
@@ -199,12 +201,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
-    func destroyAlien(element: SKSpriteNode){
+    func destroyAlien(alien: AttackingAlien){
+        let element = alien.nodeObject
         if let poof = SKEmitterNode(fileNamed: "Disappear"){
             poof.position = element.position
             addChild(poof)
         }
         element.removeFromParent()
+        alien.destroyed = true
         sensoryFeedback()
     }
     
@@ -261,7 +265,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         DispatchQueue.main.asyncAfter(deadline: .now() + climbDuration, execute: { [weak self] in
             newAlien.reachedEnd = true;
-            self?.numReachedEnd += 1;
+            if !newAlien.destroyed{
+                self?.numReachedEnd += 1;
+            }
         })
         newAlien.nodeObject.run(SKAction.move(to: CGPoint(x:startingX, y:alienDest!-numInColumn[columnIndex]*Int(del.greenAlienSize.height)), duration: climbDuration))
         numInColumn[columnIndex] += 1

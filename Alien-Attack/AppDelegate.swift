@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var highScore: Int = 0
     var numGold: Int = 0
     var numMercs: Int = 0
-    var regenTime: TimeInterval = 0.5
+    var regenTime: TimeInterval = 0.68
     
     var isBlitz: Bool = false
     var isMute: Bool = false

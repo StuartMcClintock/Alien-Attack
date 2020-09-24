@@ -41,7 +41,13 @@ class GameViewController: UIViewController {
         
         del.numGold = UserDefaults.standard.integer(forKey: "numGold")
         del.numMercs = UserDefaults.standard.integer(forKey: "numMercs")
-        del.regenTime = UserDefaults.standard.double(forKey: "regenTime")
+        let regenDefault = UserDefaults.standard.double(forKey: "regenTime")
+        if regenDefault != 0{
+            del.regenTime = regenDefault
+        }
+        else{
+            UserDefaults.standard.setValue(del.regenTime, forKey: "regenTime")
+        }
         del.buildCoinFrames()
         
         
