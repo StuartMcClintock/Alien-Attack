@@ -50,23 +50,23 @@ class StoreScene: SKScene{
     
     func createListings(){
         let listing1 = Listing()
-        listing1.goldRequired = 750
+        listing1.goldRequired = 100
         listing1.rewardFactor = 1
         listings.append(listing1)
         
         let listing2 = Listing()
-        listing2.goldRequired = 3000
+        listing2.goldRequired = 400
         listing2.rewardFactor = 5
         listings.append(listing2)
         
         let listing3 = Listing()
-        listing3.goldRequired = 5000
+        listing3.goldRequired = 750
         listing3.rewardFactor = 10
         listings.append(listing3)
         
         let listing4 = Listing()
         listing4.type = .shotSpeed
-        listing4.goldRequired = 2500
+        listing4.goldRequired = 1000
         listing4.rewardFactor = 2
         listings.append(listing4)
     }

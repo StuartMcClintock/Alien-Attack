@@ -67,12 +67,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let climbDuration:TimeInterval = 2
     
     // Constants for Standard Mode
-    let SWT = 2.0
+    let SWT = 1.4
     let SWTM = 0.99
     
     // Constants for Blitz Mode
     let BWT = 1.0
-    let BWTM = 0.95
+    let BWTM = 0.98
     
     var gameOver = false
     
@@ -172,11 +172,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             return
         }
         del.numMercs -= 1
-        for face in aliens{
-            face.nodeObject.removeFromParent()
-            face.destroyed = true
+        for i in (0..<aliens.count).reversed(){
+            destroyAlien(alien: aliens[i])
+            aliens.remove(at: i)
         }
-        waitTime = waitTime/(pow(waitTimeMultiplier, 5))
+        waitTime = waitTime/(pow(waitTimeMultiplier, 25))
         updateMercs()
     }
     
@@ -184,14 +184,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         var removeList:[Int] = []
         for i in 0..<aliens.count{
             if xPos < aliens[i].maxX && xPos > aliens[i].minX{
-                scoreVal += 1
-                if scoreVal > highScoreVal{
-                    highScoreVal = scoreVal
-                }
-                if aliens[i].reachedEnd{
-                    numReachedEnd -= 1
-                }
-                numInColumn[aliens[i].columnIndex] -= 1
                 destroyAlien(alien: aliens[i])
                 removeList.insert(i, at: 0)
             }
@@ -203,9 +195,21 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func destroyAlien(alien: AttackingAlien){
         let element = alien.nodeObject
+        
+        scoreVal += 1
+        if scoreVal > highScoreVal{
+            highScoreVal = scoreVal
+        }
+        if alien.reachedEnd{
+            numReachedEnd -= 1
+        }
+        numInColumn[alien.columnIndex] -= 1
+        
         if let poof = SKEmitterNode(fileNamed: "Disappear"){
-            poof.position = element.position
-            addChild(poof)
+            if !alien.destroyed{
+                poof.position = element.position
+                addChild(poof)
+            }
         }
         element.removeFromParent()
         alien.destroyed = true
@@ -279,7 +283,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
     func whTaken() -> Bool{
         let deathNum = 5
-        print(numReachedEnd)
         return numReachedEnd >= deathNum
     }
     
@@ -302,7 +305,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         smilingAlien.position = CGPoint(x: frame.midX, y: frame.midY+135)
         smilingAlien.size = CGSize(width: 706, height: 850)
         smilingAlien.alpha = 0.2
-        smilingAlien.zPosition = 2
+        smilingAlien.zPosition = 4
         addChild(smilingAlien)
         
         let fade = SKAction.fadeAlpha(to: 1.0, duration: 4)

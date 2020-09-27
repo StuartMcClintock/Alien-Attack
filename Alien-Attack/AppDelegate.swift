@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var highScore: Int = 0
     var numGold: Int = 0
     var numMercs: Int = 0
-    var regenTime: TimeInterval = 0.68
+    var regenTime: TimeInterval = 0.5
     
     var isBlitz: Bool = false
     var isMute: Bool = false
@@ -29,16 +29,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var audioPlayer: AVAudioPlayer?
     
     // Define Award Constants
-    let BLITZ_BRONZE_SCORE = 50
-    let BLITZ_SILVER_SCORE = 100
-    let BLITZ_GOLD_SCORE = 200
+    let BLITZ_BRONZE_SCORE = 25
+    let BLITZ_SILVER_SCORE = 75
+    let BLITZ_GOLD_SCORE = 125
     
-    let STAN_BRONZE_SCORE = 150
-    let STAN_SILVER_SCORE = 300
-    let STAN_GOLD_SCORE = 600
+    let STAN_BRONZE_SCORE = 50
+    let STAN_SILVER_SCORE = 150
+    let STAN_GOLD_SCORE = 250
     
-    let BRONZE_BONUS = 1000
-    let SILVER_BONUS = 5000
+    let BRONZE_BONUS = 500
+    let SILVER_BONUS = 2500
     let GOLD_BONUS = 10000
     
     let greenAlienSize = CGSize(width: 102, height: 93)
