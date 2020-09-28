@@ -43,7 +43,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let directionTime:TimeInterval = 2
     let gunSpan = 520
     
-    var numReachedEnd = 1
+    var numReachedEnd = 0
     
     var scoreVal = 0{
         didSet{
@@ -267,14 +267,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         addChild(newAlien.nodeObject)
         aliens.append(newAlien)
         
+        newAlien.nodeObject.run(SKAction.move(to: CGPoint(x:startingX, y:alienDest!-numInColumn[columnIndex]*Int(del.greenAlienSize.height)), duration: climbDuration))
+        numInColumn[columnIndex] += 1
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + climbDuration, execute: { [weak self] in
             newAlien.reachedEnd = true;
             if !newAlien.destroyed{
                 self?.numReachedEnd += 1;
             }
         })
-        newAlien.nodeObject.run(SKAction.move(to: CGPoint(x:startingX, y:alienDest!-numInColumn[columnIndex]*Int(del.greenAlienSize.height)), duration: climbDuration))
-        numInColumn[columnIndex] += 1
         
         DispatchQueue.main.asyncAfter(deadline: .now() + waitTime, execute: { [weak self] in
             self?.addAlien()

@@ -38,7 +38,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let STAN_GOLD_SCORE = 250
     
     let BRONZE_BONUS = 500
-    let SILVER_BONUS = 2500
+    let SILVER_BONUS = 1500
     let GOLD_BONUS = 10000
     
     let greenAlienSize = CGSize(width: 102, height: 93)
