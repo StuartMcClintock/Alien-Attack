@@ -420,7 +420,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             return
         }
         
-        let laserPauseTime:TimeInterval = 0.075
+        let laserPauseTime:TimeInterval = del.regenTime
         
         if gun?.alpha != 1.0{
             return
@@ -436,7 +436,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         projectile = SKSpriteNode(color: SKColor.init(red: 231/255, green: 21/255, blue: 32/255, alpha: 0.4), size: CGSize(width: 30, height: rayLength))
         projectile!.zPosition = 3
-        projectile!.position = CGPoint(x: gun!.position.x, y:frame.maxY-CGFloat(rayLength/2)-420)
+        projectile!.position = CGPoint(x: gun!.position.x-6, y:frame.maxY-CGFloat(rayLength/2)-420)
         addChild(projectile!)
         
         gun?.action(forKey: "lrShift")?.speed = 0
